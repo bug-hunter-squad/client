@@ -1,0 +1,26 @@
+
+.container {
+    height:232px;
+    width: 100%;
+    border-radius: 0px 0px 30px 30px;
+}
+
+
+.card{
+    border-radius: 0px 0px 30px 30px;
+}
+.overlay{
+    background-image:url(../public/assets/img/overlay.png);
+    height:232px;
+}
+
+.text{
+    background-color: #FFFFFF;
+    opacity: 0.35;
+}
+
+.fontsize{
+   color: #414141;
+   font-size: 11px;
+}
+
