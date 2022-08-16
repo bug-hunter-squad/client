@@ -1,0 +1,92 @@
+.slide img {
+  width: 20rem;
+  margin: 0 auto;
+}
+
+.slide {
+  transform: scale(0.2);
+  transition: transform 300ms;
+  opacity: 0.5;
+}
+
+.activeSlide {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.cardNew {
+  padding: 8px;
+  border: unset;
+}
+
+.imgNew {
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+.labelNew {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.cardTitle {
+  color: white;
+}
+
+.overlay {
+    height: 85%;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+    border-radius: 0 0 25px 25px;
+    margin-left: 4px;
+    margin-bottom: -10px;
+    width: 97.5%;
+  }
+
+@media only screen and (max-width: 520px) {
+  .overlay {
+    height: 85%;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+    border-radius: 0 0 25px 25px;
+    margin-left: 4px;
+    margin-bottom: -10px;
+    width: 97.5%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .overlay {
+    height: 85%;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+    border-radius: 0 0 25px 25px;
+    margin-left: 4px;
+    margin-bottom: -10px;
+    width: 96%;
+  }
+}
+
+.icon {
+  font-size: 35px;
+  display: flex;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.textBottom {
+  position: relative;
+  margin-top: 30%;
+  align-items: flex-end;
+}
+
+.airlines {
+  position: relative;
+  top: -35px;
+}
+.airlines p {
+  padding: 8px;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
