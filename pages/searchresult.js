@@ -4,13 +4,15 @@ import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
 import React from "react";
+import Filter from "../components/molecules/filter.js";
 
 function searchresult() {
-  const [show,setShow]=React.useState(true)
-  const handleShow=()=> setShow(true);
+  const [show, setShow] = React.useState(true);
+  const handleShow = () => setShow(true);
   // const handleClose=()=>setClose(false)
 
-  
+  const [filter, setFilter] = React.useState(false);
+
   return (
     <>
       <container>
@@ -65,15 +67,20 @@ function searchresult() {
             <div className="">
               <p className="p-0">5 Flight Found</p>
             </div>
-            <div className="d-flex text-end">
+            <div
+              className="d-flex text-end"
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setFilter(true);
+              }}
+            >
               <p className=" mx-1 ">Filter</p>
               <div>
                 <ArrowDownUp />
               </div>
             </div>
           </div>
-
-
+          {filter && <Filter setFilter={setFilter} />}
           <div className={style.result}>
             {[...new Array(4)].map((item, index) => (
               <div
