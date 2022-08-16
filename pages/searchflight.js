@@ -36,7 +36,7 @@ function searchresult() {
                 width="100%"
                 height={264}
               />
-              <div class="card-img-overlay">
+              <div className="card-img-overlay">
                 <div className="d-flex mx-3 mb-5 justify-content-between text-white">
                   <div className="p-2 mt-2">
                     <ChevronLeft />
@@ -45,7 +45,7 @@ function searchresult() {
                     <ArrowsFullscreen />
                   </div>
                 </div>
-                <h3 class="card-title mx-4 text-white mt-5">Destination</h3>
+                <h3 className="card-title mx-4 text-white mt-5">Destination</h3>
               </div>
             </div>
           </div>
@@ -136,39 +136,39 @@ function searchresult() {
           </div>
           <h5 className="col-10 mx-auto">Which Class Do You Want?</h5>
           <div className="d-flex mx-4 mb-3 col-10 justify-content-between ">
-            <div class="form-check">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="exampleRadios"
                 id="exampleRadios1"
                 value="option1"
               />
-              <label class="form-check-label" for="exampleRadios1">
+              <label className="form-check-label" for="exampleRadios1">
                 Economy
               </label>
             </div>
-            <div class="form-check">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="exampleRadios"
                 id="exampleRadios1"
                 value="option1"
               />
-              <label class="form-check-label" for="exampleRadios1">
+              <label className="form-check-label" for="exampleRadios1">
                 Business
               </label>
             </div>
-            <div class="form-check">
+            <div className="form-check">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="radio"
                 name="exampleRadios"
                 id="exampleRadios1"
                 value="option1"
               />
-              <label class="form-check-label" for="exampleRadios1">
+              <label className="form-check-label" for="exampleRadios1">
                 First Class
               </label>
             </div>
