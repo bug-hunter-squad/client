@@ -3,8 +3,14 @@ import style from "../styles/SearchResult.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
+import React from "react";
 
 function searchresult() {
+  const [show,setShow]=React.useState(true)
+  const handleShow=()=> setShow(true);
+  // const handleClose=()=>setClose(false)
+
+  
   return (
     <>
       <container>
@@ -66,7 +72,8 @@ function searchresult() {
               </div>
             </div>
           </div>
-        
+
+
           <div className={style.result}>
             {[...new Array(4)].map((item, index) => (
               <div
