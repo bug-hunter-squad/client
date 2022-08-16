@@ -7,7 +7,7 @@ import { ArrowDownUp } from "react-bootstrap-icons";
 function searchresult() {
   return (
     <>
-      <container >
+      <container>
         <div className="col-lg-4 mx-auto col-sm">
           <div className={style.container}>
             <section>
@@ -62,10 +62,11 @@ function searchresult() {
             <div className="d-flex text-end">
               <p className=" mx-1 ">Filter</p>
               <div>
-                <ArrowDownUp className="" />
+                <ArrowDownUp />
               </div>
             </div>
           </div>
+        
           <div className={style.result}>
             {[...new Array(4)].map((item, index) => (
               <div
