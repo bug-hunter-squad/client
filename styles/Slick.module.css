@@ -75,11 +75,22 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+
 .textBottom {
   position: relative;
-  margin-top: 30%;
+  margin-top: 50%;
   align-items: flex-end;
 }
+
+@media only screen and (max-width: 415px) {
+  .textBottom {
+    position: relative;
+    margin-top: 10%;
+    align-items: flex-end;
+  }
+}
+
+
 
 .airlines {
   position: relative;
