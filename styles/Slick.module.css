@@ -19,6 +19,18 @@
   border: unset;
 }
 
+.cardTopTen {
+  margin: 5px;
+  background-color: white;
+  border-radius: 50%;
+  border: unset;
+}
+
+.imgTopTen {
+  padding: 7px !important;
+  border-radius: 50%;
+  object-fit: cover;
+}
 .imgNew {
   border-radius: 25px;
   object-fit: cover;
@@ -34,28 +46,17 @@
 }
 
 .overlay {
-    height: 85%;
-    color: white;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
-    border-radius: 0 0 25px 25px;
-    margin-left: 4px;
-    margin-bottom: -10px;
-    width: 97.5%;
-  }
-
-@media only screen and (max-width: 520px) {
-  .overlay {
-    height: 85%;
-    color: white;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
-    border-radius: 0 0 25px 25px;
-    margin-left: 4px;
-    margin-bottom: -10px;
-    width: 97.5%;
-  }
+  height: 85%;
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0));
+  border-radius: 0 0 25px 25px;
+  margin-left: 4px;
+  margin-bottom: -10px;
+  width: 98.5%;
 }
 
-@media only screen and (max-width: 500px) {
+
+@media only screen and (max-width: 375px) {
   .overlay {
     height: 85%;
     color: white;
@@ -63,7 +64,7 @@
     border-radius: 0 0 25px 25px;
     margin-left: 4px;
     margin-bottom: -10px;
-    width: 96%;
+    width: 97%;
   }
 }
 
@@ -75,22 +76,19 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-
 .textBottom {
   position: relative;
-  margin-top: 50%;
+  margin-top: 15%;
   align-items: flex-end;
 }
 
 @media only screen and (max-width: 415px) {
   .textBottom {
     position: relative;
-    margin-top: 10%;
+    margin-top: 25%;
     align-items: flex-end;
   }
 }
-
-
 
 .airlines {
   position: relative;
@@ -100,4 +98,16 @@
   padding: 8px;
   border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.outlineBlue {
+  margin: 6px;
+  padding: 1px;
+  border-radius: 50%;
+  background-image: linear-gradient(#2395FF, #00B7DF);
+}
+
+.bgLinear {
+  height: 100vh;
+  background-image: linear-gradient(#ededed00, #ededed);
 }

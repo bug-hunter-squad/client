@@ -19,7 +19,7 @@ function Slick() {
     infinity: true,
     lazyLoad: true,
     speed: 300,
-    slidesToShow: 2,
+    slidesToShow: 1,
     centerMode: true,
     centerPadding: 0,
     beforeChange: (current, next) => setImageIndex(next),
@@ -43,20 +43,20 @@ function Slick() {
                 className={styleSlick.imgNew}
                 src={img}
                 alt={img}
-                width="630"
-                height="800"
+                width="130"
+                height="300"
                 loading="lazy"
               />
               <div className="row card-img-overlay align-items-end">
                 <div className={styleSlick.overlay}>
-                  <div className="col-8 text-start">
-                    <div className={`${styleSlick.airlines} px-2`}>
+                  <div className="col-8">
+                    <div className={`${styleSlick.airlines} `}>
                       <p>15 airlines</p>
                     </div>
                   </div>
                   <div className={`${styleSlick.textBottom} row`}>
-                    <div className="col-8 text-start">
-                      <div className={styleSlick.cardTitle}>
+                    <div className="col-8">
+                      <div className={`${styleSlick.cardTitle} px-2`}>
                         <h4>Tokyo,</h4>
                         <h2>Japan</h2>
                       </div>
