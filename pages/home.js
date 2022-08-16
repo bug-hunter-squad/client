@@ -10,7 +10,7 @@ function Home() {
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1300px)" });
 
   useEffect(() => {
     setStyleDesktop(isDesktopOrLaptop)

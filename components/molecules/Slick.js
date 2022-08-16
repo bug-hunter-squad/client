@@ -36,8 +36,8 @@ function Slick() {
       </div>
 
       <Slider {...settings}>
-        {images.map((img, idx) => (
-          <div>
+        {images.map((img, key) => (
+          <div key={key}>
             <div className={`${styleSlick.cardNew} card`}>
               <Image
                 className={styleSlick.imgNew}
