@@ -1,6 +1,7 @@
 import { BsEnvelope, BsBell } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import styleHome from "../../styles/Home.module.css";
+import Link from "next/link";
 
 function Nav() {
   return (
@@ -11,7 +12,9 @@ function Nav() {
         </div>
         <div className="col text-end">
           <BsEnvelope className={`${styleHome.icon} px-2`} />
-          <BsBell className={`${styleHome.icon} px-2`} />
+          <Link href="/notification">
+            <BsBell className={`${styleHome.icon} px-2`} />
+          </Link>
         </div>
       </div>
 

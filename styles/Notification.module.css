@@ -1,0 +1,21 @@
+.left {
+  font-size: 40px;
+  font-weight: 700 !important;
+}
+
+.clear {
+  color: #2395ff;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.active {
+    border: solid 2px #2395ff;
+    background-color: #F6FBFF;
+}
