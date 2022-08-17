@@ -1,7 +1,8 @@
+import React from "react";
 import { useMediaQuery } from "react-responsive";
-import Welcomes from "../components/organisms/Mobile/welcome";
+import Logins from "../components/organisms/Mobile/login";
 
-function welcome() {
+const login = () => {
   const Mobile = ({ children }) => {
     const isMobile = useMediaQuery({ maxWidth: 400 });
     return isMobile ? children : null;
@@ -10,16 +11,17 @@ function welcome() {
     const isNotMobile = useMediaQuery({ minWidth: 401 });
     return isNotMobile ? children : null;
   };
+
   return (
     <>
       <div>
         <Mobile>
-          <Welcomes />
+          <Logins />
         </Mobile>
         <Default> helo guyss</Default>
       </div>
     </>
   );
-}
+};
 
-export default welcome;
+export default login;

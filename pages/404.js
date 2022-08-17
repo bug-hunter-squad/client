@@ -1,6 +1,5 @@
 import { useMediaQuery } from "react-responsive";
 import { useEffect, useState } from "react";
-import Logo from "../components/atom/welcomeLogo";
 import styleWelcome from "../styles/Welcome.module.css";
 
 function Error() {
@@ -17,8 +16,7 @@ function Error() {
         <>
           <div className="container text-center">
             <div className={styleWelcome.content}>
-              <Logo />
-              <h1>Error Page Not Found</h1>
+               <h1>Error Page Not Found</h1>
             </div>
           </div>
         </>
@@ -26,7 +24,6 @@ function Error() {
         <>
           <div className="container text-center">
             <div className={styleWelcome.content}>
-              <Logo />
               <h1>Error Page Not Found</h1>
              
             </div>

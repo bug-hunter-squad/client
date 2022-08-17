@@ -1,7 +1,8 @@
+import React from "react";
+import Forgots from "../components/organisms/Mobile/forgot";
 import { useMediaQuery } from "react-responsive";
-import Welcomes from "../components/organisms/Mobile/welcome";
 
-function welcome() {
+const forgot = () => {
   const Mobile = ({ children }) => {
     const isMobile = useMediaQuery({ maxWidth: 400 });
     return isMobile ? children : null;
@@ -14,12 +15,12 @@ function welcome() {
     <>
       <div>
         <Mobile>
-          <Welcomes />
+          <Forgots />
         </Mobile>
-        <Default> helo guyss</Default>
+        <Default>Desktop</Default>
       </div>
     </>
   );
-}
+};
 
-export default welcome;
+export default forgot;

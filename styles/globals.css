@@ -26,5 +26,96 @@ a {
 }
 
 .mobile {
-  max-width: 640px !important;
+  max-width: 400px !important;
+}
+.carousel-welcome {
+  height: 70vh;
+}
+.caption {
+  color: black !important;
+}
+.carousel-control-next-icon {
+  display: none !important;
+}
+.carousel-control-prev-icon {
+  display: none !important;
+}
+.carousel-indicators [data-bs-target] {
+  height: 5px !important;
+  width: 5px !important;
+  border-radius: 50% !important;
+  padding: 2px !important;
+  background-color: #c4c4c4 !important;
+}
+.carousel-indicators .active {
+  background-color: #2395ff !important;
+}
+.back-button {
+  font-size: 25px;
+  font-weight: bolder !important;
+}
+.guest {
+  color: #2395ff;
+  font-weight: bold;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #CCC;
+  color: #555;
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 50px;
+  padding: 10px 0px;
+  position: relative;
+  top: 50%;
+  width: 200px;
+}
+.input:focus{
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #2395FF !important;
+  color: #555;
+  box-sizing: border-box;
+  font-size: 18px;
+  height: 50px;
+  padding: 10px 0px;
+  position: relative;
+  top: 50%;
+  width: 200px;
+    outline: none;    
+}
+
+.input::-webkit-input-placeholder {
+  color: #AAA;
+}
+
+.input:focus::-webkit-input-placeholder {
+  color: dodgerblue;
+  border: #2395FF;
+}
+
+.input:focus+.underline {
+  transform: scale(1);
+}
+.see-password{
+  margin-top: -7vh;
+  position: inherit;
+  z-index: 2;
+  float: right;
+  font-size: 22px;
+  color: #2395FF;
+}
+.clr-primer{
+  background-color: #2395FF !important;
+}
+.auth{
+  width: 81px !important;
+  padding: 2% !important;
+  border-color: #2395FF !important;
+}
+.link{
+  text-decoration: none !important;
+  color: #2395FF !important;
 }
