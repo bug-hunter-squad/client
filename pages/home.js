@@ -19,8 +19,7 @@ function Home() {
 
   return (
     <>
-      {styleDesktop ? <Desktop /> : null}
-      {styleMobile ? <Mobile /> : null}
+      {styleDesktop ? <Desktop /> : <Mobile />}
     </>
   );
 }
