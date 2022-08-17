@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./filter.module.css";
+import Checkbox from "../atom/filteritem";
 
 function Filter({ setFilter }) {
   return (
@@ -17,198 +18,74 @@ function Filter({ setFilter }) {
                 X
               </button>
               <h6>Transit</h6>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Direct
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Transit
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Transit 2+
-                </label>
-              </div>
+              <Checkbox label={"Direct"}></Checkbox>
+              <Checkbox label={"Transit"}></Checkbox>
+              <Checkbox label={"Transit 2+"}></Checkbox>
               <h6>Facilities</h6>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Luggage
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  In-Flight Meal
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Wifi
-                </label>
-              </div>
+              {[
+                {
+                  label: "Luggage",
+                },
+                {
+                  label: "In-flight meal",
+                },
+                {
+                  label: "Wifi",
+                },
+              ].map((item, index) => (
+                <Checkbox label={item.label} key={index} />
+              ))}
               <h6>Departure Time</h6>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  00:00 - 06:00
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  06:00 - 12:00t
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  12:00 - 18:00
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  18:00 - 24:00
-                </label>
-              </div>
+              {[
+                {
+                  label: "00:00 - 06:00",
+                },
+                {
+                  label: "06:00 - 12:00t",
+                },
+                {
+                  label: " 12:00 - 18:00",
+                },
+                {
+                  label: " 18:00 - 20:00",
+                },
+              ].map((item, index) => (
+                <Checkbox label={item.label} key={index} />
+              ))}
               <h6>Time Arrived</h6>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  00:00 - 06:00
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  06:00 - 12:00t
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  12:00 - 18:00
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  18:00 - 24:00
-                </label>
-              </div>
+              {[
+                {
+                  label: "00:00 - 06:00",
+                },
+                {
+                  label: "06:00 - 12:00t",
+                },
+                {
+                  label: " 12:00 - 18:00",
+                },
+                {
+                  label: " 18:00 - 20:00",
+                },
+              ].map((item, index) => (
+                <Checkbox label={item.label} key={index} />
+              ))}
               <h6>Airlines</h6>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Garuda Indonesia
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Air Asia
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="defaultCheck1"
-                />
-                <label class="form-check-label" for="defaultCheck1">
-                  Lion Air
-                </label>
-              </div>
+              {[
+                {
+                  label: "Garuda Indonesia",
+                },
+                {
+                  label: "Air Asia",
+                },
+                {
+                  label: " Lion Air",
+                },
+              ].map((item, index) => (
+                <Checkbox label={item.label} key={index} />
+              ))}
               <h6 className="mb-3">Range Price</h6>
+              <form>
+              </form>
             </div>
             <div className="footer d-flex justify-content-around">
               <button
