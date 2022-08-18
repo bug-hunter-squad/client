@@ -10,7 +10,7 @@ function Home() {
       <div className={style.app}>
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h1>Profile</h1>
-          <a href="#" className="text-decoration-none">
+          <a href="#" className="text-decoration-none p-2">
             <p>Edit</p>
           </a>
         </div>
@@ -31,7 +31,7 @@ function Home() {
         </div>
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h4>Cards</h4>
-          <a href="#" className="text-decoration-none">
+          <a href="#" className="text-decoration-none ">
             <p>+ Add</p>
           </a>
         </div>
