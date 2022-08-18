@@ -4,6 +4,8 @@ import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
 import { AiFillStar } from "react-icons/ai";
+import { FaHamburger, FaRestroom } from "react-icons/fa";
+import { AiOutlineWifi } from "react-icons/ai";
 
 function searchresult() {
   return (
@@ -139,7 +141,60 @@ function searchresult() {
                 </div>
               </div>
             </div>
-            <h4 className="mx-3 mt-3">Facilities</h4>
+            <h4 className="mx-4 mt-3">Facilities</h4>
+            <div
+              style={{
+                display: "flex",
+                overflowX: "auto",
+              }}
+            >
+              <div
+                className="d-flex card text-bg-primary ms-4 col-4 "
+                style={{ borderRadius: "10px" }}
+              >
+                <div className="card-body">
+                  <div className="card-text d-flex justify-content-around ">
+                    <FaHamburger className="mt-1" />
+                    <h4>Snack</h4>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="d-flex card text-bg-primary mx-2 col-4 "
+                style={{ borderRadius: "10px" }}
+              >
+                <div className="card-body">
+                  <div className="card-text d-flex justify-content-around ">
+                    <div>
+                      <AiOutlineWifi className="" />
+                    </div>
+                    <h4>Wifi</h4>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="d-flex card text-bg-primary  col-4 "
+                style={{ borderRadius: "10px" }}
+              >
+                <div className="card-body">
+                  <div className="card-text d-flex mt-2 justify-content-around ">
+                    <div className="d-flex">
+                      <FaRestroom />
+                    </div>
+                    <h6>Restroom</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="card-text mx-4 mt-3 d-flex justify-content-between ">
+              <p>Total you'll pay</p>
+              <h5 className="text-primary">$ 145,00</h5>
+            </div>
+            <div className="mx-4 mb-3">
+              <button type="button" class="btn btn-primary btn-lg w-100">
+                Book Flight
+              </button>
+            </div>
           </div>
         </div>
       </container>
