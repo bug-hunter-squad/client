@@ -2,6 +2,8 @@ import style from "../styles/Profile.module.css";
 import Image from "next/image";
 import { ChevronRight } from "react-bootstrap-icons";
 import { BsStar } from "react-icons/bs";
+import { GrLogout } from "react-icons/gr";
+import { IoSettingsSharp } from "react-icons/io5";
 import Fixedmenu from "../components/molecules/fixedmenu";
 
 function Home() {
@@ -65,7 +67,7 @@ function Home() {
           </div>
           <div className="d-flex mx-4 mt-3 justify-content-between ">
             <div className="d-flex">
-              <BsStar />
+              < IoSettingsSharp/>
               <h6 className="p-0 mx-3">Settings</h6>
             </div>
             <div className="">
@@ -74,7 +76,7 @@ function Home() {
           </div>
           <div className="d-flex  mx-4 mt-3 justify-content-between text-danger">
             <div className="d-flex">
-              <BsStar className="mt-1" />
+              <GrLogout className="mt-1" />
               <h6 className="p-0 mt-1 mx-3">Logout</h6>
             </div>
             <div className="">
