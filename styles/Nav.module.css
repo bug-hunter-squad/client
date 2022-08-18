@@ -1,20 +1,58 @@
 .navItem {
-    flex-basis: 0;
-    flex-grow: 1;
-    text-align: center;
-    padding: 5px;
-    cursor: pointer;
+  flex-basis: 0;
+  flex-grow: 1;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
 }
 
 .icon {
-    font-size: 35px;
+  font-size: 35px;
+}
+
+.iconD {
+  font-size: 55px;
+  color: #595959;
 }
 
 .active {
-    font-size: 60px;
-    color: white;
-    background-color: #2395FF;
-    padding: 15px;
-    margin-top: -15px;
-    border-radius: 50px;
+  font-size: 60px;
+  color: white;
+  background-color: #2395ff;
+  padding: 15px;
+  margin-top: -15px;
+  border-radius: 50px;
+}
+
+.outlineBlue {
+  width: 45px;
+  margin: 6px;
+  padding: 1px;
+  border-radius: 50%;
+  background-image: linear-gradient(#2395ff, #00b7df);
+}
+
+.cardProfile {
+  margin: 2px;
+  background-color: white;
+  border-radius: 50%;
+  border: unset;
+}
+
+.imgProfile {
+  padding: 3px !important;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.linkmenu {
+    color: #414141;
+    font-weight: 500;
+}
+
+.activemenu {
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: solid 2px#2395ff;
+    
 }
