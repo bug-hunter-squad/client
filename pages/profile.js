@@ -2,6 +2,7 @@ import style from "../styles/Profile.module.css";
 import Image from "next/image";
 import { ChevronRight } from "react-bootstrap-icons";
 import { BsStar } from "react-icons/bs";
+import { AiFillStar } from "react-icons/ai";
 import { GrLogout } from "react-icons/gr";
 import { IoSettingsSharp } from "react-icons/io5";
 import Fixedmenu from "../components/molecules/fixedmenu";
@@ -58,7 +59,7 @@ function Home() {
         <section className="mb-5">
           <div className="d-flex mx-4  justify-content-between ">
             <div className="d-flex">
-              <BsStar />
+              <AiFillStar className="text-warning mt-1" />
               <h6 className="p-0 mx-3">My Review</h6>
             </div>
             <div className="">
