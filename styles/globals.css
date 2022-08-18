@@ -140,3 +140,11 @@ a {
   margin-left: 1vw;
   margin-right: 1vw;
 }
+
+.rm-decoration {
+  text-decoration: none;
+}
+
+.rm-ov-x {
+  overflow-x: hidden !important;
+}
