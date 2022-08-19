@@ -3,7 +3,7 @@ import style from "../styles/SearchFlight.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowsFullscreen } from "react-bootstrap-icons";
-import { ArrowDownUp } from "react-bootstrap-icons";
+import { BsArrowClockwise } from "react-icons/bs";
 import { ChevronLeft } from "react-bootstrap-icons";
 import { ChevronRight } from "react-bootstrap-icons";
 
@@ -36,7 +36,7 @@ function searchresult() {
                 width="100%"
                 height={264}
               />
-              <div className="card-img-overlay">
+              <div className={style.overlaytext}>
                 <div className="d-flex mx-3 mb-5 justify-content-between text-white">
                   <div className="p-2 mt-2">
                     <ChevronLeft />
@@ -87,11 +87,31 @@ function searchresult() {
           </div>
 
           <div className="d-flex mx-auto mt-3 mb-2 col-10 ">
-            <button type="button" className="btn mx-auto col-5 btn-outline-primary">
-              Button
+            <button
+              type="button"
+              className="btn mx-auto col-5 btn-outline-primary"
+            >
+              <div className="d-flex justify-content-around">
+                <Image
+                  src="/assets/img/flightlogo.svg"
+                  alt="Logo"
+                  width="25"
+                  height="25"
+                  style={{ marginLeft: "-15px" }}
+                />
+                <h6 className="mx-1 ">One Way</h6>
+              </div>
             </button>
-            <button type="button" className="btn mx-auto col-5 btn-outline-primary">
-              Button
+            <button
+              type="button"
+              className="btn mx-auto col-6 btn-outline-primary"
+            >
+              <div className="d-flex justify-content-around">
+                <div className={style.icon}>
+                  <BsArrowClockwise />
+                </div>
+                <h6 className=" ">Round Trip</h6>
+              </div>
             </button>
           </div>
           <h5 className="col-10 mx-auto">Departure</h5>
@@ -113,24 +133,62 @@ function searchresult() {
           </div>
           <h5 className="col-10 mx-auto">How Many Person</h5>
           <div className="d-flex mx-auto mt-3 mb-4 col-10 ">
-            <div className="card mx-auto col-5 ">
-              <div className="d-flex mx-4 mt-3 justify-content-between ">
-                <div className="">
-                  <h6 className="p-0">2 Child</h6>
-                </div>
-                <div className="">
-                  <ChevronRight />
-                </div>
+            <div className="d-flex mx-4 mt-3 justify-content-between ">
+              <div class="dropdown">
+                <button
+                  class="btn btn-lg btn-outline-primary w-100 dropdown-toggle"
+                  type="button"
+                  id="dropdownMenu2"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Child
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <li>
+                    <button class="dropdown-item" type="button">
+                      Action
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button">
+                      Another action
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button">
+                      Something else here
+                    </button>
+                  </li>
+                </ul>
               </div>
-            </div>
-            <div className="card mx-auto col-5 ">
-              <div className="d-flex mx-4 mt-3 justify-content-between ">
-                <div className="">
-                  <h6 className="p-0">4 Adults</h6>
-                </div>
-                <div className="">
-                  <ChevronRight />
-                </div>
+              <div class="dropdown">
+                <button
+                  class="btn btn-lg btn-outline-primary w-100 dropdown-toggle"
+                  type="button"
+                  id="dropdownMenu2"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Child
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <li>
+                    <button class="dropdown-item" type="button">
+                      Action
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button">
+                      Another action
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button">
+                      Something else here
+                    </button>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
