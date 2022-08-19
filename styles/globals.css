@@ -144,3 +144,7 @@ a {
 .rm-decoration {
   text-decoration: none;
 }
+
+.rm-ov-x {
+  overflow-x: hidden !important;
+}

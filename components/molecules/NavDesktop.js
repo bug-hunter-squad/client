@@ -8,7 +8,7 @@ import Image from "next/image";
 function NavDesktop() {
   return (
     <>
-      <div className="row py-2">
+      <div className="row py-2 align-items-center bg-white">
         <div className="col-3 d-flex justify-content-center">
           <Image
             src="/assets/img/logoblue.svg"
