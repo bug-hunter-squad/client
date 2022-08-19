@@ -21,12 +21,12 @@ function Fixedmenu() {
                     <small>My Booking</small>
                   </li>
                 </Link>
-                <Link href="/">
+                <Link href="/searchresult">
                   <li className={`${navStyle.navItem}`}>
                     <IoMdCompass className={`${navStyle.icon} ${navStyle.active}`} />
                   </li>
                 </Link>
-                <Link href="/">
+                <Link href="/profile">
                   <li className={`${navStyle.navItem}`}>
                     <CgProfile className={`${navStyle.icon}`} /> <br/>
                     <small>Profile</small>

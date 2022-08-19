@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { useRouter } from "next/router";
 
+
 function Welcomes() {
   const router = useRouter();
 
@@ -10,7 +11,7 @@ function Welcomes() {
   };
 
   const handleSignIn = () => {
-    router.push("/login");
+    router.push("/");
   };
 
   return (
@@ -47,14 +48,14 @@ function Welcomes() {
             <div className="row row-cols-1 p-2">
               <button
                 type="button"
-                class="btn btn-primary p-3 col mt-2"
+                className="btn btn-primary p-3 col mt-2"
                 onClick={handleRegister}
               >
                 Create My Account
               </button>
               <button
                 type="button"
-                class="btn btn-light  p-3 col mt-2"
+                className="btn btn-light  p-3 col mt-2"
                 onclick={handleSignIn}
               >
                 Sign In

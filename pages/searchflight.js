@@ -1,192 +1,291 @@
 import Logo from "../components/atom/searchResultLogo";
 import style from "../styles/SearchFlight.module.css";
-import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowsFullscreen } from "react-bootstrap-icons";
-import { ArrowDownUp } from "react-bootstrap-icons";
+import { MdFlightTakeoff } from "react-icons/md";
 import { ChevronLeft } from "react-bootstrap-icons";
-import { ChevronRight } from "react-bootstrap-icons";
+import { BsArrowClockwise } from "react-icons/bs";
+import { HiArrowNarrowRight } from "react-icons/hi";
+import { MdOutlineEmojiPeople } from "react-icons/md";
+import { FaChild } from "react-icons/fa";
+import React from "react";
+import Axios from "axios";
+import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
+import Dropdown from "react-bootstrap/Dropdown";
 
 function searchresult() {
+  const { auth, search } = useSelector((state) => state);
+  const [go, setGo] = React.useState("");
+  let [count, setCount] = React.useState(0);
+  let [countChild, setCountChild] = React.useState(0);
+  const [date, setDate] = React.useState("");
+  const [airports, setAirports] = React.useState('');
+  console.log(date)
+
+  React.useEffect(() => {
+    setGo(search?.keyword?.keyword);
+    Destination();
+  }, []);
+  const disablePastDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate() + 1).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+    return yyyy + "-" + mm + "-" + dd;
+  };
+
+  function incrementCount(e) {
+    e.preventDefault();
+    count = count + 1;
+    setCount(count);
+  }
+  function decrementCount(e) {
+    e.preventDefault();
+    count = count - 1;
+    setCount(count);
+  }
+  function incrementCounts(e) {
+    e.preventDefault();
+    count = count + 1;
+    setCountChild(countChild);
+  }
+  function decrementCounts(e) {
+    e.preventDefault();
+    count = count - 1;
+    setCountChild(countChild);
+  }
+
+  const Mobile = ({ children }) => {
+    const isMobile = useMediaQuery({ maxWidth: 400 });
+    return isMobile ? children : null;
+  };
+  const Default = ({ children }) => {
+    const isNotMobile = useMediaQuery({ minWidth: 401 });
+    return isNotMobile ? children : null;
+  };
+
+  const handleSearch = (e) => { 
+    e.preventDefault();
+    console.log(`searchFlight`)
+  }
+
+  const Destination = async (req, res) =>{
+    const response = await Axios.get("http://api.aviationstack.com/v1/airports?access_key=e223c5ba8766c33ec08383a155c7c75f");
+    setAirports(response.data.data)
+  }
   return (
     <>
-      <container>
-        <div className="col-lg-4 mx-auto col-sm">
-          <div className={style.container}>
-            <div
-              className={style.card}
-              style={{
-                backgroundImage: `url('https://www.sahabatufs.com/img/news/09.%20UFS_Oktober%202019_Header.jpg')`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                height: "264px",
-              }}
-            >
-              {/* <img
+      <Mobile>
+        <container>
+          <div className="col-lg-4 mx-auto col-sm">
+            <div className={style.container}>
+              <div
                 className={style.card}
-                src="https://www.sahabatufs.com/img/news/09.%20UFS_Oktober%202019_Header.jpg"
-                alt="Logo"
-                width="100%"
-                height={264}
-              /> */}
-              <img
-                className={style.card}
-                src="/assets/img/overlay.png"
-                alt="Logo"
-                width="100%"
-                height={264}
-              />
-              <div className="card-img-overlay">
-                <div className="d-flex mx-3 mb-5 justify-content-between text-white">
-                  <div className="p-2 mt-2">
-                    <ChevronLeft />
-                  </div>
-                  <div className="p-2 justify-content-end mt-2">
-                    <ArrowsFullscreen />
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1604999333679-b86d54738315?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80')`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  height: "264px",
+                }}
+              >
+                <img
+                  className={style.card}
+                  src="/assets/img/overlay.png"
+                  alt="Logo"
+                  width="100%"
+                  height={264}
+                />
+                <div className="card-img-overlay">
+                  <div className="d-flex mx-3 mb-5 justify-content-between text-white">
+                    <div className="p-2 mt-2">
+                      <ChevronLeft />
+                    </div>
+                    <div className="p-2 justify-content-end mt-2">
+                      <ArrowsFullscreen />
+                    </div>
                   </div>
                 </div>
-                <h3 className="card-title mx-4 text-white mt-5">Destination</h3>
               </div>
             </div>
-          </div>
-          <div
-            className="card col-10 mx-auto"
-            style={{
-              borderRadius: "15px",
-              padding: "10px",
-              marginTop: "-20px",
-              marginBottom: "10px",
-              cursor: "pointer",
-            }}
-          >
-            <div className="row ">
-              <div className="">
-                <div>
-                  <section>
-                    <div className="d-flex mx-4 justify-content-between">
-                      <div className="">
-                        <p className="p-0">From</p>
-                        <h5 className="p-0">Medan</h5>
-                        <p className="p-0">Indonesia</p>
+            <div className="container w-100 h-100 d-flex flex-row justify-content-center">
+              <div className="continer-flight container ">
+                <h3 className="card-title">Destination</h3>
+                <div className="row row-cols-1">
+                  <div className="card mx-auto col col-destination shadow">
+                    <div className="row row-col-3 p-2 d-flex flex-row col-five">
+                      <div className="col-5 overflow-hidden">
+                        <small className=".fs6">From</small>
+                        <input
+                          type="text"
+                          className="col-datalist"
+                          name="city"
+                          list="destination"
+                          placeholder="Jakarta"
+                        />
+                        <datalist id="destination">
+                          {[...airports].map((data, key) =>(
+                            <div key={key}>
+                              <option value={data.country_name}>{data.timezone}</option>
+                            </div>
+                          ))}
+                        </datalist>
+                        <small className=".fs6">Indonesia</small>
                       </div>
-                      <div className="d-flex ">
-                        <p className="p-0 d-flex align-items-center text-primary">
-                          <ArrowLeftRight />
-                        </p>
+                      <div className="col-2 col-arrow ">
+                        <ArrowLeftRight />
                       </div>
-                      <div className=" text-end">
-                        <p className="p-0">To</p>
-                        <h5 className="p-0 ">Jakarta</h5>
-                        <p className="p-0  text-end">Indonesia</p>
+                      <div className="col-5">
+                        <small className=".fs6 to-small">To</small>
+                        <input
+                          type="text"
+                          className="col-datalist-end"
+                          name="city"
+                          list="destination"
+                          placeholder="Jakarta"
+                        />
+                        <datalist id="destination">
+                          <option value="ISO-8859-1">
+                            cannot confirm, that bootstrap 4 does
+                          </option>
+                          <option value="cp1252">ANSI</option>
+                          <option value="utf8">UTF-8</option>
+                        </datalist>
+                        <small className=".fs6 state-col">Indonesia</small>
                       </div>
                     </div>
-                  </section>
-                </div>
-              </div>
-            </div>
-          </div>
+                  </div>
+                  <div className="col mt-4 d-flex flex-row justify-content-center align-content-center gap-2">
+                    <button type="button" className="btn btn-primary btn-off">
+                      <MdFlightTakeoff className="icons-off" /> One way
+                    </button>
+                    <button type="button" className="btn btn-primary btn-arrow">
+                      <BsArrowClockwise className="icons-off" /> Round trip
+                    </button>
+                  </div>
+                  <div className="col">
+                    <p className="mt-3 .fs6 title-box">Departure ?</p>
+                    <input
+                      type="date"
+                      name="date"
+                      value={date}
+                      min={disablePastDate()}
+                      className="date-flight rounded"
+                      max="2032-02-20"
+                      onChange={(e) => setDate(e.target.value)}
+                    />
+                  </div>
+                  <div className="col">
+                    {" "}
+                    <p className="mt-3 .fs6 title-box">How many person?</p>
+                    <div className="row row-cols-2">
+                      <div className="col p-2">
+                        <Dropdown>
+                          <Dropdown.Toggle id="dropdown-basic">
+                            <FaChild /> {countChild} Child
+                          </Dropdown.Toggle>
 
-          <div className="d-flex mx-auto mt-3 mb-2 col-10 ">
-            <button type="button" className="btn mx-auto col-5 btn-outline-primary">
-              Button
-            </button>
-            <button type="button" className="btn mx-auto col-5 btn-outline-primary">
-              Button
-            </button>
-          </div>
-          <h5 className="col-10 mx-auto">Departure</h5>
-          <div
-            className="card col-10 mx-auto"
-            style={{
-              marginBottom: "10px",
-              cursor: "pointer",
-            }}
-          >
-            <div className="d-flex mx-4 mt-3 justify-content-between ">
-              <div className="">
-                <h5 className="p-0">Monday, 20 July 20</h5>
+                          <Dropdown.Menu>
+                            <div active className="border ">
+                              <button
+                                className="btn-Count"
+                                onClick={incrementCounts}
+                              >
+                                +
+                              </button>
+                              {count}
+                              <button
+                                className="btn-Count"
+                                onClick={decrementCounts}
+                              >
+                                -
+                              </button>
+                            </div>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
+                      <div className="col p-2">
+                        <Dropdown>
+                          <Dropdown.Toggle id="dropdown-basics">
+                            <MdOutlineEmojiPeople /> {count} Adult
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            <div eventKey="1" active>
+                              <button onClick={incrementCount}>+</button>
+                              {count}
+                              <button onClick={decrementCount}>-</button>
+                            </div>
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <p className="mt-3 .fs6 title-box">
+                      Which class do you want?
+                    </p>
+                    <div className="d-flex mx-4 mb-3 col-10 justify-content-between ">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="exampleRadios"
+                          id="exampleRadios1"
+                          value="option1"
+                        />
+                        <label
+                          className="form-check-label"
+                          for="exampleRadios1"
+                        >
+                          Economy
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="exampleRadios"
+                          id="exampleRadios1"
+                          value="option1"
+                        />
+                        <label
+                          className="form-check-label"
+                          for="exampleRadios1"
+                        >
+                          Business
+                        </label>
+                      </div>
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="exampleRadios"
+                          id="exampleRadios1"
+                          value="option1"
+                        />
+                        <label
+                          className="form-check-label"
+                          for="exampleRadios1"
+                        >
+                          First Class
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <button type="button" class="btn btn-flight" onClick={handleSearch}>
+                      SEARCH FLIGHT {"   "}{" "}
+                      <HiArrowNarrowRight className="btn-icons" />
+                    </button>
+                  </div>
+                  <div className="col"> </div>
+                </div>
               </div>
-              <div className="">
-                <ChevronRight />
-              </div>
             </div>
           </div>
-          <h5 className="col-10 mx-auto">How Many Person</h5>
-          <div className="d-flex mx-auto mt-3 mb-4 col-10 ">
-            <div className="card mx-auto col-5 ">
-              <div className="d-flex mx-4 mt-3 justify-content-between ">
-                <div className="">
-                  <h6 className="p-0">2 Child</h6>
-                </div>
-                <div className="">
-                  <ChevronRight />
-                </div>
-              </div>
-            </div>
-            <div className="card mx-auto col-5 ">
-              <div className="d-flex mx-4 mt-3 justify-content-between ">
-                <div className="">
-                  <h6 className="p-0">4 Adults</h6>
-                </div>
-                <div className="">
-                  <ChevronRight />
-                </div>
-              </div>
-            </div>
-          </div>
-          <h5 className="col-10 mx-auto">Which Class Do You Want?</h5>
-          <div className="d-flex mx-4 mb-3 col-10 justify-content-between ">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" for="exampleRadios1">
-                Economy
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" for="exampleRadios1">
-                Business
-              </label>
-            </div>
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="exampleRadios"
-                id="exampleRadios1"
-                value="option1"
-              />
-              <label className="form-check-label" for="exampleRadios1">
-                First Class
-              </label>
-            </div>
-          </div>
-          <div className="col-10 mx-auto">
-            <button type="button" className="btn mx-auto col-12 btn-primary">
-              <div className="d-flex mx-4 mt-3 justify-content-between ">
-                <div className="">
-                  <p className="p-0">SEARCH FLIGHT</p>
-                </div>
-                <div className="">
-                  <ChevronRight />
-                </div>
-              </div>
-            </button>
-          </div>
-        </div>
-      </container>
+        </container>
+      </Mobile>
     </>
   );
 }
