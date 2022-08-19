@@ -1,6 +1,6 @@
 import style from "../../styles/SearchResult.module.css"
 import Image from "next/image";
-import { FiFacebook, FiTwitter, FiInstagram, FiYoutube } from "react-icons/fi";
+import { FiFacebook, FiTwitter, FiInstagram, FiYoutube, FiMapPin } from "react-icons/fi";
 
 function Footer() {
   return (
@@ -52,6 +52,11 @@ function Footer() {
                 <FiInstagram className={style.iconSocmed} />
                 <FiYoutube className={style.iconSocmed} />
             </div>
+          </div>
+
+          <div className="d-flex justify-content-between py-3">
+            <p>© Ankasa.  All Rights Reserved.</p>
+            <p className="px-3"><FiMapPin /> Jakarta Indonesia</p>
           </div>
         </div>
       </div>

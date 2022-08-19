@@ -483,10 +483,15 @@ function SearchResult() {
                       </div>
                       <div className="col-2">
                         <div className="text-center">
-                          <button className={`${style.btnSelect} btn`}>Select</button>
+                          <button className={`${style.btnSelect} btn`}>
+                            Select
+                          </button>
                         </div>
                       </div>
                     </div>
+                    <h6 className={`${style.textBlue} pt-4 pb-0 mb-0`}>
+                      View Details <FiChevronDown />
+                    </h6>
                   </div>
                 </div>
 
@@ -551,10 +556,15 @@ function SearchResult() {
                       </div>
                       <div className="col-2">
                         <div className="text-center">
-                          <button className={`${style.btnSelect} btn`}>Select</button>
+                          <button className={`${style.btnSelect} btn`}>
+                            Select
+                          </button>
                         </div>
                       </div>
                     </div>
+                    <h6 className={`${style.textBlue} pt-4 pb-0 mb-0`}>
+                      View Details <FiChevronDown />
+                    </h6>
                   </div>
                 </div>
 
@@ -619,14 +629,17 @@ function SearchResult() {
                       </div>
                       <div className="col-2">
                         <div className="text-center">
-                          <button className={`${style.btnSelect} btn`}>Select</button>
+                          <button className={`${style.btnSelect} btn`}>
+                            Select
+                          </button>
                         </div>
                       </div>
                     </div>
+                    <h6 className={`${style.textBlue} pt-4 pb-0 mb-0`}>
+                      View Details <FiChevronDown />
+                    </h6>
                   </div>
                 </div>
-
-                
               </div>
             </div>
           </div>
