@@ -3,8 +3,26 @@ import Image from "next/image";
 import { ChevronRight } from "react-bootstrap-icons";
 import { BsStar } from "react-icons/bs";
 import Fixedmenu from "../components/molecules/fixedmenu";
+import { useSelector } from "react-redux";
+import { decode } from "jsonwebtoken";
+import React from "react";
+
 
 function Home() {
+  const { auth } = useSelector((state) => state);
+  const [name, setName] = React.useState('');
+  const [country, setCountry] = React.useState('');
+  const [profile, setProfile] = React.useState('');
+  const [city, setCity] = React.useState('');
+
+  React.useEffect(() => {
+    const decodeUser = decode(auth?.token)
+    setName(decodeUser?.name);
+    setCountry(decodeUser?.country);
+    setProfile(decodeUser?.profilePicture);
+    setCity(decodeUser?.city);
+  })
+
   return (
     <>
       <div className={style.app}>
@@ -18,7 +36,7 @@ function Home() {
           <div className={style.card}>
             <Image
               className={`${style.imgTopTen} d-flex align-items-center`}
-              src="/assets/img/image.png"
+              src={profile? profile : "/assets/img/image.png"}
               alt=""
               width={120}
               height={120}
@@ -26,8 +44,8 @@ function Home() {
           </div>
         </div>
         <div className="text-center mt-3">
-          <h3>Mike Kawasaki</h3>
-          <p>Medan.Indonesia</p>
+          <h3>{name? name : 'guest'}</h3>
+          <p>{city? city : 'city'}{'  '}{country? country : 'country'}</p>
         </div>
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h4>Cards</h4>

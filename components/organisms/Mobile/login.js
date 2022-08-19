@@ -8,13 +8,15 @@ import { useDispatch } from "react-redux";
 import * as Type from "../../../redux/auth/type";
 import Axios from "axios";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import Swal from "sweetalert2";
 
 const logins = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [passwordType, setPasswordType] = React.useState("password");
   const [isloading, setIsloading] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const seePassword = () => {
     setPasswordType("text");
   };
@@ -22,20 +24,38 @@ const logins = () => {
     router.push("/");
   };
 
-  const handleSubmit = () => {
+  const handleLogin = () => {
     setIsloading(true);
     setTimeout(() => {
-      Axios.post("http://localhost:7000")
-        .then(() => {
+      Axios.post("http://localhost:8500/auth/login",{
+        email: email,
+        password: password
+      })
+        .then((res) => {
           dispatch({
             type: Type.SET_AUTH,
             payload: {
-              token: "",
+              token: res.data.token,
             },
           });
-          router.push("/");
+          const falseResponse = res.data.message;
+          Swal.fire({
+            title: falseResponse,
+            width: 389,
+            text: `Welcomes back `,
+            icon: "success",
+          });
+          router.replace("/");
         })
-        .catch(() => {})
+        .catch((err) => {
+          const message = err.response.data.message;
+          Swal.fire({
+            title: message,
+            width: 389,
+            text: `Recheck your email & password`,
+            icon: "error",
+          });
+        })
         .finally(() => {
           setIsloading(false);
         });
@@ -61,7 +81,10 @@ const logins = () => {
               <div>
                 <p className="fw-bold fs-2">Login</p>
               </div>
-              <form onSubmit={handleSubmit}>
+              <form     onSubmit={(e) => {
+              e.preventDefault();
+              handleLogin();
+            }}>
                 <div className="mb-3">
                   <input
                     type="email"
@@ -69,6 +92,8 @@ const logins = () => {
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Email"
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
@@ -76,6 +101,8 @@ const logins = () => {
                     type={passwordType}
                     className=" input w-100"
                     placeholder="Password"
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <span className="see-password">
                     {passwordType === "password" ? (

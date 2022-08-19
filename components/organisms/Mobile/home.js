@@ -12,6 +12,13 @@ function Home() {
           <Nav />
           <Slick />
           <StoryDestination />
+          <StoryDestination />
+          <StoryDestination />
+          <StoryDestination />
+          <StoryDestination />
+          <StoryDestination />
+          <StoryDestination />
+          <StoryDestination />
         </div>
           <FixedMenu />
       </div>
