@@ -8,6 +8,7 @@ import { RiSuitcase3Fill } from "react-icons/ri";
 import Flight from "../components/molecules/Flight";
 import React, { useState } from "react";
 import Collapse from "react-bootstrap/Collapse";
+import Footer from "../components/molecules/footer";
 
 function SearchResult() {
   const [openTransit, setOpenTransit] = useState(true);
@@ -482,10 +483,15 @@ function SearchResult() {
                       </div>
                       <div className="col-2">
                         <div className="text-center">
-                          <button className={`${style.btnSelect} btn`}>Select</button>
+                          <button className={`${style.btnSelect} btn`}>
+                            Select
+                          </button>
                         </div>
                       </div>
                     </div>
+                    <h6 className={`${style.textBlue} pt-4 pb-0 mb-0`}>
+                      View Details <FiChevronDown />
+                    </h6>
                   </div>
                 </div>
 
@@ -550,10 +556,15 @@ function SearchResult() {
                       </div>
                       <div className="col-2">
                         <div className="text-center">
-                          <button className={`${style.btnSelect} btn`}>Select</button>
+                          <button className={`${style.btnSelect} btn`}>
+                            Select
+                          </button>
                         </div>
                       </div>
                     </div>
+                    <h6 className={`${style.textBlue} pt-4 pb-0 mb-0`}>
+                      View Details <FiChevronDown />
+                    </h6>
                   </div>
                 </div>
 
@@ -618,84 +629,22 @@ function SearchResult() {
                       </div>
                       <div className="col-2">
                         <div className="text-center">
-                          <button className={`${style.btnSelect} btn`}>Select</button>
+                          <button className={`${style.btnSelect} btn`}>
+                            Select
+                          </button>
                         </div>
                       </div>
                     </div>
+                    <h6 className={`${style.textBlue} pt-4 pb-0 mb-0`}>
+                      View Details <FiChevronDown />
+                    </h6>
                   </div>
                 </div>
-
-                
               </div>
             </div>
           </div>
 
-          <div className="col">
-            <div className={style.result}>
-              {[...new Array(4)].map((item, index) => (
-                <div
-                  className="card col-11 mx-auto"
-                  style={{
-                    borderRadius: "15px",
-                    padding: "10px",
-                    marginBottom: "10px",
-                    cursor: "pointer",
-                  }}
-                  key={index}
-                >
-                  <div className="row ">
-                    <div className="col-3 d-flex justify-content-center align-items-center">
-                      <img
-                        src="/assets/img/logomaskapai.png"
-                        width="70px"
-                        height="70px"
-                        alt="image"
-                      />
-                    </div>
-                    <div className="col-9">
-                      <div>
-                        <section>
-                          <div className="d-flex mx-4 justify-content-between ">
-                            <div className="">
-                              <h4 className="p-0">IDN</h4>
-                              <p className="p-0">12:33</p>
-                            </div>
-                            <div className=" ">
-                              <p className="p-2">
-                                <Image
-                                  src="/assets/img/flightlogo.svg"
-                                  alt="Logo"
-                                  width="25"
-                                  height="25"
-                                  style={{ marginLeft: "-15px" }}
-                                />
-                              </p>
-                            </div>
-                            <div className=" text-end">
-                              <h4 className="p-0 ">JPN</h4>
-                              <p className="p-0  text-end">15:21</p>
-                            </div>
-                          </div>
-                          <div className="d-flex mx-4 justify-content-between ">
-                            <div className="">
-                              <p className={style.fontsixe}>
-                                3 hours 11 minutes
-                              </p>
-                            </div>
-                            <div className=" text-end">
-                              <h6 className="p-0  text-end text-primary">
-                                $ 221
-                              </h6>
-                            </div>
-                          </div>
-                        </section>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Footer />
         </div>
       </div>
     </>

@@ -80,3 +80,9 @@
   -moz-box-shadow: 0px 2px 5px 0px rgba(35, 149, 255, 0.53);
   box-shadow: 0px 2px 5px 0px rgba(35, 149, 255, 0.53);
 }
+
+.iconSocmed {
+  font-size: 40px;
+  color: #595959;
+  padding-right: 15px;
+}
