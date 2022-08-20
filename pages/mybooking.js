@@ -3,7 +3,6 @@ import { BsEnvelope, BsBell } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import style from "../styles/MyBooking.module.css";
-// import style from "../styles/MyBooking.module.css";
 
 function MyBooking() {
   return (
