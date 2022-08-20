@@ -132,6 +132,10 @@ a {
   overflow-x: hidden;
 }
 
+a {
+  color: #000000 !important;
+}
+
 .continer-flight{
   padding: 2%;
   width: 90vw;
