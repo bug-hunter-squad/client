@@ -99,7 +99,6 @@ function searchresult() {
     setOneWay(false)
     setRoundWay(true);
   }
-console.log(trip)
   const flightSearch = (e) => {
     e.preventDefault();
     dispatch({
