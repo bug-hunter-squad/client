@@ -9,10 +9,10 @@ function MyBooking() {
   return (
     <>
       <div className="container">
-        <div className="">
+        <div className="col-lg-4 mx-auto">
           <div className="row px-1">
             <div className="col text-start">
-              <h1 className="">My Booking</h1>
+              <h3 className="">My Booking</h3>
             </div>
             <div className="col text-end">
               <BsEnvelope className="mx-2" />
@@ -22,7 +22,7 @@ function MyBooking() {
             </div>
           </div>
         </div>
-        <section>
+        <section className="col-lg-4 mx-auto">
           {[...new Array(2)].map((item, index) => (
             <div className={style.card} key={index}>
               <div className="mx-3 mt-3">
