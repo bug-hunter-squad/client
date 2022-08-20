@@ -14,6 +14,38 @@ function SearchResult() {
   const [openTransit, setOpenTransit] = useState(true);
   const [upDownTransit, setUpDownTransit] = useState(true);
 
+  // State transit
+  const [direct, setDirect] = useState(true);
+  const [transit, setTransit] = useState(true);
+  const [transit2, setTransit2] = useState(true);
+  //End state transit
+  
+  // State Facilities
+  const [luggage, setLuggage] = useState(true);
+  const [meal, setMeal] = useState(true);
+  const [wifi, setWifi] = useState(true);
+  //End state Facilities
+
+  // State Derpature
+  const [dinihari, setDinihari] = useState(true);
+  const [pagi, setPagi] = useState(true);
+  const [siang, setSiang] = useState(true);
+  const [malam, setMalam] = useState(true);
+  //End state Derpature
+  
+  // State Arrived
+  const [arrived_dinihari, setArrived_Dinihari] = useState(true);
+  const [arrived_pagi, setArrived_Pagi] = useState(true);
+  const [arrived_siang, setArrived_Siang] = useState(true);
+  const [arrived_malam, setArrived_Malam] = useState(true);
+  //End state Arrived
+  
+  // State Airlines
+  const [garuda, setGaruda] = useState(true);
+  const [airasia, setAirasia] = useState(true);
+  const [lion, setLion] = useState(true);
+  //End state Airlines
+
   const [openFacilities, setOpenFacilities] = useState(true);
   const [upDownFacilities, setUpDownFacilities] = useState(true);
 
@@ -84,9 +116,10 @@ function SearchResult() {
                             <div>Direct</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={direct}
+                                onChange={() => setDirect(!direct)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -96,9 +129,10 @@ function SearchResult() {
                             <div>Transit</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={transit}
+                                onChange={() => setTransit(!transit)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -108,9 +142,10 @@ function SearchResult() {
                             <div>Transit 2+</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={transit2}
+                                onChange={() => setTransit2(!transit2)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -142,9 +177,10 @@ function SearchResult() {
                             <div>Luggage</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={luggage}
+                                onChange={() => setLuggage(!luggage)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -154,9 +190,10 @@ function SearchResult() {
                             <div>In-Flight Meal</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={meal}
+                                onChange={() => setMeal(!meal)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -166,9 +203,10 @@ function SearchResult() {
                             <div>Wi-fi</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={wifi}
+                                onChange={() => setWifi(!wifi)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -200,9 +238,10 @@ function SearchResult() {
                             <div>00:00 - 06:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={dinihari}
+                                onChange={() => setDinihari(!dinihari)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -212,9 +251,10 @@ function SearchResult() {
                             <div>06:00 - 12:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={pagi}
+                                onChange={() => setPagi(!pagi)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -224,9 +264,10 @@ function SearchResult() {
                             <div>12:00 - 18:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={siang}
+                                onChange={() => setSiang(!siang)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -236,9 +277,10 @@ function SearchResult() {
                             <div>18:00 - 24:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={malam}
+                                onChange={() => setMalam(!malam)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -270,9 +312,10 @@ function SearchResult() {
                             <div>00:00 - 06:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={arrived_dinihari}
+                                onChange={() => setArrived_Dinihari(!arrived_dinihari)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -282,9 +325,10 @@ function SearchResult() {
                             <div>06:00 - 12:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={arrived_pagi}
+                                onChange={() => setArrived_Pagi(!arrived_pagi)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -294,9 +338,10 @@ function SearchResult() {
                             <div>12:00 - 18:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={arrived_siang}
+                                onChange={() => setArrived_Siang(!arrived_siang)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -306,9 +351,10 @@ function SearchResult() {
                             <div>18:00 - 24:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={arrived_malam}
+                                onChange={() => setArrived_Malam(!arrived_malam)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -340,9 +386,10 @@ function SearchResult() {
                             <div>Garuda Indonesia</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={garuda}
+                                onChange={() => setGaruda(!garuda)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -352,9 +399,10 @@ function SearchResult() {
                             <div>Air Asia</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={airasia}
+                                onChange={() => setAirasia(!airasia)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -364,9 +412,10 @@ function SearchResult() {
                             <div>Lion Air</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
-                                value=""
+                                defaultChecked={lion}
+                                onChange={() => setLion(!lion)}
                                 aria-label="Checkbox for following text input"
                               />
                             </span>
@@ -394,25 +443,25 @@ function SearchResult() {
                     <Collapse in={openPrice}>
                       <div id="Price-collapse">
                         <div className="d-flex justify-content-between">
-                          <label for="customRange2" class="form-label">
+                          <label for="customRange2" className="form-label">
                             <small>Lowest</small>
                           </label>
-                          <label for="customRange2" class="form-label">
+                          <label for="customRange2" className="form-label">
                             <small>Highest</small>
                           </label>
                         </div>
                         <input
                           type="range"
-                          class="form-range"
+                          className="form-range"
                           min="0"
                           max="5"
                           id="customRange2"
                         />
                         <div className="d-flex justify-content-between">
-                          <label for="customRange2" class="form-label">
+                          <label for="customRange2" className="form-label">
                             <h6 className={style.textBlue}>$ 145,00</h6>
                           </label>
-                          <label for="customRange2" class="form-label">
+                          <label for="customRange2" className="form-label">
                             <h6 className={style.textBlue}>$ 300,00</h6>
                           </label>
                         </div>

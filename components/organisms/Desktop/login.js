@@ -21,7 +21,7 @@ const login = () => {
   const handleSubmit = () => {
     setIsloading(true);
     setTimeout(() => {
-      Axios.post("http://localhost:7000")
+      Axios.post("http://localhost:8000")
         .then(() => {
           dispatch({
             type: Type.SET_AUTH,
@@ -29,7 +29,7 @@ const login = () => {
               token: "",
             },
           });
-          router.push("/");
+          router.push("/home");
         })
         .catch(() => {})
         .finally(() => {
