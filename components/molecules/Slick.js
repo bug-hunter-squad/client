@@ -31,7 +31,7 @@ function Slick() {
           <h4 className={styleHome.exp}>Trending destinations</h4>
         </div>
         <div className="col-4 text-end">
-          <h5 className={styleHome.vall}>View all</h5>
+          <a href="/searchresult" className={styleHome.vall}>View all</a>
         </div>
       </div>
 

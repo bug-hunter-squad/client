@@ -15,13 +15,13 @@ function Fixedmenu() {
               style={{ height: "100px" }}
             >
               <ul className="navbar-nav nav-justified w-100">
-              <Link href="/">
+              <Link href="/mybooking">
                   <li className={`${navStyle.navItem}`}>
                     <TbBrandBooking className={`${navStyle.icon}`} /> <br/>
                     <small>My Booking</small>
                   </li>
                 </Link>
-                <Link href="/searchresult">
+                <Link href="/searchflight">
                   <li className={`${navStyle.navItem}`}>
                     <IoMdCompass className={`${navStyle.icon} ${navStyle.active}`} />
                   </li>
