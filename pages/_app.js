@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "../styles/phone.css";
 import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from "../redux/store";
 import { Provider} from "react-redux";
