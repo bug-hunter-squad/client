@@ -124,6 +124,13 @@ a {
   text-decoration: none !important;
   color: #2395FF !important;
 }
+.rm-decoration {
+  text-decoration: none;
+}
+
+.rm-ov-x {
+  overflow-x: hidden;
+}
 
 .continer-flight{
   padding: 2%;
