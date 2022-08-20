@@ -84,7 +84,7 @@ function SearchResult() {
                             <div>Direct</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -96,7 +96,7 @@ function SearchResult() {
                             <div>Transit</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -108,7 +108,7 @@ function SearchResult() {
                             <div>Transit 2+</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -142,7 +142,7 @@ function SearchResult() {
                             <div>Luggage</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -154,7 +154,7 @@ function SearchResult() {
                             <div>In-Flight Meal</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -166,7 +166,7 @@ function SearchResult() {
                             <div>Wi-fi</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -200,7 +200,7 @@ function SearchResult() {
                             <div>00:00 - 06:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -212,7 +212,7 @@ function SearchResult() {
                             <div>06:00 - 12:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -224,7 +224,7 @@ function SearchResult() {
                             <div>12:00 - 18:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -236,7 +236,7 @@ function SearchResult() {
                             <div>18:00 - 24:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -270,7 +270,7 @@ function SearchResult() {
                             <div>00:00 - 06:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -282,7 +282,7 @@ function SearchResult() {
                             <div>06:00 - 12:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -294,7 +294,7 @@ function SearchResult() {
                             <div>12:00 - 18:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -306,7 +306,7 @@ function SearchResult() {
                             <div>18:00 - 24:00</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -340,7 +340,7 @@ function SearchResult() {
                             <div>Garuda Indonesia</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -352,7 +352,7 @@ function SearchResult() {
                             <div>Air Asia</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -364,7 +364,7 @@ function SearchResult() {
                             <div>Lion Air</div>
                             <span className="pe-1">
                               <input
-                                class="form-check-input mt-0"
+                                className="form-check-input mt-0"
                                 type="checkbox"
                                 value=""
                                 aria-label="Checkbox for following text input"
@@ -394,25 +394,25 @@ function SearchResult() {
                     <Collapse in={openPrice}>
                       <div id="Price-collapse">
                         <div className="d-flex justify-content-between">
-                          <label for="customRange2" class="form-label">
+                          <label for="customRange2" className="form-label">
                             <small>Lowest</small>
                           </label>
-                          <label for="customRange2" class="form-label">
+                          <label for="customRange2" className="form-label">
                             <small>Highest</small>
                           </label>
                         </div>
                         <input
                           type="range"
-                          class="form-range"
+                          className="form-range"
                           min="0"
                           max="5"
                           id="customRange2"
                         />
                         <div className="d-flex justify-content-between">
-                          <label for="customRange2" class="form-label">
+                          <label for="customRange2" className="form-label">
                             <h6 className={style.textBlue}>$ 145,00</h6>
                           </label>
-                          <label for="customRange2" class="form-label">
+                          <label for="customRange2" className="form-label">
                             <h6 className={style.textBlue}>$ 300,00</h6>
                           </label>
                         </div>

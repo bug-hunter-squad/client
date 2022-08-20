@@ -1,4 +1,3 @@
-import Logo from "../components/atom/searchResultLogo";
 import style from "../styles/SearchFlight.module.css";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowsFullscreen } from "react-bootstrap-icons";
@@ -9,23 +8,33 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import { MdOutlineEmojiPeople } from "react-icons/md";
 import { FaChild } from "react-icons/fa";
 import React from "react";
-import Axios from "axios";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useDispatch } from "react-redux";
+import * as Type from "../redux/searchFlight/type";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 function searchresult() {
+  const dispatch = useDispatch();
+  const router =  useRouter();
   const { auth, search } = useSelector((state) => state);
+
   const [go, setGo] = React.useState("");
   let [count, setCount] = React.useState(0);
   let [countChild, setCountChild] = React.useState(0);
   const [date, setDate] = React.useState("");
-  const [airports, setAirports] = React.useState('');
-  console.log(date)
+  const [from, setFrom] = React.useState("");
+  const [to, setTo] = React.useState("");
+  const [facility, setFacility] = React.useState("");
+  const [navigation, setNavigation] = React.useState(false);
+  const [trip, setTrip] = React.useState("");
+  const [oneWay, setOneWay] = React.useState(false);
+  const [roundWay, setRoundWay] = React.useState(false);
 
   React.useEffect(() => {
     setGo(search?.keyword?.keyword);
-    Destination();
   }, []);
   const disablePastDate = () => {
     const today = new Date();
@@ -34,6 +43,9 @@ function searchresult() {
     const yyyy = today.getFullYear();
     return yyyy + "-" + mm + "-" + dd;
   };
+
+
+
 
   function incrementCount(e) {
     e.preventDefault();
@@ -47,12 +59,12 @@ function searchresult() {
   }
   function incrementCounts(e) {
     e.preventDefault();
-    count = count + 1;
+    countChild = countChild + 1;
     setCountChild(countChild);
   }
   function decrementCounts(e) {
     e.preventDefault();
-    count = count - 1;
+    countChild = countChild - 1;
     setCountChild(countChild);
   }
 
@@ -64,16 +76,76 @@ function searchresult() {
     const isNotMobile = useMediaQuery({ minWidth: 401 });
     return isNotMobile ? children : null;
   };
-
-  const handleSearch = (e) => { 
+  const handleMove =(e) =>{
     e.preventDefault();
-    console.log(`searchFlight`)
+    setNavigation(true);
+
+  }
+  const handleMove1 =(e) =>{
+    e.preventDefault();
+    setNavigation(false);
+
+  }
+  const moveTrip = (e) =>{
+    e.preventDefault();
+    setTrip("one-trip")
+    setOneWay(true)
+    setRoundWay(false);
   }
 
-  const Destination = async (req, res) =>{
-    const response = await Axios.get("http://api.aviationstack.com/v1/airports?access_key=e223c5ba8766c33ec08383a155c7c75f");
-    setAirports(response.data.data)
+  const moveTrip2 = (e) =>{
+    e.preventDefault();
+    setTrip("roud-trip")
+    setOneWay(false)
+    setRoundWay(true);
   }
+console.log(trip)
+  const flightSearch = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: Type.SET_FROM,
+      payload: {
+        from: from,
+      },
+    }),
+      dispatch({
+        type: Type.SET_TO,
+        payload: {
+        to: to,
+        },
+      });
+      dispatch({
+        type: Type.SET_WAY,
+        payload: {
+          way: trip,
+        },
+      });
+      dispatch({
+        type: Type.SET_DATE,
+        payload: {
+          date: date,
+        },
+      });
+      dispatch({
+        type: Type.SET_CHILD,
+        payload: {
+          child: countChild,
+        },
+      });
+      dispatch({
+        type: Type.SET_ADULT,
+        payload: {
+          adult: count,
+        },
+      });
+      dispatch({
+        type: Type.SET_FACILITY,
+        payload: {
+          facility: facility,
+        },
+      });
+      router.push("/searchresult")
+  };
   return (
     <>
       <Mobile>
@@ -108,8 +180,10 @@ function searchresult() {
                 </div>
               </div>
             </div>
+            <form onSubmit={flightSearch}>
             <div className="container w-100 h-100 d-flex flex-row justify-content-center">
               <div className="continer-flight container ">
+                {" "}
                 <h3 className="card-title">Destination</h3>
                 <div className="row row-cols-1">
                   <div className="card mx-auto col col-destination shadow">
@@ -119,30 +193,32 @@ function searchresult() {
                         <input
                           type="text"
                           className="col-datalist"
-                          name="city"
                           list="destination"
                           placeholder="Jakarta"
+                          value={navigation? to : from}
+                          onChange={(e) => setFrom(e.target.value)}
                         />
                         <datalist id="destination">
-                          {[...airports].map((data, key) =>(
-                            <div key={key}>
-                              <option value={data.country_name}>{data.timezone}</option>
-                            </div>
-                          ))}
+                          <option value="ISO-8859-1">
+                            cannot confirm, that bootstrap 4 does
+                          </option>
+                          <option value="cp1252">ANSI</option>
+                          <option value="utf8">UTF-8</option>
                         </datalist>
                         <small className=".fs6">Indonesia</small>
                       </div>
                       <div className="col-2 col-arrow ">
-                        <ArrowLeftRight />
+                      {navigation?<ArrowLeftRight onClick={handleMove1}/>: <ArrowLeftRight onClick={handleMove}/>}  
                       </div>
                       <div className="col-5">
                         <small className=".fs6 to-small">To</small>
                         <input
                           type="text"
                           className="col-datalist-end"
-                          name="city"
                           list="destination"
-                          placeholder="Jakarta"
+                          placeholder={go? go : "Bali"}
+                          value={navigation? from : to}
+                          onChange={(e) => setTo(e.target.value)}
                         />
                         <datalist id="destination">
                           <option value="ISO-8859-1">
@@ -156,10 +232,10 @@ function searchresult() {
                     </div>
                   </div>
                   <div className="col mt-4 d-flex flex-row justify-content-center align-content-center gap-2">
-                    <button type="button" className="btn btn-primary btn-off">
+                    <button type="button"value="One way" className={oneWay? "btn-offs" : "btn-off"  } onClick={moveTrip}>
                       <MdFlightTakeoff className="icons-off" /> One way
                     </button>
-                    <button type="button" className="btn btn-primary btn-arrow">
+                    <button type="button" className={roundWay? "btn-arrows" : "btn-arrow"} onClick={moveTrip2} >
                       <BsArrowClockwise className="icons-off" /> Round trip
                     </button>
                   </div>
@@ -232,7 +308,8 @@ function searchresult() {
                           type="radio"
                           name="exampleRadios"
                           id="exampleRadios1"
-                          value="option1"
+                          value="facility"
+                          onChange={(e) => setFacility(e.target.value)}
                         />
                         <label
                           className="form-check-label"
@@ -247,7 +324,8 @@ function searchresult() {
                           type="radio"
                           name="exampleRadios"
                           id="exampleRadios1"
-                          value="option1"
+                          value="facility"
+                          onChange={(e) => setFacility( e.target.value)}
                         />
                         <label
                           className="form-check-label"
@@ -262,7 +340,8 @@ function searchresult() {
                           type="radio"
                           name="exampleRadios"
                           id="exampleRadios1"
-                          value="option1"
+                          value="facility"
+                          onChange={(e) => setFacility(e.target.value)}
                         />
                         <label
                           className="form-check-label"
@@ -274,8 +353,11 @@ function searchresult() {
                     </div>
                   </div>
                   <div className="col">
-                    <button type="button" class="btn btn-flight" onClick={handleSearch}>
-                      SEARCH FLIGHT {"   "}{" "}
+                    <button
+                      type="submit"
+                      className="btn btn-flight"
+                    >
+                      SEARCH FLIGHT
                       <HiArrowNarrowRight className="btn-icons" />
                     </button>
                   </div>
@@ -283,6 +365,7 @@ function searchresult() {
                 </div>
               </div>
             </div>
+            </form>
           </div>
         </container>
       </Mobile>
