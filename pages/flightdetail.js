@@ -1,205 +1,257 @@
-import Logo from "../components/atom/searchResultLogo";
 import style from "../styles/SearchResult.module.css";
+import styleDetail from "../styles/FlightDetail.module.css";
 import Image from "next/image";
-import { ArrowLeftRight } from "react-bootstrap-icons";
-import { ArrowDownUp } from "react-bootstrap-icons";
-import { AiFillStar } from "react-icons/ai";
-import { FaHamburger, FaRestroom } from "react-icons/fa";
-import { AiOutlineWifi } from "react-icons/ai";
+import { Form } from "react-bootstrap";
+import NavDesktop from "../components/molecules/NavDesktop";
+import { FiChevronDown } from "react-icons/fi";
+import { AiFillWarning } from "react-icons/ai";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import FlagBlue from "../components/molecules/FlagBlue";
+import React, { useState, useEffect } from "react";
+import PhoneInput from "react-phone-number-input";
+import Footer from "../components/molecules/footer";
+import axios from "axios";
 
-function searchresult() {
+function SearchResult() {
+  const [phone, setPhone] = useState();
+  const [country, setCountry] = useState([]);
+
+  useEffect(() => {
+    getCountry();
+  }, []);
+
+  const getCountry = () => {
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then((res) => {
+        setCountry(res?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        // setIsLoading(false);
+      });
+  };
+
   return (
     <>
-      <container>
-        <div className="col-lg-4 mx-auto col-sm">
-          <div className={style.container}>
-            <section>
-              <div className="d-flex  justify-content-between">
-                <div className="p-2 mx-3 mt-5">
-                  <Image
-                    src="/assets/img/btnback.svg"
-                    alt="Logo"
-                    height={18}
-                    width={18}
-                  />
-                </div>
-                <div className="p-2 mx-3 justify-content-end mt-5">
-                  <p className={style.text}>Monday, 20 July 20</p>
-                </div>
-              </div>
-            </section>
-          </div>
-          <div className={style.result}>
-            <div
-              className="card col-11 mx-auto"
-              style={{
-                borderRadius: "15px",
-                padding: "10px",
-                marginBottom: "10px",
-                cursor: "pointer",
-                marginTop: "-120px",
-              }}
-            >
-              <div className="row ">
-                <div className="">
-                  <div>
-                    <section>
-                      <div className="d-flex mx-4 mt-4 justify-content-between ">
-                        <div className="">
-                          <h3 className="p-0">IDN</h3>
-                          <p className="p-0">12:33</p>
-                        </div>
-                        <div className=" ">
-                          <p className="p-2">
-                            <Image
-                              src="/assets/img/flightlogo.svg"
-                              alt="Logo"
-                              width="25"
-                              height="25"
-                              style={{ marginLeft: "-15px" }}
-                            />
-                          </p>
-                        </div>
-                        <div className=" text-end">
-                          <h4 className="p-0 ">JPN</h4>
-                          <p className="p-0  text-end">15:21</p>
-                        </div>
+      <div className="rm-ov-x">
+        <div className={style.bgSearchResult}>
+          <NavDesktop />
+          <FlagBlue />
+
+          <div className={`${styleDetail.content} container`}>
+            <div className="row">
+              <div className="col-8">
+                <div className={style.cardFilter}>
+                  <div className="card-body">
+                    <div className="mb-5">
+                      <label
+                        for="full-name"
+                        className={`${styleDetail.titleForm} form-label`}
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        className={`${styleDetail.form} form-control`}
+                        id="full-name"
+                        required
+                        placeholder="Mike Kowalski"
+                      />
+                    </div>
+                    <div className="mb-5">
+                      <label
+                        for="email"
+                        className={`${styleDetail.titleForm} form-label`}
+                      >
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        className={`${styleDetail.form} form-control`}
+                        id="email"
+                        required
+                        placeholder="flightbooking@ankasa.com"
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label
+                        for="formFile"
+                        className={`${styleDetail.titleForm} form-label`}
+                      >
+                        Phone Number
+                      </label>
+                      <div className={styleDetail.phone}>
+                        <PhoneInput
+                          placeholder="Enter phone number"
+                          value={phone}
+                          onChange={setPhone}
+                        />
                       </div>
-                      <div className="d-flex mx-4 justify-content-between ">
-                        <div className="">
-                          <Image
-                            src="/assets/img/logomaskapai.png"
-                            width="80px"
-                            height="50px"
-                            alt="image"
-                          />{" "}
-                        </div>
-                        <div className=" text-end">
-                          <div>
-                            <AiFillStar className="text-warning" />
-                            <AiFillStar className="text-warning" />
-                            <AiFillStar className="text-warning" />
-                            <AiFillStar className="text-warning" />
-                            <AiFillStar className="text-warning" />
+                    </div>
+                    <div class={styleDetail.warning}>
+                      <AiFillWarning className={styleDetail.iconWarning} />
+                      Make sure the customer data is correct.
+                    </div>
+                  </div>
+                </div>
+                <h4 className="pt-5 pb-3">Passenger Details</h4>
+
+                <div className={style.cardFilter}>
+                  <div className="card-body">
+                    <div class={styleDetail.blue}>
+                      <div className="d-flex justify-content-between pt-3 px-4">
+                        <p>Passenger: 1 Adult</p>
+                        <div className="row">
+                          <div className="col-10">
+                            <p>Same as contact person</p>
                           </div>
-                          <p>120k review</p>
+                          <div className="col-2">
+                            <Form.Check type="switch" id="custom-switch" />
+                          </div>
                         </div>
                       </div>
-                      <div className="d-flex mx-4  mt-3 justify-content-between ">
-                        <div className="">
-                          <p>Code</p>
-                          <h6>AB-221</h6>
-                        </div>
-                        <div className="">
-                          <p>Class</p>
-                          <h6>eCONOMY</h6>
-                        </div>
-                        <div className="">
-                          <p>Terminal</p>
-                          <h6>A</h6>
-                        </div>
-                        <div className="">
-                          <p>Gate</p>
-                          <h6>221</h6>
-                        </div>
-                      </div>
-                      <hr className="mx-3" />
-                      <div className="d-flex mx-4  justify-content-between ">
-                        <div
-                          className=""
-                          style={{
-                            color: "blue",
-                            backgroundColor: "#2395FF",
-                            width: "25px",
-                            height: "25px",
-                            justifyItems: "center",
-                            borderRadius: "50%",
-                            opacity: "0.8",
-                          }}
-                        >
-                          <p className={"text-center"}>2</p>
-                        </div>
-                        <p>Child</p>
-                        <div
-                          className=""
-                          style={{
-                            color: "blue",
-                            backgroundColor: "#2395FF",
-                            width: "25px",
-                            height: "25px",
-                            justifyItems: "center",
-                            borderRadius: "50%",
-                            opacity: "0.8",
-                          }}
-                        >
-                          <p className={"text-center"}>4</p>
-                        </div>
-                        <p>Adults</p>
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h4 className="mx-4 mt-3">Facilities</h4>
-            <div
-              style={{
-                display: "flex",
-                overflowX: "auto",
-              }}
-            >
-              <div
-                className="d-flex card text-bg-primary ms-4 col-4 "
-                style={{ borderRadius: "10px" }}
-              >
-                <div className="card-body">
-                  <div className="card-text d-flex justify-content-around ">
-                    <FaHamburger className="mt-1" />
-                    <h4>Snack</h4>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="d-flex card text-bg-primary mx-2 col-4 "
-                style={{ borderRadius: "10px" }}
-              >
-                <div className="card-body">
-                  <div className="card-text d-flex justify-content-around ">
-                    <div>
-                      <AiOutlineWifi className="" />
                     </div>
-                    <h4>Wifi</h4>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="d-flex card text-bg-primary  col-4 "
-                style={{ borderRadius: "10px" }}
-              >
-                <div className="card-body">
-                  <div className="card-text d-flex mt-2 justify-content-around ">
-                    <div className="d-flex">
-                      <FaRestroom />
+                    <div className="mb-5 mt-4">
+                      <label
+                        for="title"
+                        className={`${styleDetail.titleForm} form-label`}
+                      >
+                        Title
+                      </label>
+                      <select
+                        className={`${styleDetail.form} form-select`}
+                        aria-label="Default select example"
+                      >
+                        <option selected value="1">
+                          Mr.
+                        </option>
+                        <option value="2">Mrs.</option>
+                        <option value="3">Dr.</option>
+                        <option value="4">Drs.</option>
+                      </select>
                     </div>
-                    <h6>Restroom</h6>
+                    <div className="mb-5">
+                      <label
+                        for="full-name"
+                        className={`${styleDetail.titleForm} form-label`}
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        className={`${styleDetail.form} form-control`}
+                        id="full-name"
+                        required
+                        placeholder="Mike Kowalski"
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <label
+                        for="formFile"
+                        className={`${styleDetail.titleForm} form-label`}
+                      >
+                        Nationallity
+                      </label>
+                      <select
+                        className={`${styleDetail.form} form-select`}
+                        aria-label="Default select example"
+                      >
+                        <option selected>-Select-</option>
+                        {country.map((item) => (
+                          <option value={item?.flag}>{item.name.common}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <h4 className="pt-5 pb-3">Passenger Details</h4>
+
+                <div className={`${styleDetail.cardInsurance} card`}>
+                  <div
+                    className={`${styleDetail.br} card-header bg-white py-3`}
+                  >
+                    <div className="d-flex justify-content-between">
+                      <h6>
+                        <span className="pe-3">
+                          <input
+                            class="form-check-input mt-1"
+                            type="checkbox"
+                            aria-label="Checkbox for following text input"
+                          />
+                        </span>
+                        Travel Insurance
+                      </h6>
+
+                      <div>
+                        <span className="d-flex">
+                          <h6 className={`${styleDetail.textBlue}`}>$ 2,00</h6>{" "}
+                          <small>/Pax</small>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    <p>Get travel compensation up to $ 10.000,00</p>
+                  </div>
+                </div>
+                <div className="text-center pt-4">
+                  <button className={`${style.btnSelect} btn`}>
+                    Proceed to Payment
+                  </button>
+                </div>
+              </div>
+
+              <div className="col-4">
+                <div className={`${style.cardFilter} mb-3`}>
+                  <div className="card-body">
+                    <div className="row">
+                      <div className="col">
+                        <Image
+                          src="/assets/img/garuda.png"
+                          alt="Logo"
+                          width="120"
+                          height="70"
+                        />
+                      </div>
+                      <div className="col">
+                        <p>Garuda Indonesia</p>
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-between py-3">
+                      <div>
+                        <h5 className="mb-0">Medan (IDN)</h5>
+                      </div>
+                      <Image
+                        src="/assets/img/flightlogo.svg"
+                        alt="Logo"
+                        width="20"
+                        height="20"
+                      />
+                      <div>
+                        <h5 className="mb-0">Tokyo (JPN)</h5>
+                      </div>
+                    </div>
+                    <small>Sunday, 15 August 2020 • 12:33 - 15:21</small>
+                    <h6 className={`${style.textBlue} pt-4 pb-0 mb-0`}>
+                      <AiOutlineCheckCircle /> Refundable
+                    </h6>
+                    <h6 className={`${style.textBlue} pt-4 pb-0 mb-0`}>
+                      <AiOutlineCheckCircle /> Can reschedule
+                    </h6>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="card-text mx-4 mt-3 d-flex justify-content-between ">
-              <p>Total you'll pay</p>
-              <h5 className="text-primary">$ 145,00</h5>
-            </div>
-            <div className="mx-4 mb-3">
-              <button type="button" class="btn btn-primary btn-lg w-100">
-                Book Flight
-              </button>
             </div>
           </div>
+
+          <Footer />
         </div>
-      </container>
+      </div>
     </>
   );
 }
 
-export default searchresult;
+export default SearchResult;
