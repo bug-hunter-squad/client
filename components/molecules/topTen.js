@@ -33,8 +33,8 @@ function TopTen() {
       </div>
       <Slider {...settings}>
         {images.map((img, key) => (
-        
-           <div className="px-2" key={key}>
+        <>
+          <div className="px-2" key={key}>
             <div className={styleSlick.outlineBlue}>
               <div className={`${styleSlick.cardTopTen} card`}>
                 <Image
@@ -46,9 +46,13 @@ function TopTen() {
                   loading="lazy"
                   layout="responsive"
                 />
+              
               </div>
             </div>
-          </div>
+          </div>  
+          <h5>Jakarta</h5>
+        </>
+         
          
         ))}
       </Slider>

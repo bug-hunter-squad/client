@@ -15,10 +15,6 @@ function Home() {
           <StoryDestination />
           <StoryDestination />
           <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
         </div>
           <FixedMenu />
       </div>
