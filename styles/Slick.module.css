@@ -27,7 +27,7 @@
 }
 
 .imgTopTen {
-  padding: 7px !important;
+  padding: 2px !important;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -101,7 +101,7 @@
 }
 
 .outlineBlue {
-  margin: 6px;
+  margin: 2px;
   padding: 1px;
   border-radius: 50%;
   background-image: linear-gradient(#2395FF, #00B7DF);

@@ -314,3 +314,7 @@ font-size: 14px;
   float: right;
   font-size: 27px;
 }
+
+.cursor {
+  cursor: pointer;
+}
