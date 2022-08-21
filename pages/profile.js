@@ -1,4 +1,4 @@
-import style from "../../../styles/Profile.module.css";
+import style from "../styles/Profile.module.css";
 import Image from "next/image";
 import { ChevronRight } from "react-bootstrap-icons";
 import { AiFillStar } from "react-icons/ai";
