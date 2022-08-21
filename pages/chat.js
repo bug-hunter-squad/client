@@ -2,23 +2,17 @@ import { FiSearch } from "react-icons/fi";
 import styleHome from "../styles/Home.module.css";
 import { ChevronLeft } from "react-bootstrap-icons";
 import { BsCheck2All } from "react-icons/bs";
-import Contacts from "../components/molecules/Contacts";
-import ChatContainer from "../components/organisms/ChatContainer";
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
-import styled from "styled-components";
 import { IoMdSend } from "react-icons/io";
 
-
 function Chat() {
-
   return (
     <>
       <container>
         <div className="row">
-          <div className="col-lg-4 ">
+          <div className="col-lg-4 mx-auto ">
             <div className="d-flex mx-3  justify-content-between">
               <div className="p-2 mt-2">
                 <ChevronLeft />
@@ -43,7 +37,7 @@ function Chat() {
                 </div>
               </div>
             </div>
-            {[...new Array(4)].map((item, index) => (
+            {[...new Array(2)].map((item, index) => (
               <div
                 className=" col-11 mx-auto"
                 style={{
@@ -65,7 +59,7 @@ function Chat() {
                   </div>
                   <div className="col-6">
                     <div>
-                      <h2>User Name</h2>
+                      <h5>User Name</h5>
                       <p>I have no Idea</p>
                     </div>
                   </div>
@@ -79,20 +73,46 @@ function Chat() {
                 <hr></hr>
               </div>
             ))}
-          </div>
-          <div className="col-lg-4 ">
-          <form className="input-container" >
-        <input
-          type="text"
-          placeholder="type your message here"
-        //   onChange={(e) => setMsg(e.target.value)}
-        //   value={msg}
-        />
-
-        <button type="submit">
-          <IoMdSend />
-        </button>
-      </form>
+            <div className="row mx-auto col-10">
+              <div className="col-3  d-flex justify-content-center align-items-center">
+                <div
+                  style={{
+                    backgroundImage: `url(/assets/img/logomaskapai.png)`,
+                    backgroundRepeat:"no-repeat",
+                    backgroundPosition: "center",
+                    height: "70px",
+                    width: "70px",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: "green",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: "10px",
+                      width: "10px",
+                      display: "flex",
+                      justifyContent:"flex-end",
+                      alignItems:"flex-end",
+                      borderRadius: "50%",
+                    }}
+                  ></div>
+                </div>
+              </div>
+              <div className="col-6">
+                <div>
+                  <h5>User Name</h5>
+                  <p>I have no Idea</p>
+                </div>
+              </div>
+              <div className="col-3">
+                <div>
+                  <p>00:22</p>
+                  <BsCheck2All className="text-primary" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </container>
