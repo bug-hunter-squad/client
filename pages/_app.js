@@ -58,6 +58,7 @@ const MainApp = ({ Component, pageProps }) => {
     if (router.pathname === "/profile" && !auth.token) {
       router.push("/login");
     }
+    
   });
 
 
