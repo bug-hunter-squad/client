@@ -15,39 +15,6 @@ function Registers() {
   const [role, setRole] = React.useState("customer");
   const [isLoading, setIsLoading] = React.useState("");
 
-  const handleLogin = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      axios
-        .post(process.env.NEXT_PUBLIC_ENDPOINT_REGISTER, {
-          name: name,
-          email: email,
-          password: password,
-          role: role,
-        })
-        .then((response) => {
-          const falseResponse = response.data.message;
-          Swal.fire({
-            title: falseResponse,
-            width: 389,
-            text: `Nice to meet you ${name}`,
-            icon: "success",
-          });
-          router.replace("/login");
-        })
-        .catch(() => {
-          Swal.fire({
-            title: "Sorry",
-            width: 389,
-            text: "Check the password and email again",
-            icon: "error",
-          });
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }, 3000);
-  };
 
   const handleBack = () => {
     router.push("/");
