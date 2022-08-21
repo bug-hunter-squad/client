@@ -3,8 +3,9 @@ import style from "../styles/SearchResult.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
-import React from "react";
-import Filter from "../components/molecules/filter.js";
+import React, {useState} from "react";
+import Filter from "../components/molecules/Filtermodal";
+import { Container,Modal } from "react-bootstrap";
 
 function searchresult() {
   const [show, setShow] = React.useState(true);
@@ -12,10 +13,13 @@ function searchresult() {
   // const handleClose=()=>setClose(false)
 
   const [filter, setFilter] = React.useState(false);
-
+  const [modalOpen, setModalOpen] = useState(false);
+  function closeModal() {
+    setModalOpen(false);
+  }
   return (
     <>
-      <container>
+      <Container>
         <div className="col-lg-4 mx-auto col-sm">
           <div className={style.container}>
             <section>
@@ -69,7 +73,13 @@ function searchresult() {
             <div className="">
               <p className="p-0">5 Flight Found</p>
             </div>
-            <div
+            <div className="d-flex text-end" style={{cursor:"pointer"}} onClick={() => setModalOpen(true)}>
+              <p className=" mx-1 ">Filter</p>
+              <div>
+                <ArrowDownUp />
+              </div>
+            </div>
+            {/* <div
               className="d-flex text-end"
               style={{ cursor: "pointer" }}
               onClick={() => {
@@ -80,7 +90,7 @@ function searchresult() {
               <div>
                 <ArrowDownUp />
               </div>
-            </div>
+            </div> */}
           </div>
           {filter && <Filter setFilter={setFilter} />}
           <div className={style.result}>
@@ -146,7 +156,11 @@ function searchresult() {
             ))}
           </div>
         </div>
-      </container>
+      </Container>
+
+      <Modal show={modalOpen} onHide={closeModal}>
+        <Filter closeModal={closeModal} />
+      </Modal>{" "}
     </>
   );
 }
