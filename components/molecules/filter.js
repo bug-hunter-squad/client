@@ -1,22 +1,22 @@
 import React from "react";
 import style from "./filter.module.css";
 import Checkbox from "../atom/filteritem";
+import { IoMdCloseCircle } from "react-icons/io";
+import { IoCloseCircle } from "react-icons/io5";
 
 function Filter({ setFilter }) {
   return (
     <>
       <div className={style.filter}>
         <row className="">
-          <div className="col-lg-2 bg-white col sm-4 ">
-            <div className="mx-2">
-              <button
-                className="mb-2"
-                onClick={() => {
-                  setFilter(false);
-                }}
-              >
-                X
-              </button>
+          <IoCloseCircle
+            className={style.closeicon}
+            onClick={() => {
+              setFilter(false);
+            }}
+          />
+          <div className="mx-2 mt-1">
+            <div className="mx-auto ">
               <h6>Transit</h6>
               <Checkbox label={"Direct"}></Checkbox>
               <Checkbox label={"Transit"}></Checkbox>
@@ -84,8 +84,7 @@ function Filter({ setFilter }) {
                 <Checkbox label={item.label} key={index} />
               ))}
               <h6 className="mb-3">Range Price</h6>
-              <form>
-              </form>
+              <form></form>
             </div>
             <div className="footer d-flex justify-content-around">
               <button
