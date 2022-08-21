@@ -4,25 +4,27 @@ import { ChevronRight } from "react-bootstrap-icons";
 import { AiFillStar } from "react-icons/ai";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
+
+import Fixedmenu from "../components/molecules/fixedmenu";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import React from "react";
-import Fixedmenu from "../../molecules/fixedmenu";
 
 function Profile() {
   const { auth } = useSelector((state) => state);
-  const [name, setName] = React.useState("");
-  const [country, setCountry] = React.useState("");
-  const [profile, setProfile] = React.useState("");
-  const [city, setCity] = React.useState("");
+  const [name, setName] = React.useState('');
+  const [country, setCountry] = React.useState('');
+  const [profile, setProfile] = React.useState('');
+  const [city, setCity] = React.useState('');
 
   React.useEffect(() => {
-    const decodeUser = decode(auth?.token);
+    const decodeUser = decode(auth?.token)
     setName(decodeUser?.name);
     setCountry(decodeUser?.country);
     setProfile(decodeUser?.profilePicture);
     setCity(decodeUser?.city);
-  });
+  })
+
 
   return (
     <>
@@ -37,7 +39,7 @@ function Profile() {
           <div className={style.card}>
             <Image
               className={`${style.imgTopTen} d-flex align-items-center`}
-              src={profile ? profile : "/assets/img/image.png"}
+              src={profile? profile : "/assets/img/image.png"}
               alt=""
               width={120}
               height={120}
@@ -45,12 +47,8 @@ function Profile() {
           </div>
         </div>
         <div className="text-center mt-3">
-          <h3>{name ? name : "guest"}</h3>
-          <p>
-            {city ? city : "city"}
-            {"  "}
-            {country ? country : "country"}
-          </p>
+          <h3>{name? name : 'guest'}</h3>
+          <p>{city? city : 'city'}{'  '}{country? country : 'country'}</p>
         </div>
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h4>Cards</h4>
