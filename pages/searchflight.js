@@ -14,11 +14,12 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { useDispatch } from "react-redux";
 import * as Type from "../redux/searchFlight/type";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import axios from "axios";
 
 function searchresult() {
   const dispatch = useDispatch();
-  const router =  useRouter();
+  const router = useRouter();
   const { auth, search } = useSelector((state) => state);
 
   const [go, setGo] = React.useState("");
@@ -43,9 +44,6 @@ function searchresult() {
     const yyyy = today.getFullYear();
     return yyyy + "-" + mm + "-" + dd;
   };
-
-
-
 
   function incrementCount(e) {
     e.preventDefault();
@@ -76,29 +74,27 @@ function searchresult() {
     const isNotMobile = useMediaQuery({ minWidth: 401 });
     return isNotMobile ? children : null;
   };
-  const handleMove =(e) =>{
+  const handleMove = (e) => {
     e.preventDefault();
     setNavigation(true);
-
-  }
-  const handleMove1 =(e) =>{
+  };
+  const handleMove1 = (e) => {
     e.preventDefault();
     setNavigation(false);
-
-  }
-  const moveTrip = (e) =>{
+  };
+  const moveTrip = (e) => {
     e.preventDefault();
-    setTrip("one-trip")
-    setOneWay(true)
+    setTrip("one-trip");
+    setOneWay(true);
     setRoundWay(false);
-  }
+  };
 
-  const moveTrip2 = (e) =>{
+  const moveTrip2 = (e) => {
     e.preventDefault();
-    setTrip("roud-trip")
-    setOneWay(false)
+    setTrip("roud-trip");
+    setOneWay(false);
     setRoundWay(true);
-  }
+  };
   const flightSearch = (e) => {
     e.preventDefault();
     dispatch({
@@ -110,40 +106,40 @@ function searchresult() {
       dispatch({
         type: Type.SET_TO,
         payload: {
-        to: to,
+          to: to,
         },
       });
-      dispatch({
-        type: Type.SET_WAY,
-        payload: {
-          way: trip,
-        },
-      });
-      dispatch({
-        type: Type.SET_DATE,
-        payload: {
-          date: date,
-        },
-      });
-      dispatch({
-        type: Type.SET_CHILD,
-        payload: {
-          child: countChild,
-        },
-      });
-      dispatch({
-        type: Type.SET_ADULT,
-        payload: {
-          adult: count,
-        },
-      });
-      dispatch({
-        type: Type.SET_FACILITY,
-        payload: {
-          facility: facility,
-        },
-      });
-      router.push("/searchresult")
+    dispatch({
+      type: Type.SET_WAY,
+      payload: {
+        way: trip,
+      },
+    });
+    dispatch({
+      type: Type.SET_DATE,
+      payload: {
+        date: date,
+      },
+    });
+    dispatch({
+      type: Type.SET_CHILD,
+      payload: {
+        child: countChild,
+      },
+    });
+    dispatch({
+      type: Type.SET_ADULT,
+      payload: {
+        adult: count,
+      },
+    });
+    dispatch({
+      type: Type.SET_FACILITY,
+      payload: {
+        facility: facility,
+      },
+    });
+    router.push("/searchresult");
   };
   return (
     <>
@@ -170,7 +166,9 @@ function searchresult() {
                 <div className="card-img-overlay">
                   <div className="d-flex mx-3 mb-5 justify-content-between text-white">
                     <div className="p-2 mt-2">
-                      <ChevronLeft />
+                      <Link href="/" className="cursor">
+                        <ChevronLeft />
+                      </Link>
                     </div>
                     <div className="p-2 justify-content-end mt-2">
                       <ArrowsFullscreen />
@@ -180,190 +178,200 @@ function searchresult() {
               </div>
             </div>
             <form onSubmit={flightSearch}>
-            <div className="container w-100 h-100 d-flex flex-row justify-content-center">
-              <div className="continer-flight container ">
-                {" "}
-                <h3 className="card-title">Destination</h3>
-                <div className="row row-cols-1">
-                  <div className="card mx-auto col col-destination shadow">
-                    <div className="row row-col-3 p-2 d-flex flex-row col-five">
-                      <div className="col-5 overflow-hidden">
-                        <small className=".fs6">From</small>
-                        <input
-                          type="text"
-                          className="col-datalist"
-                          list="destination"
-                          placeholder="Jakarta"
-                          value={navigation? to : from}
-                          onChange={(e) => setFrom(e.target.value)}
-                        />
-                        <datalist id="destination">
-                          <option value="ISO-8859-1">
-                            cannot confirm, that bootstrap 4 does
-                          </option>
-                          <option value="cp1252">ANSI</option>
-                          <option value="utf8">UTF-8</option>
-                        </datalist>
-                        <small className=".fs6">Indonesia</small>
-                      </div>
-                      <div className="col-2 col-arrow ">
-                      {navigation?<ArrowLeftRight onClick={handleMove1}/>: <ArrowLeftRight onClick={handleMove}/>}  
-                      </div>
-                      <div className="col-5">
-                        <small className=".fs6 to-small">To</small>
-                        <input
-                          type="text"
-                          className="col-datalist-end"
-                          list="destination"
-                          placeholder={go? go : "Bali"}
-                          value={navigation? from : to}
-                          onChange={(e) => setTo(e.target.value)}
-                        />
-                        <datalist id="destination">
-                          <option value="ISO-8859-1">
-                            cannot confirm, that bootstrap 4 does
-                          </option>
-                          <option value="cp1252">ANSI</option>
-                          <option value="utf8">UTF-8</option>
-                        </datalist>
-                        <small className=".fs6 state-col">Indonesia</small>
+              <div className="container w-100 h-100 d-flex flex-row justify-content-center">
+                <div className="continer-flight container ">
+                  {" "}
+                  <h3 className="card-title">Destination</h3>
+                  <div className="row row-cols-1">
+                    <div className="card mx-auto col col-destination shadow">
+                      <div className="row row-col-3 p-2 d-flex flex-row col-five">
+                        <div className="col-5 overflow-hidden">
+                          <small className=".fs6">From</small>
+                          <input
+                            type="text"
+                            className="col-datalist"
+                            list="destination"
+                            placeholder="Jakarta"
+                            value={navigation ? to : from}
+                            onChange={(e) => setFrom(e.target.value)}
+                          />
+                          <datalist id="destination">
+                            <option value="ISO-8859-1">
+                              cannot confirm, that bootstrap 4 does
+                            </option>
+                            <option value="cp1252">ANSI</option>
+                            <option value="utf8">UTF-8</option>
+                          </datalist>
+                          <small className=".fs6">Indonesia</small>
+                        </div>
+                        <div className="col-2 col-arrow ">
+                          {navigation ? (
+                            <ArrowLeftRight onClick={handleMove1} />
+                          ) : (
+                            <ArrowLeftRight onClick={handleMove} />
+                          )}
+                        </div>
+                        <div className="col-5">
+                          <small className=".fs6 to-small">To</small>
+                          <input
+                            type="text"
+                            className="col-datalist-end"
+                            list="destination"
+                            placeholder={go ? go : "Bali"}
+                            value={navigation ? from : to}
+                            onChange={(e) => setTo(e.target.value)}
+                          />
+                          <datalist id="destination">
+                            <option value="ISO-8859-1">
+                              cannot confirm, that bootstrap 4 does
+                            </option>
+                            <option value="cp1252">ANSI</option>
+                            <option value="utf8">UTF-8</option>
+                          </datalist>
+                          <small className=".fs6 state-col">Indonesia</small>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col mt-4 d-flex flex-row justify-content-center align-content-center gap-2">
-                    <button type="button"value="One way" className={oneWay? "btn-offs" : "btn-off"  } onClick={moveTrip}>
-                      <MdFlightTakeoff className="icons-off" /> One way
-                    </button>
-                    <button type="button" className={roundWay? "btn-arrows" : "btn-arrow"} onClick={moveTrip2} >
-                      <BsArrowClockwise className="icons-off" /> Round trip
-                    </button>
-                  </div>
-                  <div className="col">
-                    <p className="mt-3 .fs6 title-box">Departure ?</p>
-                    <input
-                      type="date"
-                      name="date"
-                      value={date}
-                      min={disablePastDate()}
-                      className="date-flight rounded"
-                      max="2032-02-20"
-                      onChange={(e) => setDate(e.target.value)}
-                    />
-                  </div>
-                  <div className="col">
-                    {" "}
-                    <p className="mt-3 .fs6 title-box">How many person?</p>
-                    <div className="row row-cols-2">
-                      <div className="col p-2">
-                        <Dropdown>
-                          <Dropdown.Toggle id="dropdown-basic">
-                            <FaChild /> {countChild} Child
-                          </Dropdown.Toggle>
+                    <div className="col mt-4 d-flex flex-row justify-content-center align-content-center gap-2">
+                      <button
+                        type="button"
+                        value="One way"
+                        className={oneWay ? "btn-offs" : "btn-off"}
+                        onClick={moveTrip}
+                      >
+                        <MdFlightTakeoff className="icons-off" /> One way
+                      </button>
+                      <button
+                        type="button"
+                        className={roundWay ? "btn-arrows" : "btn-arrow"}
+                        onClick={moveTrip2}
+                      >
+                        <BsArrowClockwise className="icons-off" /> Round trip
+                      </button>
+                    </div>
+                    <div className="col">
+                      <p className="mt-3 .fs6 title-box">Departure ?</p>
+                      <input
+                        type="date"
+                        name="date"
+                        value={date}
+                        min={disablePastDate()}
+                        className="date-flight rounded"
+                        max="2032-02-20"
+                        onChange={(e) => setDate(e.target.value)}
+                      />
+                    </div>
+                    <div className="col">
+                      {" "}
+                      <p className="mt-3 .fs6 title-box">How many person?</p>
+                      <div className="row row-cols-2">
+                        <div className="col p-2">
+                          <Dropdown>
+                            <Dropdown.Toggle id="dropdown-basic">
+                              <FaChild /> {countChild} Child
+                            </Dropdown.Toggle>
 
-                          <Dropdown.Menu>
-                            <div active className="border ">
-                              <button
-                                className="btn-Count"
-                                onClick={incrementCounts}
-                              >
-                                +
-                              </button>
-                              {count}
-                              <button
-                                className="btn-Count"
-                                onClick={decrementCounts}
-                              >
-                                -
-                              </button>
-                            </div>
-                          </Dropdown.Menu>
-                        </Dropdown>
-                      </div>
-                      <div className="col p-2">
-                        <Dropdown>
-                          <Dropdown.Toggle id="dropdown-basics">
-                            <MdOutlineEmojiPeople /> {count} Adult
-                          </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                              <div active className="border ">
+                                <button
+                                  className="btn-Count"
+                                  onClick={incrementCounts}
+                                >
+                                  +
+                                </button>
+                                {count}
+                                <button
+                                  className="btn-Count"
+                                  onClick={decrementCounts}
+                                >
+                                  -
+                                </button>
+                              </div>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
+                        <div className="col p-2">
+                          <Dropdown>
+                            <Dropdown.Toggle id="dropdown-basics">
+                              <MdOutlineEmojiPeople /> {count} Adult
+                            </Dropdown.Toggle>
 
-                          <Dropdown.Menu>
-                            <div eventKey="1" active>
-                              <button onClick={incrementCount}>+</button>
-                              {count}
-                              <button onClick={decrementCount}>-</button>
-                            </div>
-                          </Dropdown.Menu>
-                        </Dropdown>
+                            <Dropdown.Menu>
+                              <div eventKey="1" active>
+                                <button onClick={incrementCount}>+</button>
+                                {count}
+                                <button onClick={decrementCount}>-</button>
+                              </div>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col">
-                    <p className="mt-3 .fs6 title-box">
-                      Which class do you want?
-                    </p>
-                    <div className="d-flex mx-4 mb-3 col-10 justify-content-between ">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="exampleRadios"
-                          id="exampleRadios1"
-                          value="facility"
-                          onChange={(e) => setFacility(e.target.value)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="exampleRadios1"
-                        >
-                          Economy
-                        </label>
-                      </div>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="exampleRadios"
-                          id="exampleRadios1"
-                          value="facility"
-                          onChange={(e) => setFacility( e.target.value)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="exampleRadios1"
-                        >
-                          Business
-                        </label>
-                      </div>
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="exampleRadios"
-                          id="exampleRadios1"
-                          value="facility"
-                          onChange={(e) => setFacility(e.target.value)}
-                        />
-                        <label
-                          className="form-check-label"
-                          for="exampleRadios1"
-                        >
-                          First Class
-                        </label>
+                    <div className="col">
+                      <p className="mt-3 .fs6 title-box">
+                        Which class do you want?
+                      </p>
+                      <div className="d-flex mx-4 mb-3 col-10 justify-content-between ">
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios1"
+                            value="facility"
+                            onChange={(e) => setFacility(e.target.value)}
+                          />
+                          <label
+                            className="form-check-label"
+                            for="exampleRadios1"
+                          >
+                            Economy
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios1"
+                            value="facility"
+                            onChange={(e) => setFacility(e.target.value)}
+                          />
+                          <label
+                            className="form-check-label"
+                            for="exampleRadios1"
+                          >
+                            Business
+                          </label>
+                        </div>
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="radio"
+                            name="exampleRadios"
+                            id="exampleRadios1"
+                            value="facility"
+                            onChange={(e) => setFacility(e.target.value)}
+                          />
+                          <label
+                            className="form-check-label"
+                            for="exampleRadios1"
+                          >
+                            First Class
+                          </label>
+                        </div>
                       </div>
                     </div>
+                    <div className="col">
+                      <button type="submit" className="btn btn-flight">
+                        SEARCH FLIGHT
+                        <HiArrowNarrowRight className="btn-icons" />
+                      </button>
+                    </div>
+                    <div className="col"> </div>
                   </div>
-                  <div className="col">
-                    <button
-                      type="submit"
-                      className="btn btn-flight"
-                    >
-                      SEARCH FLIGHT
-                      <HiArrowNarrowRight className="btn-icons" />
-                    </button>
-                  </div>
-                  <div className="col"> </div>
                 </div>
               </div>
-            </div>
             </form>
           </div>
         </container>
