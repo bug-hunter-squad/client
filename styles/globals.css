@@ -314,3 +314,28 @@ font-size: 14px;
   float: right;
   font-size: 27px;
 }
+
+.col-left{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  background-color: #0078AA;
+  position: relative;
+}
+.col-right{
+  height: 100vh !important;
+  width: 75vw !important;
+  position: relative;
+  overflow-y: hidden;
+  padding: 2%;
+  background-image: url('/public/bg.png') !important;
+}
+.table-flight{
+  overflow: scroll;
+}
+.btn-add{
+ float: left;
+  margin-left: 2vw;
+  margin-bottom: 2vh;
+}

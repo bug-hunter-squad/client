@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import * as Type from "../../../redux/auth/type";
 import Axios from "axios";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import Swal from 'sweetalert2'
 
 const logins = () => {
   const dispatch = useDispatch();
