@@ -1,16 +1,32 @@
-import style from "../styles/Profile.module.css";
+import style from "../../../styles/Profile.module.css";
 import Image from "next/image";
 import { ChevronRight } from "react-bootstrap-icons";
-import { BsStar } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
-import { GrLogout } from "react-icons/gr";
+import { FaSignOutAlt } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
-import Fixedmenu from "../components/molecules/fixedmenu";
+import { useSelector } from "react-redux";
+import { decode } from "jsonwebtoken";
+import React from "react";
+import Fixedmenu from "../../molecules/fixedmenu";
 
-function Home() {
+function Profile() {
+  const { auth } = useSelector((state) => state);
+  const [name, setName] = React.useState("");
+  const [country, setCountry] = React.useState("");
+  const [profile, setProfile] = React.useState("");
+  const [city, setCity] = React.useState("");
+
+  React.useEffect(() => {
+    const decodeUser = decode(auth?.token);
+    setName(decodeUser?.name);
+    setCountry(decodeUser?.country);
+    setProfile(decodeUser?.profilePicture);
+    setCity(decodeUser?.city);
+  });
+
   return (
     <>
-      <div className={style.app}>
+      <div className="col-lg-4 mx-auto">
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h1>Profile</h1>
           <a href="#" className="text-decoration-none p-2">
@@ -21,7 +37,7 @@ function Home() {
           <div className={style.card}>
             <Image
               className={`${style.imgTopTen} d-flex align-items-center`}
-              src="/assets/img/image.png"
+              src={profile ? profile : "/assets/img/image.png"}
               alt=""
               width={120}
               height={120}
@@ -29,8 +45,12 @@ function Home() {
           </div>
         </div>
         <div className="text-center mt-3">
-          <h3>Mike Kawasaki</h3>
-          <p>Medan.Indonesia</p>
+          <h3>{name ? name : "guest"}</h3>
+          <p>
+            {city ? city : "city"}
+            {"  "}
+            {country ? country : "country"}
+          </p>
         </div>
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h4>Cards</h4>
@@ -56,10 +76,10 @@ function Home() {
             </div>
           ))}
         </div>
-        <section className="mb-5">
+        <section className={style.mobilemenu}>
           <div className="d-flex mx-4  justify-content-between ">
             <div className="d-flex">
-              <AiFillStar className="text-warning mt-1" />
+              <AiFillStar className={style.icon} />
               <h6 className="p-0 mx-3">My Review</h6>
             </div>
             <div className="">
@@ -68,7 +88,7 @@ function Home() {
           </div>
           <div className="d-flex mx-4 mt-3 justify-content-between ">
             <div className="d-flex">
-              < IoSettingsSharp/>
+              <IoSettingsSharp className={style.icon} />
               <h6 className="p-0 mx-3">Settings</h6>
             </div>
             <div className="">
@@ -76,8 +96,8 @@ function Home() {
             </div>
           </div>
           <div className="d-flex  mx-4 mt-3 justify-content-between text-danger">
-            <div className="d-flex">
-              <GrLogout className="mt-1" />
+            <div className="d-flex ">
+              <FaSignOutAlt className={`${style.icon} ${style.red}`} />
               <h6 className="p-0 mt-1 mx-3">Logout</h6>
             </div>
             <div className="">
@@ -91,4 +111,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Profile;
