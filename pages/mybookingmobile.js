@@ -1,10 +1,43 @@
+import React from "react";
 import FixedMenu from "../components/molecules/fixedmenu";
 import { BsEnvelope, BsBell } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import style from "../styles/MyBookingmobile.module.css";
+import { useSelector } from "react-redux";
+import { decode } from "jsonwebtoken";
+import axios from "axios";
 
 function MyBooking() {
+  const { auth } = useSelector((state) => state);
+  const [id, setId] = React.useState([]);
+  const [listUsers, setListUsers] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState([]);
+
+
+  React.useEffect(() => {
+    const decodeUser = decode(auth?.token);
+    console.log(decodeUser.id)
+    setId(decodeUser.id)
+    // setName(decodeUser?.name);
+    // setCountry(decodeUser?.country);
+    // setProfile(decodeUser?.profilePicture);
+    // setCity(decodeUser?.city);
+  });
+
+  console.log(id)
+
+
+  React.useEffect((id) => {
+    axios.get(`http://localhost:8500/profile/${id}`).then((res) => {
+      setListUsers(res?.data ?? []);
+      console.log(res)
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 10000);
+    });
+  }, []);
+
   return (
     <>
       <div className="container">
