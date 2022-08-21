@@ -1,4 +1,3 @@
-import Logo from "../components/atom/searchResultLogo";
 import style from "../styles/SearchResult.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";

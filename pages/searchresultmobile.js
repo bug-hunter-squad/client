@@ -1,5 +1,5 @@
 import Logo from "../components/atom/searchResultLogo";
-import style from "../styles/SearchResult.module.css";
+import style from "../styles/SearchResultmobile.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";

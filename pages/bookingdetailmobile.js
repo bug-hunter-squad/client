@@ -1,4 +1,4 @@
-import style from "../styles/BookingDetail.module.css";
+import style from "../styles/BookingDetailmobile.module.css";
 import Image from "next/image";
 import { ArrowsFullscreen } from "react-bootstrap-icons";
 import { ChevronLeft } from "react-bootstrap-icons";
