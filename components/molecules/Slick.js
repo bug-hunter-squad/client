@@ -3,18 +3,32 @@ import styleSlick from "../../styles/Slick.module.css";
 import { FiChevronRight } from "react-icons/fi";
 import Slider from "react-slick";
 import Image from "next/image";
-import dummy1 from "../../public/assets/img/1.webp";
-import dummy2 from "../../public/assets/img/2.webp";
-import dummy3 from "../../public/assets/img/3.webp";
-import dummy4 from "../../public/assets/img/4.webp";
-import dummy5 from "../../public/assets/img/5.webp";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
-const images = [dummy1, dummy2, dummy3, dummy4, dummy5];
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Link from "next/link";
 
 function Slick() {
-  const [imageIndex, setImageIndex] = useState(0);
+  const [topDestination, setTopDestination] = useState([]);
+  const [loadDestination, setLoadDestination] = useState(true);
+
+  useEffect(() => {
+    getTopDestination();
+  }, []);
+
+  const getTopDestination = () => {
+    axios
+      .get("/api/trendingDestination")
+      .then((res) => {
+        setTopDestination(res?.data?.flightInformation);
+        setLoadDestination(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const settings = {
     infinity: true,
     lazyLoad: true,
@@ -22,27 +36,30 @@ function Slick() {
     slidesToShow: 1,
     centerMode: true,
     centerPadding: 0,
-    beforeChange: (current, next) => setImageIndex(next),
   };
   return (
     <>
       <div className="row px-1 mt-3">
         <div className="col-8 text-start">
-          <h4 className={styleHome.exp}>Trending destinations</h4>
+          <h5 className={styleHome.exp}>Trending destinations</h5>
         </div>
         <div className="col-4 text-end">
-          <a href="/searchresult" className={styleHome.vall}>View all</a>
+          <Link href="/searchresult" passHref>
+            <a className={`${styleHome.vall} rm-decoration`}>
+              View all
+            </a>
+          </Link>
         </div>
       </div>
 
       <Slider {...settings}>
-        {images.map((img, key) => (
+        {topDestination.map((item, key) => (
           <div key={key}>
             <div className={`${styleSlick.cardNew} card`}>
               <Image
                 className={styleSlick.imgNew}
-                src={img}
-                alt={img}
+                src="/assets/img/3.webp"
+                alt="image"
                 width="130"
                 height="300"
                 loading="lazy"
@@ -57,8 +74,8 @@ function Slick() {
                   <div className={`${styleSlick.textBottom} row`}>
                     <div className="col-8">
                       <div className={`${styleSlick.cardTitle} px-2`}>
-                        <h4>Tokyo,</h4>
-                        <h2>Japan</h2>
+                        <h4>{item.flightOriginal},</h4>
+                        <h2>{item.flightDestination}</h2>
                       </div>
                     </div>
                     <div className="col-4 text-center">
