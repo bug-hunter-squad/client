@@ -24,6 +24,7 @@ function Home() {
     setCountry(decodeUser?.country);
     setProfile(decodeUser?.profilePicture);
     setCity(decodeUser?.city);
+    console.log(decodeUser)
   })
 
   return (
@@ -31,7 +32,7 @@ function Home() {
       <div className={style.app}>
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h1>Profile</h1>
-          <a href="#" className="text-decoration-none p-2">
+          <a href="/editprofile" className="text-decoration-none p-2">
             <p>Edit</p>
           </a>
         </div>

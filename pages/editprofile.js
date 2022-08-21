@@ -1,20 +1,14 @@
 import React from "react";
 import { IoChevronBack } from "react-icons/io5";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
-import { BsFacebook } from "react-icons/bs";
-import { FaFingerprint } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-// import * as Type from "../../../redux/auth/type";
+import { useSelector } from "react-redux";
+import { decode } from "jsonwebtoken";
 import Axios from "axios";
-import { useRouter } from "next/router";
-import Swal from "sweetalert2";
-import Link from "next/link";
 
 
-const logins = () => {
-  const [passwordType, setPasswordType] = React.useState("password");
+const EditProfile = () => {
+  const { auth } = useSelector((state) => state);
   const [isloading, setIsloading] = React.useState(false);
+  const [id, setId] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [name, setName] = React.useState("");
@@ -24,13 +18,14 @@ const logins = () => {
   const [postCode, setPostCode] = React.useState("");
 
   React.useEffect(() => {
-    setId(decodeUser.userId);
+    const decodeUser = decode(auth?.token)
+    setId(decodeUser.id);
   })
 
   const handleUpdate = () => {
     setIsloading(true);
     setTimeout(() => {
-      Axios.patch(`http://localhost:8500/profile/login/${id}`, {
+      Axios.patch(`http://localhost:8500/profile/${id}`, {
         email: email,
         // password: password,
         name: name,
@@ -40,7 +35,7 @@ const logins = () => {
         postCode:postCode,
       })
         .catch((err) => {
-          const message = err.response.data.message;
+          const message = err.response.message
         })
         .finally(() => {
           setIsloading(false);
@@ -79,7 +74,6 @@ const logins = () => {
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Email"
-                    required
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
@@ -88,7 +82,6 @@ const logins = () => {
                     type="text"
                     className=" input w-100"
                     placeholder="Name"
-                    required
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -97,7 +90,6 @@ const logins = () => {
                     type={passwordType}
                     className=" input w-100"
                     placeholder="Password"
-                    required
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div> */}
@@ -106,7 +98,6 @@ const logins = () => {
                     type="phoneNumber"
                     className=" input w-100"
                     placeholder="Phone Number"
-                    required
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
@@ -115,7 +106,6 @@ const logins = () => {
                     type="text"
                     className=" input w-100"
                     placeholder="City"
-                    required
                     onChange={(e) => setCity(e.target.value)}
                   />
                 </div>
@@ -124,7 +114,6 @@ const logins = () => {
                     type="text"
                     className=" input w-100"
                     placeholder="Address"
-                    required
                     onChange={(e) => setaAddress(e.target.value)}
                   />
                 </div>
@@ -133,7 +122,6 @@ const logins = () => {
                     type="text"
                     className=" input w-100"
                     placeholder="Post Code"
-                    required
                     onChange={(e) => setPostCode(e.target.value)}
                   />
                 </div>
@@ -157,4 +145,4 @@ const logins = () => {
   );
 };
 
-export default logins;
+export default EditProfile;
