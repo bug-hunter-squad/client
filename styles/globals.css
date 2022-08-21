@@ -28,6 +28,11 @@ a {
 .mobile {
   max-width: 400px !important;
 }
+.desktop{
+  width: 600px !important;
+  height: 100%;
+  display: inline-block;
+}
 .carousel-welcome {
   height: 70vh;
 }
@@ -118,4 +123,20 @@ a {
 .link{
   text-decoration: none !important;
   color: #2395FF !important;
+}
+.section{
+  height: 100vh;
+  color: aliceblue !important;
+}
+.btn-light{
+  color: aliceblue !important;
+  text-align: left !important;
+  text-decoration: none!;
+  background-color: #0b6bc4 !important;
+  border: none !important;
+}
+.icons-dasboard{
+  color: beige !important;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }

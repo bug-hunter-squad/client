@@ -80,7 +80,7 @@ function searchresult() {
               >
                 <div className="row ">
                   <div className="col-3 d-flex justify-content-center align-items-center">
-                    <img
+                    <Image
                       src="/assets/img/logomaskapai.png"
                       width="70px"
                       height="70px"

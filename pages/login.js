@@ -1,6 +1,7 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 import Logins from "../components/organisms/Mobile/login";
+import LoginDekstop from "../components/organisms/Desktop/login"
 
 const login = () => {
   const Mobile = ({ children }) => {
@@ -18,7 +19,7 @@ const login = () => {
         <Mobile>
           <Logins />
         </Mobile>
-        <Default> helo guyss</Default>
+        <Default><LoginDekstop/></Default>
       </div>
     </>
   );

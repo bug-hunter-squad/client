@@ -9,16 +9,13 @@ import * as Type from "../../../redux/auth/type";
 import Axios from "axios";
 import { useRouter } from "next/router";
 
-const logins = () => {
+const login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [passwordType, setPasswordType] = React.useState("password");
   const [isloading, setIsloading] = React.useState(false);
   const seePassword = () => {
     setPasswordType("text");
-  };
-  const handleBack = () => {
-    router.push("/");
   };
 
   const handleSubmit = () => {
@@ -40,23 +37,21 @@ const logins = () => {
         });
     }, 3000);
   };
-
   return (
     <>
-      <div className="container p-2 h-100">
-        <div className="container h-100">
-          <div className="row row-cols-1 p-2">
-            <div className="col w-100">
-              <div className="row row-cols-2">
-                <div className="col-sm-8 fw-semibold back-button">
-                  <IoChevronBack onClick={handleBack} />
-                </div>
-                <div className="col-sm-4 p-2">
-                  <p className="guest">Continue as Guest</p>
-                </div>
-              </div>
-            </div>
-            <div className="col mt-3">
+      <div className="container-fluid border">
+        <div className="row row-cols-2">
+          <div className="col p-5 clr-primer">
+            {" "}
+            <img
+              className="d-block w-100 h-50 mt-5"
+              src="/assets/img/bg-logo.svg"
+              alt="First slide"
+            />
+          </div>
+          <div className="col p-5">
+            <div className="ms-5 mobile p-3">
+                    <div className="col mt-3">
               <div>
                 <p className="fw-bold fs-2">Login</p>
               </div>
@@ -121,7 +116,10 @@ const logins = () => {
                   <FaFingerprint />
                 </button>
               </div>
+            </div>  
             </div>
+            {" "}
+      
           </div>
         </div>
       </div>
@@ -129,4 +127,4 @@ const logins = () => {
   );
 };
 
-export default logins;
+export default login;
