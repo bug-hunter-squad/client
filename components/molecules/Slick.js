@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function Slick() {
   const [topDestination, setTopDestination] = useState([]);
@@ -45,49 +47,57 @@ function Slick() {
         </div>
         <div className="col-4 text-end">
           <Link href="/searchresult" passHref>
-            <a className={`${styleHome.vall} rm-decoration`}>
-              View all
-            </a>
+            <a className={`${styleHome.vall} rm-decoration`}>View all</a>
           </Link>
         </div>
       </div>
 
-      <Slider {...settings}>
-        {topDestination.map((item, key) => (
-          <div key={key}>
-            <div className={`${styleSlick.cardNew} card`}>
-              <Image
-                className={styleSlick.imgNew}
-                src="/assets/img/3.webp"
-                alt="image"
-                width="130"
-                height="300"
-                loading="lazy"
-              />
-              <div className="row card-img-overlay align-items-end">
-                <div className={styleSlick.overlay}>
-                  <div className="col-8">
-                    <div className={`${styleSlick.airlines} `}>
-                      <p>15 airlines</p>
-                    </div>
-                  </div>
-                  <div className={`${styleSlick.textBottom} row`}>
-                    <div className="col-8">
-                      <div className={`${styleSlick.cardTitle} px-2`}>
-                        <h4>{item.flightOriginal},</h4>
-                        <h2>{item.flightDestination}</h2>
+      {loadDestination ? (
+        <>
+          <Skeleton height={180} />
+        </>
+      ) : (
+        <>
+          <Slider {...settings}>
+            {topDestination.map((item, key) => (
+              <div key={key}>
+                <div className={`${styleSlick.cardNew} card`}>
+                  <Image
+                    className={styleSlick.imgNew}
+                    src="/assets/img/3.webp"
+                    alt="image"
+                    width="130"
+                    height="300"
+                    loading="lazy"
+                  />
+                  <div className="row card-img-overlay align-items-end">
+                    <div className={styleSlick.overlay}>
+                      <div className="col-8">
+                        <div className={`${styleSlick.airlines} `}>
+                          <p>15 airlines</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-4 text-center">
-                      <FiChevronRight className={styleSlick.icon} />
+                      <div className={`${styleSlick.textBottom} row`}>
+                        <div className="col-8">
+                          <div className={`${styleSlick.cardTitle} px-2`}>
+                            <h4>{item.flightOriginal},</h4>
+                            <h2>{item.flightDestination}</h2>
+                          </div>
+                        </div>
+                        <div className="col-4 text-center">
+                          <Link href="/searchflight" passHref className="cursor">
+                              <FiChevronRight className={styleSlick.icon} />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </Slider>
+            ))}
+          </Slider>
+        </>
+      )}
     </>
   );
 }
