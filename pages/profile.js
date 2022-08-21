@@ -4,11 +4,11 @@ import { ChevronRight } from "react-bootstrap-icons";
 import { AiFillStar } from "react-icons/ai";
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
-import { Modal,Col } from "react-bootstrap";
+import { Modal, Col } from "react-bootstrap";
 import Fixedmenu from "../components/molecules/fixedmenu";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
-import React ,{useState} from "react";
+import React, { useState } from "react";
 
 import AddCard from "../components/molecules/AddCard";
 
@@ -36,7 +36,7 @@ function Profile() {
       <Col className="col-lg-4 mx-auto">
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h1>Profile</h1>
-          <a href="#" className="text-decoration-none p-2">
+          <a href="/editprofile" className="text-decoration-none p-2">
             <p>Edit</p>
           </a>
         </div>
@@ -55,17 +55,14 @@ function Profile() {
           <h3>{name ? name : "guest"}</h3>
           <p>
             {city ? city : "city"}
-            {"  "}
             {country ? country : "country"}
           </p>
         </div>
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
           <h4>Cards</h4>
-          <a href="#" className="text-decoration-none ">
-            <div onClick={() => setModalOpen(true)}>
-              <p>+ Add</p>
-            </div>
-          </a>
+          <div onClick={() => setModalOpen(true)}>
+            <p className="text-primary">+ Add</p>
+          </div>
         </div>
         <div
           style={{
@@ -116,7 +113,6 @@ function Profile() {
         </section>
         <Fixedmenu />
       </Col>
-
       <Modal show={modalOpen} onHide={closeModal}>
         <AddCard closeModal={closeModal} />
       </Modal>{" "}
