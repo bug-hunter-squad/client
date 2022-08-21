@@ -1,7 +1,8 @@
 import Head from "next/head";
 import HomePage from "../pages/home";
 
-export default function Home() {
+
+function App() {
   return (
     <>
       <Head>
@@ -13,3 +14,5 @@ export default function Home() {
     </>
   );
 }
+
+export default App;

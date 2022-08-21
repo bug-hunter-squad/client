@@ -1,0 +1,9 @@
+.filter{
+    height: 100vh;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 .125rem .25rem ;
+}
