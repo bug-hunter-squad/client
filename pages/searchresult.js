@@ -3,11 +3,19 @@ import style from "../styles/SearchResult.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
+import React from "react";
+import Filter from "../components/molecules/filter.js";
 
 function searchresult() {
+  const [show, setShow] = React.useState(true);
+  const handleShow = () => setShow(true);
+  // const handleClose=()=>setClose(false)
+
+  const [filter, setFilter] = React.useState(false);
+
   return (
     <>
-      <container >
+      <container>
         <div className="col-lg-4 mx-auto col-sm">
           <div className={style.container}>
             <section>
@@ -24,21 +32,23 @@ function searchresult() {
                   <p className={style.text}>Monday, 20 July 20</p>
                 </div>
               </div>
-              <div className="d-flex mx-4 justify-content-between text-white">
-                <div className="">
-                  <p className="p-0">From</p>
-                  <h5 className="p-0">Medan</h5>
-                  <p className="p-0">Indonesia</p>
-                </div>
-                <div className="d-flex ">
-                  <p className="p-0 d-flex align-items-center">
-                    <ArrowLeftRight />
-                  </p>
-                </div>
-                <div className=" text-end">
-                  <p className="p-0">To</p>
-                  <h5 className="p-0 ">Jakarta</h5>
-                  <p className="p-0  text-end">Indonesia</p>
+              <div className="col-lg-4 mx-auto">
+                <div className="d-flex mx-4  justify-content-between text-white">
+                  <div className="">
+                    <p className="p-0">From</p>
+                    <h5 className="p-0">Medan</h5>
+                    <p className="p-0">Indonesia</p>
+                  </div>
+                  <div className="d-flex ">
+                    <p className="p-0 d-flex align-items-center">
+                      <ArrowLeftRight />
+                    </p>
+                  </div>
+                  <div className=" text-end">
+                    <p className="p-0">To</p>
+                    <h5 className="p-0 ">Jakarta</h5>
+                    <p className="p-0  text-end">Indonesia</p>
+                  </div>
                 </div>
               </div>
             </section>
@@ -59,13 +69,20 @@ function searchresult() {
             <div className="">
               <p className="p-0">5 Flight Found</p>
             </div>
-            <div className="d-flex text-end">
+            <div
+              className="d-flex text-end"
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                setFilter(true);
+              }}
+            >
               <p className=" mx-1 ">Filter</p>
               <div>
-                <ArrowDownUp className="" />
+                <ArrowDownUp />
               </div>
             </div>
           </div>
+          {filter && <Filter setFilter={setFilter} />}
           <div className={style.result}>
             {[...new Array(4)].map((item, index) => (
               <div
@@ -80,7 +97,7 @@ function searchresult() {
               >
                 <div className="row ">
                   <div className="col-3 d-flex justify-content-center align-items-center">
-                    <Image
+                    <img
                       src="/assets/img/logomaskapai.png"
                       width="70px"
                       height="70px"
