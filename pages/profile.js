@@ -37,7 +37,7 @@ function Home() {
         </div>
         <div className={style.outline}>
           <div className={style.card}>
-            <Image
+            <img
               className={`${style.imgTopTen} d-flex align-items-center`}
               src={profile? profile : "/assets/img/image.png"}
               alt=""
@@ -62,8 +62,8 @@ function Home() {
             overflowX: "auto",
           }}
         >
-          {[...new Array(3)].map((item, key) => (
-            <div className="d-flex card text-bg-primary mx-3 mb-3 col-8">
+          {[...new Array(3)].map((item, index) => (
+            <div className="d-flex card text-bg-primary mx-3 mb-3 col-8" key={index}>
               <div className="card-body">
                 <h5 className="card-title">4441 1235 5512 5551</h5>
                 <div className="card-text d-flex justify-content-between">

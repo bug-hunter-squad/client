@@ -10,9 +10,9 @@ import Axios from "axios";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import Link from "next/link";
+
+
 const logins = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
   const [passwordType, setPasswordType] = React.useState("password");
   const [isloading, setIsloading] = React.useState(false);
   const [email, setEmail] = React.useState("");
@@ -23,16 +23,16 @@ const logins = () => {
   const [city, setCity] = React.useState("");
   const [postCode, setPostCode] = React.useState("");
 
-//   const handleBack = () => {
-//     router.push("/profile");
-//   };
+  React.useEffect(() => {
+    setId(decodeUser.userId);
+  })
 
   const handleUpdate = () => {
     setIsloading(true);
     setTimeout(() => {
-      Axios.patch("http://localhost:8500/auth/login", {
+      Axios.patch(`http://localhost:8500/profile/login/${id}`, {
         email: email,
-        password: password,
+        // password: password,
         name: name,
         phoneNumber:phoneNumber,
         address:address,
@@ -55,11 +55,11 @@ const logins = () => {
           <div className="row row-cols-1 p-2">
             <div className="col w-100">
               <div className="row row-cols-2">
-                <Link href="/profile">
-                  <div className="col-sm-8 fw-semibold back-button">
+                {/* <Link href="/editprofile"> */}
+                  <a href="/editprofile" className="col-sm-8 fw-semibold back-button">
                     <IoChevronBack />
-                  </div>
-                </Link>
+                  </a>
+                {/* </Link> */}
               </div>
             </div>
             <div className="col mt-3">
@@ -92,7 +92,7 @@ const logins = () => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <input
                     type={passwordType}
                     className=" input w-100"
@@ -100,7 +100,7 @@ const logins = () => {
                     required
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                </div>
+                </div> */}
                 <div className="mb-3">
                   <input
                     type="phoneNumber"
