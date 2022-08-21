@@ -7,7 +7,7 @@ function bookingdetail() {
   return (
     <>
       <container className="col-lg-4  mx-auto col-sm">
-        <div className={style.bookingdetail}>
+        <div className={`${style.bookingdetail} col-lg-4 mx-auto`}>
           <div className="d-flex mx-3 mb-2 justify-content-between text-white">
             <div className="d-flex   mt-2">
               <ChevronLeft className="mt-1" />
