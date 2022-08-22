@@ -1,20 +1,13 @@
 import React from "react";
 import { IoChevronBack } from "react-icons/io5";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
-import { BsFacebook } from "react-icons/bs";
-import { FaFingerprint } from "react-icons/fa";
-import { useDispatch } from "react-redux";
-// import * as Type from "../../../redux/auth/type";
+import { useSelector } from "react-redux";
+import { decode } from "jsonwebtoken";
 import Axios from "axios";
-import { useRouter } from "next/router";
-import Swal from "sweetalert2";
-import Link from "next/link";
-const logins = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const [passwordType, setPasswordType] = React.useState("password");
+
+const EditProfile = () => {
+  const { auth } = useSelector((state) => state);
   const [isloading, setIsloading] = React.useState(false);
+  const [id, setId] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [name, setName] = React.useState("");
@@ -23,24 +16,27 @@ const logins = () => {
   const [city, setCity] = React.useState("");
   const [postCode, setPostCode] = React.useState("");
 
-//   const handleBack = () => {
-//     router.push("/profile");
-//   };
-
+  React.useEffect(() => {
+    const decodeUser = decode(auth?.token);
+    setId(decodeUser.id);
+  });
+  console.log(id);
+  
   const handleUpdate = () => {
     setIsloading(true);
+    console.log(`ini ${id}`);
     setTimeout(() => {
-      Axios.patch("http://localhost:8500/auth/login", {
+      Axios.patch(`http://localhost:8500/profile/${id}`, {
         email: email,
-        password: password,
+        // password: password,
         name: name,
-        phoneNumber:phoneNumber,
-        address:address,
-        city:city,
-        postCode:postCode,
+        phoneNumber: phoneNumber,
+        address: address,
+        city: city,
+        postCode: postCode,
       })
         .catch((err) => {
-          const message = err.response.data.message;
+          const message = err.response.message;
         })
         .finally(() => {
           setIsloading(false);
@@ -55,11 +51,14 @@ const logins = () => {
           <div className="row row-cols-1 p-2">
             <div className="col w-100">
               <div className="row row-cols-2">
-                <Link href="/profile">
-                  <div className="col-sm-8 fw-semibold back-button">
-                    <IoChevronBack />
-                  </div>
-                </Link>
+                {/* <Link href="/editprofile"> */}
+                <a
+                  href="/editprofile"
+                  className="col-sm-8 fw-semibold back-button"
+                >
+                  <IoChevronBack />
+                </a>
+                {/* </Link> */}
               </div>
             </div>
             <div className="col mt-3">
@@ -79,7 +78,6 @@ const logins = () => {
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Email"
-                    required
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
@@ -88,25 +86,22 @@ const logins = () => {
                     type="text"
                     className=" input w-100"
                     placeholder="Name"
-                    required
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <input
                     type={passwordType}
                     className=" input w-100"
                     placeholder="Password"
-                    required
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                </div>
+                </div> */}
                 <div className="mb-3">
                   <input
                     type="phoneNumber"
                     className=" input w-100"
                     placeholder="Phone Number"
-                    required
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
@@ -115,7 +110,6 @@ const logins = () => {
                     type="text"
                     className=" input w-100"
                     placeholder="City"
-                    required
                     onChange={(e) => setCity(e.target.value)}
                   />
                 </div>
@@ -124,7 +118,6 @@ const logins = () => {
                     type="text"
                     className=" input w-100"
                     placeholder="Address"
-                    required
                     onChange={(e) => setaAddress(e.target.value)}
                   />
                 </div>
@@ -133,7 +126,6 @@ const logins = () => {
                     type="text"
                     className=" input w-100"
                     placeholder="Post Code"
-                    required
                     onChange={(e) => setPostCode(e.target.value)}
                   />
                 </div>
@@ -157,4 +149,4 @@ const logins = () => {
   );
 };
 
-export default logins;
+export default EditProfile;

@@ -19,13 +19,25 @@
     align-items: center;
     background-color: white;
     border-radius: 50%;
+}
 
+.mobilemenu{
+    margin-bottom: 100px;
+    height: 150px;
+}
+
+.icon{
+    font-size: 25px;
 }
 
 .scroll{
     overflow-x: scroll;
 }
+.red{
+    color: red;
+}
 
 .app{
     height: 100vh;
 }
+

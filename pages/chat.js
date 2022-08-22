@@ -6,11 +6,12 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { IoMdSend } from "react-icons/io";
+import { Container } from "react-bootstrap"
 
 function Chat() {
   return (
     <>
-      <container>
+      <Container>
         <div className="row">
           <div className="col-lg-4 mx-auto ">
             <div className="d-flex mx-3  justify-content-between">
@@ -115,7 +116,7 @@ function Chat() {
             </div>
           </div>
         </div>
-      </container>
+      </Container>
     </>
   );
 }

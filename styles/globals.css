@@ -124,7 +124,11 @@ a {
   text-decoration: none !important;
   color: #2395FF !important;
 }
-.rm-decoration {
+
+
+.section{
+  height: 100vh;
+  color: aliceblue !important;
   text-decoration: none;
 }
 
@@ -135,6 +139,11 @@ a {
 a {
   color: #000000 !important;
 }
+
+.icons-dasboard{
+  color: beige !important;
+  margin-left: 1vw;
+  margin-right: 1vw;}
 
 .continer-flight{
   padding: 2%;
@@ -313,6 +322,7 @@ font-size: 14px;
 .btn-icons{
   float: right;
   font-size: 27px;
+
 }
 
 .col-left{
@@ -338,4 +348,5 @@ font-size: 14px;
  float: left;
   margin-left: 2vw;
   margin-bottom: 2vh;
+
 }

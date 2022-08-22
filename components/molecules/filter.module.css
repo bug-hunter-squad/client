@@ -1,0 +1,16 @@
+.filter{
+    height: 100vh;
+    /* width:400px; */
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 .125rem .25rem ;
+}
+
+.closeicon{
+    font-size: 25px;
+    color: #2395FF;
+    opacity:0.8;
+}
