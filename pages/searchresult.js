@@ -3,22 +3,27 @@ import style from "../styles/SearchResult.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
+import Link from "next/link";
 
 function searchresult() {
   return (
     <>
-      <container >
+      <container>
         <div className="col-lg-4 mx-auto col-sm">
           <div className={style.container}>
             <section>
               <div className="d-flex  justify-content-between">
                 <div className="p-2 mx-3 mt-5">
-                  <Image
-                    src="/assets/img/btnback.svg"
-                    alt="Logo"
-                    height={18}
-                    width={18}
-                  />
+                  <Link href="/searchflight" passHref>
+                    <a>
+                      <Image
+                        src="/assets/img/btnback.svg"
+                        alt="Logo"
+                        height={18}
+                        width={18}
+                      />
+                    </a>
+                  </Link>
                 </div>
                 <div className="p-2 mx-3 justify-content-end mt-5">
                   <p className={style.text}>Monday, 20 July 20</p>

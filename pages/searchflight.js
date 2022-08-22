@@ -279,7 +279,7 @@ function searchresult() {
                                 >
                                   +
                                 </button>
-                                {count}
+                                {countChild}
                                 <button
                                   className="btn-Count"
                                   onClick={decrementCounts}
@@ -298,9 +298,19 @@ function searchresult() {
 
                             <Dropdown.Menu>
                               <div eventKey="1" active>
-                                <button onClick={incrementCount}>+</button>
+                                <button
+                                  className="btn-Count"
+                                  onClick={incrementCount}
+                                >
+                                  +
+                                </button>
                                 {count}
-                                <button onClick={decrementCount}>-</button>
+                                <button
+                                  className="btn-Count"
+                                  onClick={decrementCount}
+                                >
+                                  -
+                                </button>
                               </div>
                             </Dropdown.Menu>
                           </Dropdown>
