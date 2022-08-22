@@ -3,8 +3,24 @@ import navStyle from "../../styles/Nav.module.css";
 import { TbBrandBooking } from "react-icons/tb";
 import { IoMdCompass } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux"
 
 function Fixedmenu() {
+  const router = useRouter();
+
+  const { auth } = useSelector((state) => state);
+
+  const handleProfile =(e) =>{
+    e.preventDefault();
+    if(auth?.token === undefined || auth.token === null){
+      router.replace("/welcome")
+    }else{
+      router.push("/profile")
+    }
+  }
+
+
   return (
     <>
       <div className={`${navStyle.shadowFixed} container mobile px-1 text-center fixed-bottom bg-white`}>
@@ -15,7 +31,7 @@ function Fixedmenu() {
               style={{ height: "100px" }}
             >
               <ul className="navbar-nav nav-justified w-100">
-              <Link href="/mybooking">
+              <Link href="/mybookingmobile">
                   <li className={`${navStyle.navItem}`}>
                     <TbBrandBooking className={`${navStyle.icon}`} /> <br/>
                     <small>My Booking</small>
@@ -26,12 +42,12 @@ function Fixedmenu() {
                     <IoMdCompass className={`${navStyle.icon} ${navStyle.active}`} />
                   </li>
                 </Link>
-                <Link href="/profile">
-                  <li className={`${navStyle.navItem}`}>
+              
+                  <li className={`${navStyle.navItem}`} onClick={handleProfile}>
                     <CgProfile className={`${navStyle.icon}`} /> <br/>
                     <small>Profile</small>
                   </li>
-                </Link>
+              
                 
               </ul>
             </nav>

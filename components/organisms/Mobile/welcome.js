@@ -7,11 +7,11 @@ function Welcomes() {
   const router = useRouter();
 
   const handleRegister = () => {
-    router.push("/");
+    router.push("/register");
   };
 
   const handleSignIn = () => {
-    router.push("/");
+    router.push("/login");
   };
 
   return (

@@ -350,3 +350,6 @@ font-size: 14px;
   margin-bottom: 2vh;
 
 }
+.offcanvas.offcanvas-end{
+  width: 50 vw !important;
+}

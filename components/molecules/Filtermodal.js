@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
-// import { useContacts } from '../contexts/ContactsProvider'
+import { useDispatch } from "react-redux";
+import * as Type from "../../redux/searchFlight/type";
 
 export default function NewContactModal({ closeModal }) {
+
   const idRef = useRef();
   const nameRef = useRef();
   const priceRef = useRef();
-  //   const { createContact } = useContacts()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,7 +17,12 @@ export default function NewContactModal({ closeModal }) {
       nameRef.current.value,
       priceRef.current.value
     );
-    closeModal();
+    
+
+
+
+
+
   }
 
   return (

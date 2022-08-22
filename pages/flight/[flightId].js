@@ -27,7 +27,7 @@ const Flight = (req, res) => {
 
   const handleUpdate = async (req, res) => {
     setisloading(true);
-    await Axios.patch(`http://localhost:8500/flight/${flightId}`, {
+    await Axios.patch(`https://bug-hunter-squad.herokuapp.com/flight/${flightId}`, {
       airline_id: idAirLine,
       original: original,
       destination: destination,

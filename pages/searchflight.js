@@ -158,7 +158,7 @@ function searchresult() {
         facility: facility,
       },
     });
-    router.push("/searchresult");
+    router.push("/searchresultmobile");
   };
   return (
     <>
@@ -362,7 +362,7 @@ function searchresult() {
                             type="radio"
                             name="exampleRadios"
                             id="exampleRadios1"
-                            value="Economy"
+                            value="economy"
                             onChange={(e) => setFacility(e.target.value)}
                           />
                           <label
@@ -378,7 +378,7 @@ function searchresult() {
                             type="radio"
                             name="exampleRadios"
                             id="exampleRadios1"
-                            value="Business"
+                            value="business"
                             onChange={(e) => setFacility(e.target.value)}
                           />
                           <label
@@ -394,7 +394,7 @@ function searchresult() {
                             type="radio"
                             name="exampleRadios"
                             id="exampleRadios1"
-                            value="First Class"
+                            value="first class"
                             onChange={(e) => setFacility(e.target.value)}
                           />
                           <label

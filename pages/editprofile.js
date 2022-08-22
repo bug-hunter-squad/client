@@ -3,6 +3,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import Axios from "axios";
+import { useRouter } from "next/router";
 
 const EditProfile = () => {
   const { auth } = useSelector((state) => state);
@@ -16,6 +17,8 @@ const EditProfile = () => {
   const [city, setCity] = React.useState("");
   const [postCode, setPostCode] = React.useState("");
 
+  const router = useRouter();
+
   React.useEffect(() => {
     const decodeUser = decode(auth?.token);
     setId(decodeUser.id);
@@ -26,7 +29,7 @@ const EditProfile = () => {
     setIsloading(true);
     console.log(`ini ${id}`);
     setTimeout(() => {
-      Axios.patch(`http://localhost:8500/profile/${id}`, {
+      Axios.patch(`https://bug-hunter-squad.herokuapp.com/profile/${id}`, {
         email: email,
         // password: password,
         name: name,
@@ -34,9 +37,11 @@ const EditProfile = () => {
         address: address,
         city: city,
         postCode: postCode,
+      }).then(() =>{
+        router.push("/profile")
       })
         .catch((err) => {
-          const message = err.response.message;
+          console.log(err);
         })
         .finally(() => {
           setIsloading(false);
@@ -53,7 +58,7 @@ const EditProfile = () => {
               <div className="row row-cols-2">
                 {/* <Link href="/editprofile"> */}
                 <a
-                  href="/editprofile"
+                  href="/profile"
                   className="col-sm-8 fw-semibold back-button"
                 >
                   <IoChevronBack />

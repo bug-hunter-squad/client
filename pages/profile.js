@@ -9,7 +9,7 @@ import Fixedmenu from "../components/molecules/fixedmenu";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import React, { useState } from "react";
-
+import useSWR, { useSWRConfig } from "swr";
 import AddCard from "../components/molecules/AddCard";
 
 function Profile() {
@@ -21,14 +21,14 @@ function Profile() {
 
   React.useEffect(() => {
     const decodeUser = decode(auth?.token);
+    console.log(decodeUser.id)
     setName(decodeUser?.name);
     setCountry(decodeUser?.country);
     setProfile(decodeUser?.profilePicture);
     setCity(decodeUser?.city);
 
-  });
+  },[]);
 
-    console.log(decodeUser)
 
 
   const [modalOpen, setModalOpen] = useState(false);

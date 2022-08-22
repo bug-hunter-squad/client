@@ -47,13 +47,13 @@ const admin = () => {
   const handleCloser = () => setShow(false);
 
   const fetcher = async () => {
-    const response = await Axios.get("http://localhost:8500/flight");
+    const response = await Axios.get("https://bug-hunter-squad.herokuapp.com/flight");
     return response.data.flightInformation;
   };
 
 
   const DeleteFlight = async (flightId) => {
-    await Axios.delete(`http://localhost:8500/flight/${flightId}`);
+    await Axios.delete(`https://bug-hunter-squad.herokuapp.com/flight/${flightId}`);
     mutate("flight");
   };
   const { data } = useSWR("flight", fetcher);
@@ -67,7 +67,7 @@ const admin = () => {
 
 
   const handleClose = async () => {
-    await Axios.post("http://localhost:8500/flight", {
+    await Axios.post("https://bug-hunter-squad.herokuapp.com/flight", {
       airline_id: idAirLine,
       original: original,
       destination: destination,
@@ -125,7 +125,7 @@ const admin = () => {
     data.append("airline_pic_phone_number", picNumber);
     data.append("airline_status", status), 
 
-      Axios.post("http://localhost:8500/airlines", data, {
+      Axios.post("https://bug-hunter-squad.herokuapp.com/airlines", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

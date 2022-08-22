@@ -7,6 +7,7 @@ import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 import { IoMdSend } from "react-icons/io";
 import { Container } from "react-bootstrap"
+import Link from "next/link";
 
 function Chat() {
   return (
@@ -16,7 +17,11 @@ function Chat() {
           <div className="col-lg-4 mx-auto ">
             <div className="d-flex mx-3  justify-content-between">
               <div className="p-2 mt-2">
-                <ChevronLeft />
+                <Link href="/">
+  <ChevronLeft />
+
+                </Link>
+              
               </div>
               <div className="p-2 justify-content-end mt-2">
                 <p>Filter</p>

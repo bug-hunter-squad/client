@@ -8,7 +8,7 @@ import query from "./searchFlight/index";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth",],
+  whitelist: ["auth","query"],
 };
 const rootReducer = combineReducers({
   auth,

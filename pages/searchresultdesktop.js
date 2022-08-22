@@ -1,4 +1,4 @@
-import style from "../styles/SearchResult.module.css";
+import style from "../styles/SearchResultmobile.module.css";
 import Image from "next/image";
 import { ArrowDownUp } from "react-bootstrap-icons";
 import NavDesktop from "../components/molecules/NavDesktop";

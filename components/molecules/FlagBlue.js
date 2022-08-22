@@ -1,4 +1,4 @@
-import style from "../../styles/SearchResult.module.css";
+import style from "../../styles/SearchResultmobile.module.css";
 
 function FlagBlue() {
   return (

@@ -8,11 +8,8 @@ import { useDispatch } from "react-redux";
 import * as Type from "../../../redux/auth/type";
 import Axios from "axios";
 import { useRouter } from "next/router";
-<<<<<<< HEAD
 import Swal from "sweetalert2";
-=======
-import Swal from 'sweetalert2'
->>>>>>> main
+
 
 const logins = () => {
   const dispatch = useDispatch();
@@ -31,7 +28,7 @@ const logins = () => {
   const handleLogin = () => {
     setIsloading(true);
     setTimeout(() => {
-      Axios.post("http://localhost:8500/auth/login",{
+      Axios.post("https://bug-hunter-squad.herokuapp.com/auth/login",{
         email: email,
         password: password
       })

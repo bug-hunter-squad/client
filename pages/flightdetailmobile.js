@@ -90,7 +90,7 @@ function SearchResult() {
                         />
                       </div>
                     </div>
-                    <div class={styleDetail.warning}>
+                    <div className={styleDetail.warning}>
                       <AiFillWarning className={styleDetail.iconWarning} />
                       Make sure the customer data is correct.
                     </div>
@@ -100,7 +100,7 @@ function SearchResult() {
 
                 <div className={style.cardFilter}>
                   <div className="card-body">
-                    <div class={styleDetail.blue}>
+                    <div className={styleDetail.blue}>
                       <div className="d-flex justify-content-between pt-3 px-4">
                         <p>Passenger: 1 Adult</p>
                         <div className="row">
@@ -176,7 +176,7 @@ function SearchResult() {
                       <h6>
                         <span className="pe-3">
                           <input
-                            class="form-check-input mt-1"
+                            className="form-check-input mt-1"
                             type="checkbox"
                             aria-label="Checkbox for following text input"
                           />

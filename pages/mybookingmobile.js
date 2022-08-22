@@ -3,10 +3,11 @@ import FixedMenu from "../components/molecules/fixedmenu";
 import { BsEnvelope, BsBell } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
-import style from "../styles/MyBookingmobile.module.css";
+import style from "../styles/BookingDetailmobile.module.css";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import axios from "axios";
+import Nav from "../components/molecules/NavBooking";
 
 function MyBooking() {
   const { auth } = useSelector((state) => state);
@@ -28,7 +29,7 @@ function MyBooking() {
     const id = decodeUser.id
     setTimeout(() => {
       axios
-        .get(`http://localhost:8500/profile/${id}/booking`)
+        .get(`https://bug-hunter-squad.herokuapp.com/profile/${id}/booking`)
         .then((response) => {
           console.log(response);
           setData(response.data);
@@ -43,22 +44,13 @@ function MyBooking() {
   return (
     <>
       <div className="container">
-        <div className="col-lg-4 mx-auto">
-          <div className="row px-1">
-            <div className="col text-start">
-              <h3 className="">My Booking</h3>
-            </div>
-            <div className="col text-end">
-              <BsEnvelope className="mx-2" />
-              <a href="/notification">
-                <BsBell className="" />
-              </a>
-            </div>
-          </div>
+        <div className="col-lg-4 mx-auto mt-2">
+        <Nav />
         </div>
         <section className="col-lg-4 mx-auto">
           {data?.map((item, index) => (
             <div className={style.card} key={index}>
+              
               <div className="mx-3 mt-3">
                 <div className="row"></div>
                 <p className="mt-3">{item?.departureTime} {" "} - {item?.arrivalTime}</p>
@@ -86,6 +78,19 @@ function MyBooking() {
                   >
                     {item?.bookingStatus}
                   </p>
+                  <Link href={item.paymentUrl}>
+                  <a>
+                      <p
+                    className="bg-success p-2"
+                    style={{ borderRadius: "10px", color: "white" }}
+                  >
+                    Ready to payment
+                  </p>
+                  </a>
+                 
+                  </Link>
+                 
+
                 </div>
               </div>
             </div>

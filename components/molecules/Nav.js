@@ -30,7 +30,10 @@ function Nav() {
           <h2 className={styleHome.exp}>{"Explore" || <Skeleton />}</h2>
         </div>
         <div className="col text-end">
-          <BsEnvelope className={`${styleHome.icon} px-2`} />
+          <Link href="/chat">
+              <BsEnvelope className={`${styleHome.icon} px-2`} />
+          </Link>
+        
           <Link href="/notification">
             <BsBell className={`${styleHome.icon} px-2`} />
           </Link>

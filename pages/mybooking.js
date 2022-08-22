@@ -1,4 +1,4 @@
-import style from "../styles/SearchResult.module.css";
+import style from "../styles/SearchResultmobile.module.css";
 import styleDetail from "../styles/FlightDetail.module.css";
 import Image from "next/image";
 import { Form } from "react-bootstrap";
@@ -7,7 +7,7 @@ import { AiFillStar, AiTwotoneSetting } from "react-icons/ai";
 import { FiChevronDown } from "react-icons/fi";
 import { FaPlus, FaSignOutAlt } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
-import styleMyBook from "../styles/MyBooking.module.css";
+import styleMyBook from "../styles/MyBookingmobile.module.css";
 import React, { useState, useEffect } from "react";
 import Footer from "../components/molecules/footer";
 import axios from "axios";
