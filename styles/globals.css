@@ -125,17 +125,21 @@ a {
   color: #2395FF !important;
 }
 
+
 .section{
   height: 100vh;
   color: aliceblue !important;
+  text-decoration: none;
 }
-.btn-light{
-  color: aliceblue !important;
-  text-align: left !important;
-  text-decoration: none!;
-  background-color: #0b6bc4 !important;
-  border: none !important;
+
+.rm-ov-x {
+  overflow-x: hidden;
 }
+
+a {
+  color: #000000 !important;
+}
+
 .icons-dasboard{
   color: beige !important;
   margin-left: 1vw;
@@ -210,8 +214,21 @@ a {
   gap: 2%;
   font-size: medium !important;
   font-weight: bold !important;
-  background-color: #2395FF !important;
+  background-color:#F0F0F0 !important;
   border: none;
+  color: #595959 !important;
+  border-radius: 10px;
+}
+.btn-offs{
+  width: 230px;
+  padding: 3% !important;
+  gap: 2%;
+  font-size: medium !important;
+  font-weight: bold !important;
+  background-color:#2395FF !important;
+  border: none;
+  color: #FFFFFF !important;
+  border-radius: 10px;
 }
 .btn-arrow{
   width: 230px;
@@ -222,6 +239,18 @@ a {
   background-color:#F0F0F0 !important;
   color: #595959 !important;
   border: none !important;
+  border-radius: 10px;
+}
+.btn-arrows{
+  width: 230px;
+  padding: 3% !important;
+  gap: 2% !important;
+  font-size: medium !important;
+  font-weight: bold !important;
+  background-color:#2395FF !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  border-radius: 10px;
 }
 .title-box{
   color: #6B6B6B;
@@ -293,4 +322,32 @@ font-size: 14px;
 .btn-icons{
   float: right;
   font-size: 27px;
+<<<<<<< HEAD
+=======
+}
+
+.col-left{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  background-color: #0078AA;
+  position: relative;
+}
+.col-right{
+  height: 100vh !important;
+  width: 75vw !important;
+  position: relative;
+  overflow-y: hidden;
+  padding: 2%;
+  background-image: url('/public/bg.png') !important;
+}
+.table-flight{
+  overflow: scroll;
+}
+.btn-add{
+ float: left;
+  margin-left: 2vw;
+  margin-bottom: 2vh;
+>>>>>>> main
 }

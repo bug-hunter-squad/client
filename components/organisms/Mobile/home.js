@@ -8,18 +8,11 @@ function Home() {
   return (
     <>
       <div className="container mobile mt-5 mb-5">
-        <div className={styleSlick.bgLinear}>
+        
           <Nav />
           <Slick />
           <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
-          <StoryDestination />
-        </div>
+        
           <FixedMenu />
       </div>
     </>

@@ -1,0 +1,67 @@
+.content {
+  position: relative;
+  margin-top: -90px;
+}
+
+.titleForm {
+  color: #9b96ab;
+}
+
+.form {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: unset;
+  border-bottom: 2px solid #d2c2ff77;
+}
+
+.phone {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: unset;
+  border-bottom: 2px solid #d2c2ff77;
+}
+
+.phone .PhoneInputInput {
+  border: none !important;
+  flex: 1 1;
+  min-width: 0;
+}
+
+.warning {
+  margin-top: 35px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: #f2454518;
+}
+
+.blue {
+  border-radius: 10px;
+  background-color: #2395ff25;
+}
+
+.iconWarning {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 60px;
+  color: #f24545;
+}
+
+.cardInsurance {
+  border-radius: 15px;
+  background-color: white;
+  border: none;
+}
+
+.bgWhite {
+  background-color: white;
+}
+
+.br {
+    border-radius: 15px 15px 0 0 !important;
+}
+
+.textBlue {
+    color: #2395ff;
+  }

@@ -1,26 +1,88 @@
+.bgSearchResult {
+  background-color: #f5f6fa;
+}
 
 .container {
-    background-color: #2395FF;
-    background-image: url(../public/assets/img/logos.svg);
-    background-repeat: no-repeat;
-    height:232px;
-    border-radius: 0px 0px 30px 30px;
-    position: relative;
+  background-color: #2395ff;
+  background-image: url(../public/assets/img/logos.svg);
+  background-repeat: no-repeat;
+  height: 232px;
+  border-radius: 0px 0px 30px 30px;
+  position: relative;
 }
 .container2 {
-    background-color: #F8F8F8;
-    height:105px;
-    margin-top:-20px;
-    border-radius: 0px 0px 30px 30px;
+  background-color: #f8f8f8;
+  height: 105px;
+  margin-top: -20px;
+  border-radius: 0px 0px 30px 30px;
 }
 
-.text{
-    background-color: #FFFFFF;
-    opacity: 0.35;
+.text {
+  background-color: #ffffff;
+  opacity: 0.35;
 }
 
-.fontsize{
-   color: #414141;
-   font-size: 11px;
+.fontsize {
+  color: #414141;
+  font-size: 11px;
 }
 
+.textBlue {
+  color: #2395ff;
+}
+
+.buttonUpDown {
+  margin-top: -15px;
+  font-size: 25px;
+  cursor: pointer;
+  color: #2395ff;
+  background-color: unset;
+  border: none;
+}
+
+.cardFilter {
+  border-radius: 15px;
+  padding: 30px;
+  background-color: white;
+  border: none;
+}
+
+.line {
+  color: #e5e5e5;
+}
+
+.icon {
+  font-size: 25px;
+}
+
+.textvsm {
+  color: #6b6b6b;
+  font-size: 12px;
+}
+
+.eta {
+  font-weight: 500;
+  color: #595959;
+}
+
+.iconFacilities {
+  color: #979797;
+  font-size: 20px;
+}
+
+.btnSelect {
+  color: white;
+  padding-left: 35px;
+  padding-right: 35px;
+  font-weight: 500;
+  background-color: #2395ff;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(35, 149, 255, 0.53);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(35, 149, 255, 0.53);
+  box-shadow: 0px 2px 5px 0px rgba(35, 149, 255, 0.53);
+}
+
+.iconSocmed {
+  font-size: 40px;
+  color: #595959;
+  padding-right: 15px;
+}
