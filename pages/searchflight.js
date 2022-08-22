@@ -16,6 +16,8 @@ import * as Type from "../redux/searchFlight/type";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function searchresult() {
   const dispatch = useDispatch();
@@ -33,10 +35,26 @@ function searchresult() {
   const [trip, setTrip] = React.useState("");
   const [oneWay, setOneWay] = React.useState(false);
   const [roundWay, setRoundWay] = React.useState(false);
+  const [destination, setDestination] = React.useState([]);
+  const [loadDestination, setLoadDestination] = React.useState(true);
 
   React.useEffect(() => {
     setGo(search?.keyword?.keyword);
+    getDestination();
   }, []);
+
+  const getDestination = () => {
+    axios
+      .get("/api/trendingDestination")
+      .then((res) => {
+        setDestination(res?.data?.flightInformation);
+        setLoadDestination(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const disablePastDate = () => {
     const today = new Date();
     const dd = String(today.getDate() + 1).padStart(2, "0");
@@ -143,8 +161,7 @@ function searchresult() {
   };
   return (
     <>
-      <Mobile>
-        <container>
+        <Container className="mobile">
           <div className="col-lg-4 mx-auto col-sm">
             <div className={style.container}>
               <div
@@ -190,17 +207,25 @@ function searchresult() {
                           <input
                             type="text"
                             className="col-datalist"
-                            list="destination"
+                            list="from"
                             placeholder="Jakarta"
                             value={navigation ? to : from}
                             onChange={(e) => setFrom(e.target.value)}
                           />
-                          <datalist id="destination">
-                            <option value="ISO-8859-1">
-                              cannot confirm, that bootstrap 4 does
-                            </option>
-                            <option value="cp1252">ANSI</option>
-                            <option value="utf8">UTF-8</option>
+                          <datalist id="from">
+                            {loadDestination ? (
+                              <>
+                                {" "}
+                                <Skeleton height={80} />{" "}
+                              </>
+                            ) : (
+                              <>
+                                {destination.map((item, key) => (
+                                  <option value={item.flightOriginal}>
+                                  </option>
+                                ))}
+                              </>
+                            )}
                           </datalist>
                           <small className=".fs6">Indonesia</small>
                         </div>
@@ -222,11 +247,19 @@ function searchresult() {
                             onChange={(e) => setTo(e.target.value)}
                           />
                           <datalist id="destination">
-                            <option value="ISO-8859-1">
-                              cannot confirm, that bootstrap 4 does
-                            </option>
-                            <option value="cp1252">ANSI</option>
-                            <option value="utf8">UTF-8</option>
+                            {loadDestination ? (
+                              <>
+                                {" "}
+                                <Skeleton height={80} />{" "}
+                              </>
+                            ) : (
+                              <>
+                                {destination.map((item, key) => (
+                                  <option value={item.flightOriginal}>
+                                  </option>
+                                ))}
+                              </>
+                            )}
                           </datalist>
                           <small className=".fs6 state-col">Indonesia</small>
                         </div>
@@ -279,7 +312,7 @@ function searchresult() {
                                 >
                                   +
                                 </button>
-                                {count}
+                                {countChild}
                                 <button
                                   className="btn-Count"
                                   onClick={decrementCounts}
@@ -298,9 +331,19 @@ function searchresult() {
 
                             <Dropdown.Menu>
                               <div eventKey="1" active>
-                                <button onClick={incrementCount}>+</button>
+                                <button
+                                  className="btn-Count"
+                                  onClick={incrementCount}
+                                >
+                                  +
+                                </button>
                                 {count}
-                                <button onClick={decrementCount}>-</button>
+                                <button
+                                  className="btn-Count"
+                                  onClick={decrementCount}
+                                >
+                                  -
+                                </button>
                               </div>
                             </Dropdown.Menu>
                           </Dropdown>
@@ -318,7 +361,7 @@ function searchresult() {
                             type="radio"
                             name="exampleRadios"
                             id="exampleRadios1"
-                            value="facility"
+                            value="Economy"
                             onChange={(e) => setFacility(e.target.value)}
                           />
                           <label
@@ -334,7 +377,7 @@ function searchresult() {
                             type="radio"
                             name="exampleRadios"
                             id="exampleRadios1"
-                            value="facility"
+                            value="Business"
                             onChange={(e) => setFacility(e.target.value)}
                           />
                           <label
@@ -350,7 +393,7 @@ function searchresult() {
                             type="radio"
                             name="exampleRadios"
                             id="exampleRadios1"
-                            value="facility"
+                            value="First Class"
                             onChange={(e) => setFacility(e.target.value)}
                           />
                           <label
@@ -374,8 +417,7 @@ function searchresult() {
               </div>
             </form>
           </div>
-        </container>
-      </Mobile>
+        </Container>
     </>
   );
 }
