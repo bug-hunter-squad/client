@@ -18,7 +18,7 @@ function FlightDetail() {
                 <div className="p-2 mx-3 mt-5">
                 <a
                   href="/"
-                  className="col-sm-8 fw-semibold back-button"
+                  className="col-sm-8 fw-semibold text-white"
                 >
                   <IoChevronBack />
                 </a>
@@ -186,7 +186,6 @@ function FlightDetail() {
                 </div>
               </div>
             </div>
-
             <div className="card-text mx-4 mt-3 d-flex justify-content-between ">
               <p>Total you'll pay</p>
               <h5 className="text-primary">$ 145,00</h5>
