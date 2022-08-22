@@ -65,3 +65,29 @@
 .textBlue {
     color: #2395ff;
   }
+
+
+  .container {
+    background-color: #2395FF;
+    background-image: url(../public/assets/img/logos.svg);
+    background-repeat: no-repeat;
+    height:232px;
+    border-radius: 0px 0px 30px 30px;
+    position: relative;
+}
+.container2 {
+    background-color: #F8F8F8;
+    height:105px;
+    margin-top:-20px;
+    border-radius: 0px 0px 30px 30px;
+}
+
+.text{
+    background-color: #FFFFFF;
+    opacity: 0.35;
+}
+
+.fontsize{
+   color: #414141;
+   font-size: 11px;
+}
