@@ -56,7 +56,7 @@ function MyBooking() {
             </div>
           </div>
         </div>
-
+        <section className="col-lg-4 mx-auto">
           {data?.map((item, index) => (
             <div className={style.card} key={index}>
               <div className="mx-3 mt-3">
