@@ -12,31 +12,9 @@ function MyBooking() {
   const { auth } = useSelector((state) => state);
   const [id, setId] = React.useState([]);
   const [listUsers, setListUsers] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState([]);
+  // const [isLoading, setIsLoading] = React.useState([]);
+  const [isloading, setLoading] = React.useState(false);
 
-
-  React.useEffect(() => {
-    const decodeUser = decode(auth?.token);
-    console.log(decodeUser.id)
-    setId(decodeUser.id)
-    // setName(decodeUser?.name);
-    // setCountry(decodeUser?.country);
-    // setProfile(decodeUser?.profilePicture);
-    // setCity(decodeUser?.city);
-  });
-
-  console.log(id)
-
-
-  React.useEffect((id) => {
-    axios.get(`http://localhost:8500/profile/${id}`).then((res) => {
-      setListUsers(res?.data ?? []);
-      console.log(res)
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 10000);
-    });
-  }, []);
 
   return (
     <>
@@ -48,9 +26,9 @@ function MyBooking() {
             </div>
             <div className="col text-end">
               <BsEnvelope className="mx-2" />
-              <Link href="/notification">
+              <a href="/notification">
                 <BsBell className="" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
