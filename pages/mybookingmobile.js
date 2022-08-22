@@ -10,7 +10,7 @@ import axios from "axios";
 
 function MyBooking() {
   const { auth } = useSelector((state) => state);
-  const [recipe, setRecipe] = React.useState("");
+  const [data, setData] = React.useState([]);
   // const [id, setId] = React.useState("");
   const [isloading, setLoading] = React.useState(false);
 
@@ -19,19 +19,19 @@ function MyBooking() {
   }, []);
 
   React.useEffect(() => {
-    const decodeUser = decode(auth?.token);
-    // setId(decodeUser?.id);
-    const id = decodeUser.id
-  });
 
+  });
 
   const handleData = (req, res) => {
     setLoading(true);
+    const decodeUser = decode(auth?.token);
+    const id = decodeUser.id
     setTimeout(() => {
-      axios.get(`http://localhost:8500/${id}/booking`)
+      axios
+        .get(`http://localhost:8500/profile/${id}/booking`)
         .then((response) => {
-          console.log(response)
-          setRecipe(response.data);
+          console.log(response);
+          setData(response.data);
         })
         .catch((err) => console.log(err))
         .finally(() => {
@@ -57,14 +57,14 @@ function MyBooking() {
           </div>
         </div>
         <section className="col-lg-4 mx-auto">
-          {[...new Array(2)].map((item, index) => (
+          {data?.map((item, index) => (
             <div className={style.card} key={index}>
               <div className="mx-3 mt-3">
                 <div className="row"></div>
-                <p className="mt-3">Monday, 20 July ‘20 - 12:33</p>
+                <p className="mt-3">{item?.departureTime} {" "} - {item?.arrivalTime}</p>
                 <div className="">
                   <div className="d-flex ">
-                    <h3 className="p-0 ">IDN</h3>
+                    <h3 className="p-0 ">{item?.flightOriginal}</h3>
                     <p className="p-2 mx-3">
                       <Image
                         src="/assets/img/flightlogo.svg"
@@ -73,10 +73,10 @@ function MyBooking() {
                         height="20"
                       />
                     </p>
-                    <h3 className="p-0 ">JPN</h3>
+                    <h3 className="p-0 "> {item?.flightDestination}</h3>
                   </div>
                 </div>
-                <p style={{ marginTop: "-15px" }}>Garuda Indonesia, AB-221</p>
+                <p style={{ marginTop: "-15px" }}>{item?.airlineName}, AB-221</p>
                 <hr className=" " />
                 <div className="d-flex justify-content-between">
                   <p>status</p>
@@ -84,7 +84,7 @@ function MyBooking() {
                     className="bg-warning p-2"
                     style={{ borderRadius: "10px" }}
                   >
-                    Waiting for payment
+                    {item?.bookingStatus}
                   </p>
                 </div>
               </div>
