@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import Axios from "axios";
 
-
 const EditProfile = () => {
   const { auth } = useSelector((state) => state);
   const [isloading, setIsloading] = React.useState(false);
@@ -18,24 +17,26 @@ const EditProfile = () => {
   const [postCode, setPostCode] = React.useState("");
 
   React.useEffect(() => {
-    const decodeUser = decode(auth?.token)
+    const decodeUser = decode(auth?.token);
     setId(decodeUser.id);
-  })
-
+  });
+  console.log(id);
+  
   const handleUpdate = () => {
     setIsloading(true);
+    console.log(`ini ${id}`);
     setTimeout(() => {
       Axios.patch(`http://localhost:8500/profile/${id}`, {
         email: email,
         // password: password,
         name: name,
-        phoneNumber:phoneNumber,
-        address:address,
-        city:city,
-        postCode:postCode,
+        phoneNumber: phoneNumber,
+        address: address,
+        city: city,
+        postCode: postCode,
       })
         .catch((err) => {
-          const message = err.response.message
+          const message = err.response.message;
         })
         .finally(() => {
           setIsloading(false);
@@ -51,9 +52,12 @@ const EditProfile = () => {
             <div className="col w-100">
               <div className="row row-cols-2">
                 {/* <Link href="/editprofile"> */}
-                  <a href="/editprofile" className="col-sm-8 fw-semibold back-button">
-                    <IoChevronBack />
-                  </a>
+                <a
+                  href="/editprofile"
+                  className="col-sm-8 fw-semibold back-button"
+                >
+                  <IoChevronBack />
+                </a>
                 {/* </Link> */}
               </div>
             </div>
