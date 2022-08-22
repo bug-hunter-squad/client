@@ -1,6 +1,4 @@
 import style from "../../styles/SearchResult.module.css";
-import Image from "next/image";
-import { ArrowLeftRight } from "react-bootstrap-icons";
 
 function FlagBlue() {
   return (

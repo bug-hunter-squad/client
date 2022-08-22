@@ -1,9 +1,8 @@
-import style from "../styles/SearchResult.module.css";
+import style from "../styles/SearchResultmobile.module.css";
 import styleDetail from "../styles/FlightDetail.module.css";
 import Image from "next/image";
 import { Form } from "react-bootstrap";
 import NavDesktop from "../components/molecules/NavDesktop";
-import { FiChevronDown } from "react-icons/fi";
 import { AiFillWarning } from "react-icons/ai";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import FlagBlue from "../components/molecules/FlagBlue";
