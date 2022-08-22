@@ -1,37 +1,14 @@
-import style from "../styles/SearchResultmobile.module.css";
-import styleDetail from "../styles/FlightDetail.module.css";
+import style from "../styles/SearchResult.module.css";
 import Image from "next/image";
 import { Form } from "react-bootstrap";
 import NavDesktop from "../components/molecules/NavDesktop";
-import { AiFillWarning } from "react-icons/ai";
-import { AiOutlineCheckCircle } from "react-icons/ai";
-import FlagBlue from "../components/molecules/FlagBlue";
+import { AiFillWarning, AiFillStar, AiOutlineWifi } from "react-icons/ai";
+import { FaHamburger, FaRestroom } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import PhoneInput from "react-phone-number-input";
 import Footer from "../components/molecules/footer";
 import axios from "axios";
 
-function SearchResult() {
-  const [phone, setPhone] = useState();
-  const [country, setCountry] = useState([]);
-
-  useEffect(() => {
-    getCountry();
-  }, []);
-
-  const getCountry = () => {
-    axios
-      .get("https://restcountries.com/v3.1/all")
-      .then((res) => {
-        setCountry(res?.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        // setIsLoading(false);
-      });
-  };
 
 function FlightDetail() {
   return (
@@ -212,24 +189,7 @@ function FlightDetail() {
                 </div>
               </div>
             </div>
-            <div
-              style={{
-                display: "flex",
-                overflowX: "auto",
-              }}
-            >
-            {[{fac:"luggage",fac:"wifi",fac:"snack"}].map((item, index) => (
-            <div className="d-flex card text-bg-primary mx-3 mb-3 col-8" key={index}>
-              <div className="card-body">
-                <h5 className="card-title">{item?.fac}</h5>
-                <div className="card-text d-flex justify-content-between">
-                  <p>X Card</p>
-                  <p>$ 1,440.2</p>
-                </div>
-              </div>
-            </div>
-          ))}
-          </div>
+
             <div className="card-text mx-4 mt-3 d-flex justify-content-between ">
               <p>Total you'll pay</p>
               <h5 className="text-primary">$ 145,00</h5>
