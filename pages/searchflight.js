@@ -161,8 +161,7 @@ function searchresult() {
   };
   return (
     <>
-      <Mobile>
-        <container>
+        <Container className="mobile">
           <div className="col-lg-4 mx-auto col-sm">
             <div className={style.container}>
               <div
@@ -418,8 +417,7 @@ function searchresult() {
               </div>
             </form>
           </div>
-        </container>
-      </Mobile>
+        </Container>
     </>
   );
 }
