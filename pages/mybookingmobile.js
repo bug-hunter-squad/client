@@ -10,11 +10,35 @@ import axios from "axios";
 
 function MyBooking() {
   const { auth } = useSelector((state) => state);
-  const [id, setId] = React.useState([]);
-  const [listUsers, setListUsers] = React.useState([]);
-  // const [isLoading, setIsLoading] = React.useState([]);
+  const [recipe, setRecipe] = React.useState("");
+  // const [id, setId] = React.useState("");
   const [isloading, setLoading] = React.useState(false);
 
+  React.useEffect(() => {
+    handleData();
+  }, []);
+
+  React.useEffect(() => {
+    const decodeUser = decode(auth?.token);
+    // setId(decodeUser?.id);
+    const id = decodeUser.id
+  });
+
+
+  const handleData = (req, res) => {
+    setLoading(true);
+    setTimeout(() => {
+      axios.get(`http://localhost:8500/${id}/booking`)
+        .then((response) => {
+          console.log(response)
+          setRecipe(response.data);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 4000);
+  };
 
   return (
     <>
