@@ -11,7 +11,7 @@ export default function NewContactModal({ closeModal }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    createContact(
+    createData(
       idRef.current.value,
       nameRef.current.value,
       priceRef.current.value
