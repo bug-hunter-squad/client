@@ -1,5 +1,5 @@
 import style from "../styles/SearchResult.module.css";
-import styleDetail from "../styles/FlightDetail.module.css";
+import styleDetail from "../styles/FlightDetailmobile.module.css";
 import Image from "next/image";
 import { Form } from "react-bootstrap";
 import NavDesktop from "../components/molecules/NavDesktop";
