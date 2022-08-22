@@ -1,11 +1,37 @@
-import Logo from "../components/atom/searchResultLogo";
-import style from "../styles/SearchResult.module.css";
+import style from "../styles/SearchResultmobile.module.css";
+import styleDetail from "../styles/FlightDetail.module.css";
 import Image from "next/image";
-import { ArrowLeftRight } from "react-bootstrap-icons";
-import { ArrowDownUp } from "react-bootstrap-icons";
-import { AiFillStar } from "react-icons/ai";
-import { FaHamburger, FaRestroom } from "react-icons/fa";
-import { AiOutlineWifi } from "react-icons/ai";
+import { Form } from "react-bootstrap";
+import NavDesktop from "../components/molecules/NavDesktop";
+import { AiFillWarning } from "react-icons/ai";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import FlagBlue from "../components/molecules/FlagBlue";
+import React, { useState, useEffect } from "react";
+import PhoneInput from "react-phone-number-input";
+import Footer from "../components/molecules/footer";
+import axios from "axios";
+
+function SearchResult() {
+  const [phone, setPhone] = useState();
+  const [country, setCountry] = useState([]);
+
+  useEffect(() => {
+    getCountry();
+  }, []);
+
+  const getCountry = () => {
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then((res) => {
+        setCountry(res?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        // setIsLoading(false);
+      });
+  };
 
 function FlightDetail() {
   return (

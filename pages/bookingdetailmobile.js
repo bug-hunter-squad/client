@@ -3,10 +3,11 @@ import Image from "next/image";
 import { ArrowsFullscreen } from "react-bootstrap-icons";
 import { ChevronLeft } from "react-bootstrap-icons";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import { Container } from "react-bootstrap";
 function bookingdetail() {
   return (
     <>
-      <container className="col-lg-4  mx-auto col-sm">
+      <Container className="col-lg-4  mx-auto col-sm">
         <div className={`${style.bookingdetail} col-lg-4 mx-auto`}>
           <div className="d-flex mx-3 mb-2 justify-content-between text-white">
             <div className="d-flex   mt-2">
@@ -86,7 +87,7 @@ function bookingdetail() {
             </div>
           </div>
         </div>
-      </container>
+      </Container>
     </>
   );
 }

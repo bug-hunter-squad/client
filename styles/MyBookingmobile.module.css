@@ -20,13 +20,13 @@
   object-fit: cover;
 }
 
-.card {
+.card{
   background-image: url(../public/assets/img/mybookingBackground.png);
-  background-color: rgb(35, 149, 255);
-  border: none;
-  box-shadow: 0px 5px 42px -8px rgba(35, 149, 255, 0.35);
-  -webkit-box-shadow: 0px 5px 42px -8px rgba(35, 149, 255, 0.35);
-  -moz-box-shadow: 0px 5px 42px -8px rgba(35, 149, 255, 0.35);
+  height: 235px;
+  background-repeat: no-repeat;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 .nameCard {

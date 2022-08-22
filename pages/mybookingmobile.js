@@ -1,7 +1,6 @@
 import React from "react";
 import FixedMenu from "../components/molecules/fixedmenu";
 import { BsEnvelope, BsBell } from "react-icons/bs";
-import Link from "next/link";
 import Image from "next/image";
 import style from "../styles/MyBookingmobile.module.css";
 import { useSelector } from "react-redux";
