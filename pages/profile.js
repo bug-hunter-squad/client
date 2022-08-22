@@ -25,12 +25,10 @@ function Profile() {
     setCountry(decodeUser?.country);
     setProfile(decodeUser?.profilePicture);
     setCity(decodeUser?.city);
-<<<<<<< HEAD
-  });
-=======
+
     console.log(decodeUser)
   })
->>>>>>> main
+
 
   const [modalOpen, setModalOpen] = useState(false);
   function closeModal() {
