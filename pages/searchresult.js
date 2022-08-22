@@ -4,8 +4,34 @@ import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import React from "react";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import axios from "axios";
 
 function searchresult() {
+  const { auth, query } = useSelector((state) => state);
+
+  const [flight, setFlight] = React.useState([]);
+  const [loadFlight, setLoadFlight] = React.useState(true);
+
+  React.useEffect(() => {
+    getFlight();
+  }, []);
+
+  const getFlight = () => {
+    axios
+      .get("/api/trendingDestination")
+      .then((res) => {
+        setFlight(res?.data?.flightInformation);
+        setLoadFlight(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <container>
@@ -26,13 +52,13 @@ function searchresult() {
                   </Link>
                 </div>
                 <div className="p-2 mx-3 justify-content-end mt-5">
-                  <p className={style.text}>Monday, 20 July 20</p>
+                  <p className={style.text}>{query?.date?.date}</p>
                 </div>
               </div>
               <div className="d-flex mx-4 justify-content-between text-white">
                 <div className="">
                   <p className="p-0">From</p>
-                  <h5 className="p-0">Medan</h5>
+                  <h5 className="p-0">{query?.from?.from}</h5>
                   <p className="p-0">Indonesia</p>
                 </div>
                 <div className="d-flex ">
@@ -42,7 +68,7 @@ function searchresult() {
                 </div>
                 <div className=" text-end">
                   <p className="p-0">To</p>
-                  <h5 className="p-0 ">Jakarta</h5>
+                  <h5 className="p-0 ">{query?.to?.to}</h5>
                   <p className="p-0  text-end">Indonesia</p>
                 </div>
               </div>
@@ -52,11 +78,13 @@ function searchresult() {
             <div className="COL-12 mx-4 d-flex ">
               <div className="col-8">
                 <p className="mt-4">Passanger</p>
-                <h5 className="p-0">2 Child 4 Adults</h5>
+                <h5 className="p-0">
+                  {query?.child?.child} Child {query?.adult?.adult} Adults
+                </h5>
               </div>
               <div className="col-4 text-start">
                 <p className="mt-4">Class</p>
-                <h5 className="p-0 ">Economy</h5>
+                <h5 className="p-0 ">{query?.facilty?.facility}</h5>
               </div>
             </div>
           </div>
