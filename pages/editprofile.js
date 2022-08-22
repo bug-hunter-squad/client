@@ -53,7 +53,7 @@ const EditProfile = () => {
               <div className="row row-cols-2">
                 {/* <Link href="/editprofile"> */}
                 <a
-                  href="/editprofile"
+                  href="/profile"
                   className="col-sm-8 fw-semibold back-button"
                 >
                   <IoChevronBack />

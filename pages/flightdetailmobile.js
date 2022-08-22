@@ -1,12 +1,9 @@
 import style from "../styles/SearchResult.module.css";
 import Image from "next/image";
-import { Form } from "react-bootstrap";
-import NavDesktop from "../components/molecules/NavDesktop";
-import { AiFillWarning, AiFillStar, AiOutlineWifi } from "react-icons/ai";
+import { IoChevronBack } from "react-icons/io5";
+import { AiFillStar, AiOutlineWifi } from "react-icons/ai";
 import { FaHamburger, FaRestroom } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
-import PhoneInput from "react-phone-number-input";
-import Footer from "../components/molecules/footer";
 import axios from "axios";
 
 
@@ -19,12 +16,12 @@ function FlightDetail() {
             <section>
               <div className="d-flex  justify-content-between">
                 <div className="p-2 mx-3 mt-5">
-                  <Image
-                    src="/assets/img/btnback.svg"
-                    alt="Logo"
-                    height={18}
-                    width={18}
-                  />
+                <a
+                  href="/"
+                  className="col-sm-8 fw-semibold back-button"
+                >
+                  <IoChevronBack />
+                </a>
                 </div>
                 <div className="p-2 mx-3 justify-content-end mt-5">
                   <p className={style.text}>Monday, 20 July 20</p>
