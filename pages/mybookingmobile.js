@@ -41,6 +41,8 @@ function MyBooking() {
   };
 
   return (
+    <>
+
       <div className="container">
         <div className="col-lg-4 mx-auto">
           <div className="row px-1">
@@ -55,7 +57,7 @@ function MyBooking() {
             </div>
           </div>
         </div>
-        <section className="col-lg-4 mx-auto">
+
           {data?.map((item, index) => (
             <div className={style.card} key={index}>
               <div className="mx-3 mt-3">
@@ -88,8 +90,8 @@ function MyBooking() {
               </div>
             </div>
             ))}
-        </section>
         </div>
+    
   );
 }
 
