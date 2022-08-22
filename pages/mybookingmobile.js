@@ -37,12 +37,11 @@ function MyBooking() {
         .finally(() => {
           setLoading(false);
         });
-    }, 4000);
+    }, 1000);
   };
 
   return (
     <>
-
       <div className="container">
         <div className="col-lg-4 mx-auto">
           <div className="row px-1">
@@ -87,11 +86,14 @@ function MyBooking() {
                   >
                     {item?.bookingStatus}
                   </p>
+                </div>
               </div>
             </div>
-            ))}
-        </div>
-    
+          ))}
+        </section>
+        <FixedMenu />
+      </div>
+    </>
   );
 }
 
