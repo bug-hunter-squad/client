@@ -18,6 +18,7 @@ import Link from "next/link";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { Container} from "react-bootstrap";
 
 function searchresult() {
   const dispatch = useDispatch();
@@ -285,7 +286,7 @@ function searchresult() {
                     <div className="col">
                       <p className="mt-3 .fs6 title-box">Departure ?</p>
                       <input
-                        type="date"
+                        type="datetime-local"
                         name="date"
                         value={date}
                         min={disablePastDate()}

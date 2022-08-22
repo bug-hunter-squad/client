@@ -166,7 +166,7 @@ const Flight = (req, res) => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>departure_time</Form.Label>
               <Form.Control
-                type="date"
+                type="datetime-local"
                 placeholder="2022-08-24T10:00+7"
                 autoFocus
                 value={depature}
@@ -176,7 +176,7 @@ const Flight = (req, res) => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>arrival_time</Form.Label>
               <Form.Control
-                type="date"
+                type="datetime-local"
                 placeholder="2022-08-24T10:00+7"
                 autoFocus
                 value={arival}

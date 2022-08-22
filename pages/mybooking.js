@@ -9,7 +9,6 @@ import { FaPlus, FaSignOutAlt } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 import styleMyBook from "../styles/MyBooking.module.css";
 import React, { useState, useEffect } from "react";
-import PhoneInput from "react-phone-number-input";
 import Footer from "../components/molecules/footer";
 import axios from "axios";
 import Link from "next/link";

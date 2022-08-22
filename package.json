@@ -32,10 +32,25 @@
     "socket.io": "^4.5.1",
     "socket.io-client": "^4.5.1",
     "styled-components": "^5.3.5",
-    "sweetalert2": "^11.4.28"
+    "sweetalert2": "^11.4.28",
+    "swr": "^1.3.0",
+    "form-data": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5"
-  }
+  },
+  "description": "Untuk bug hunter squad client \r ### Jangan lupa\r `git fetch/pull` sebelum push <br/>\r ### Rules `commit`\r >Gunakan kata `ADD` kalau menambah fitur atau buat progress baru <br/>\r >Gunakan kata `FIX` ketika push suatu fixing error  <br/>\r >Gunakan kata tambahan `minor` ketika commit sedikt perubahan contoh:`FIX minor error auth` <br/>\r >Dan alternatif `gunakan bahasa yang mudah di pahami rekan tim`",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bug-hunter-squad/client.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bug-hunter-squad/client/issues"
+  },
+  "homepage": "https://github.com/bug-hunter-squad/client#readme"
 }

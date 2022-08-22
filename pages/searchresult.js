@@ -1,4 +1,4 @@
-import Logo from "../components/atom/searchResultLogo";
+
 import style from "../styles/SearchResult.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
@@ -6,35 +6,55 @@ import { ArrowDownUp } from "react-bootstrap-icons";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import React from "react";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import axios from "axios";
+import Axios from "axios";
+import useSWR from "swr";
+import { Container } from "react-bootstrap";
 
 function searchresult() {
   const { auth, query } = useSelector((state) => state);
 
   const [flight, setFlight] = React.useState([]);
   const [loadFlight, setLoadFlight] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
+  const [original, setOriginal] = React.useState("");
+  const [destination, setDestination] = React.useState("");
+  const [depatureDate, setDapatureDate] = React.useState("");
+  const [depatureTime, setDepatureTime] = React.useState("");
+  const [arivalTime, setArivalTime] = React.useState("");
+  const [childPassenger, setChildPassanger] = React.useState("");
+  const [adultPassanger, setadultPassanger] = React.useState("");
+  const [wifi, setWifi] = React.useState("");
+  const [meal, setMeal] = React.useState("");
+  const [luggage, setLuggage] = React.useState("");
+  const [minPrice, setMinPrice] = React.useState("");
+  const [maxPrice, setMaxPrice] = React.useState("");
+  const [airlines, setAirlines] = React.useState("");
+  const [flightClass, setFlightClass] = React.useState("");
 
-  React.useEffect(() => {
-    getFlight();
-  }, []);
-
-  const getFlight = () => {
-    axios
-      .get("/api/trendingDestination")
-      .then((res) => {
-        setFlight(res?.data?.flightInformation);
-        setLoadFlight(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const fetcher = async () => {
+    const response = await Axios.get(
+      `http://localhost:8500/flight?original=${original}&destination=${destination}&departureDate=${depatureDate}&departureTime=${depatureTime}&arrivalTime=${arivalTime}&childPassenger=${childPassenger}&adultPassenger=${adultPassanger}&wifi=${wifi}&meal=${meal}&luggage=${luggage}&minPrice=${minPrice}&maxPrice=${maxPrice}&airlines=${airlines}&flightClass=${flightClass}&}`
+    );
+    return response.data.flightInformation;
   };
+
+  const { data } = useSWR("Search", fetcher);
+  console.log(data)
+  if (!data)
+    return (
+      <div
+        className="spinner-border text-primary position-absolute top-50 start-50"
+        role="status"
+      >
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    );
+
 
   return (
     <>
-      <container>
+      <Container>
         <div className="col-lg-4 mx-auto col-sm">
           <div className={style.container}>
             <section>
@@ -52,13 +72,13 @@ function searchresult() {
                   </Link>
                 </div>
                 <div className="p-2 mx-3 justify-content-end mt-5">
-                  <p className={style.text}>{query?.date?.date}</p>
+                  <p className={style.text}>{"16 day"}</p>
                 </div>
               </div>
               <div className="d-flex mx-4 justify-content-between text-white">
                 <div className="">
                   <p className="p-0">From</p>
-                  <h5 className="p-0">{query?.from?.from}</h5>
+                  <h5 className="p-0">{"bandung"}</h5>
                   <p className="p-0">Indonesia</p>
                 </div>
                 <div className="d-flex ">
@@ -68,7 +88,7 @@ function searchresult() {
                 </div>
                 <div className=" text-end">
                   <p className="p-0">To</p>
-                  <h5 className="p-0 ">{query?.to?.to}</h5>
+                  <h5 className="p-0 ">{"Balikpapan"}</h5>
                   <p className="p-0  text-end">Indonesia</p>
                 </div>
               </div>
@@ -79,12 +99,12 @@ function searchresult() {
               <div className="col-8">
                 <p className="mt-4">Passanger</p>
                 <h5 className="p-0">
-                  {query?.child?.child} Child {query?.adult?.adult} Adults
+                  {""} Child {"1"} Adults
                 </h5>
               </div>
               <div className="col-4 text-start">
                 <p className="mt-4">Class</p>
-                <h5 className="p-0 ">{query?.facilty?.facility}</h5>
+                <h5 className="p-0 ">Economy</h5>
               </div>
             </div>
           </div>
@@ -100,7 +120,7 @@ function searchresult() {
             </div>
           </div>
           <div className={style.result}>
-            {[...new Array(4)].map((item, index) => (
+            {data?.map((item) => (
               <div
                 className="card col-11 mx-auto"
                 style={{
@@ -109,12 +129,12 @@ function searchresult() {
                   marginBottom: "10px",
                   cursor: "pointer",
                 }}
-                key={index}
+                key={item.flightId}
               >
                 <div className="row ">
                   <div className="col-3 d-flex justify-content-center align-items-center">
-                    <Image
-                      src="/assets/img/logomaskapai.png"
+                    <img
+                      src={item.airlineLogo? item.airlineLogo : "/assets/img/logomaskapai.png"}
                       width="70px"
                       height="70px"
                       alt="image"
@@ -125,8 +145,8 @@ function searchresult() {
                       <section>
                         <div className="d-flex mx-4 justify-content-between ">
                           <div className="">
-                            <h4 className="p-0">IDN</h4>
-                            <p className="p-0">12:33</p>
+                            <h4 className="p-0">{item.flightOriginal? item.flightOriginal : "IDN"}</h4>
+                            <p className="p-0">{item.flightDeparture? item.flightDeparture : "07:20"}</p>
                           </div>
                           <div className=" ">
                             <p className="p-2">
@@ -140,17 +160,17 @@ function searchresult() {
                             </p>
                           </div>
                           <div className=" text-end">
-                            <h4 className="p-0 ">JPN</h4>
-                            <p className="p-0  text-end">15:21</p>
+                            <h4 className="p-0 ">{item.flightDestination?  item.flightDestination : "IDN"}</h4>
+                            <p className="p-0  text-end">{item.flightArrival? item.flightArrival : "07:20"}</p>
                           </div>
                         </div>
                         <div className="d-flex mx-4 justify-content-between ">
                           <div className="">
-                            <p className={style.fontsixe}>3 hours 11 minutes</p>
+                            <p className={style.fontsixe}>{item.flightTime? item.flightTime : "2 hours"}</p>
                           </div>
                           <div className=" text-end">
                             <h6 className="p-0  text-end text-primary">
-                              $ 221
+                              {item.flightPrice? "Rp." + item.flightPrice : "Rp. 20000"}
                             </h6>
                           </div>
                         </div>
@@ -162,7 +182,7 @@ function searchresult() {
             ))}
           </div>
         </div>
-      </container>
+      </Container>
     </>
   );
 }

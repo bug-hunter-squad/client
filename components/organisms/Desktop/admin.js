@@ -64,9 +64,7 @@ const admin = () => {
       </div>
     );
 
- 
-   const dataAirline = useSWR("http://localhost:8500/airlines",);
-   console.log("dataAirline: " + dataAirline);
+
 
   const handleClose = async () => {
     await Axios.post("http://localhost:8500/flight", {
@@ -251,7 +249,7 @@ const admin = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>departure_time</Form.Label>
               <Form.Control
-                type="date"
+                type="datetime-local"
                 placeholder="2022-08-24T10:00+7"
                 autoFocus
                 value={depature}
@@ -261,7 +259,7 @@ const admin = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>arrival_time</Form.Label>
               <Form.Control
-                type="date"
+                type="datetime-local"
                 placeholder="2022-08-24T10:00+7"
                 autoFocus
                 value={arival}
@@ -440,12 +438,7 @@ const admin = () => {
             </Accordion>
           </div>{" "}
           <div className="col-sm-9 col-right">
-            {" "}
-            {/* <img
-              className="d-block w-100 h-50 mt-5"
-              src="/bg"
-              alt="First slide"
-            /> */}
+          
             <div className={display ? "d-block" : "d-none"}>
               <h3 className="text-center position-relative">
                 Flight Information

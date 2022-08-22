@@ -327,7 +327,7 @@ font-size: 14px;
   height: 100vh !important;
   width: 75vw !important;
   position: relative;
-  overflow-y: hidden;
+  overflow:scroll;
   padding: 2%;
   background-image: url('/public/bg.png') !important;
 }
