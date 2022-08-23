@@ -10,6 +10,7 @@ import { Container } from "react-bootstrap";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import {decode} from "jsonwebtoken"
+import Swal from "sweetalert2";
 
 const Detail = (req, res) => {
   const router = useRouter();
@@ -103,7 +104,13 @@ const Detail = (req, res) => {
     totalPrice: 2000000
    })
    .then((res) => {
-    router.push(res.data)
+    Swal.fire({
+      title: "Booking Successful",
+      width: 389,
+      text: `Cek Your booking in mybooking`,
+      icon: "success",})
+      
+    router.push("/mybookingmobile")
    })
    .catch((err) => {
     console.log(err)

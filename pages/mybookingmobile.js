@@ -78,8 +78,8 @@ function MyBooking() {
                   >
                     {item?.bookingStatus}
                   </p>
-                  <Link href={item.paymentUrl}>
-                  <a>
+                  <Link href={item.paymentUrl} className="text-decoration-none">
+                  <a className="text-decoration-none" >
                       <p
                     className="bg-success p-2"
                     style={{ borderRadius: "10px", color: "white" }}

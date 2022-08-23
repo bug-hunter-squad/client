@@ -353,3 +353,34 @@ font-size: 14px;
 .offcanvas.offcanvas-end{
   width: 50 vw !important;
 }
+
+.col-image{
+  height: 120px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.col-origin{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.text-small{
+  font-size: 8px;
+  color: #C4C4C4;
+}
+.text-footer{
+  font-size: 10px;
+  color: #C4C4C4;
+  font-weight: 500;
+  margin-top: -2vh;
+}
+.text-inti{
+  font-size: 21px;
+    font-weight: 700;
+    color: #000000;
+
+}
+.icones{
+  margin-top: -4vh;
+}

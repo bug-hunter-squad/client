@@ -11,6 +11,7 @@ import useSWR from "swr";
 import { Container } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Form, Button } from "react-bootstrap";
+import { MdFlight} from "react-icons/md"
 
 function searchresult() {
   const { auth, query } = useSelector((state) => state);
@@ -34,7 +35,6 @@ function searchresult() {
     valueDepature = query.date.date;
   }
 
-
   let valueChild;
   if (query === null) {
     return (valueChild = "");
@@ -56,14 +56,13 @@ function searchresult() {
     valueFacilty = query.facilty.facilty;
   }
 
-
-      if (valueFacilty === "Luggage")
+  if (valueFacilty === "Luggage")
     return setLuggage(true), setMeal(false), setWifi(false);
   if (valueFacilty === "In-flight meal")
     return setLuggage(true), setMeal(true), setWifi(false);
-  if (valueFacilty  === "Wifi")
+  if (valueFacilty === "Wifi")
     return setLuggage(false), setMeal(false), setWifi(true);
-  
+
   let ValueTrip;
   if (query === null) {
     return (ValueTrip = "");
@@ -71,19 +70,24 @@ function searchresult() {
     ValueTrip = query.way.way;
   }
 
- 
-
-  React.useEffect(() => {
-  }, []);
+  React.useEffect(() => {}, []);
 
   const [original, setOriginal] = React.useState(value ? value : "");
   const [destination, setDestination] = React.useState(valueTo ? valueTo : "");
-  const [depatureDate, setDapatureDate] = React.useState(valueDepature ? valueDepature : "");
+  const [depatureDate, setDapatureDate] = React.useState(
+    valueDepature ? valueDepature : ""
+  );
   const [depatureTime, setDepatureTime] = React.useState("");
   const [arivalTime, setArivalTime] = React.useState("");
-  const [childPassenger, setChildPassanger] = React.useState(valueChild? valueChild : "");
-  const [adultPassenger, setadultPassanger] = React.useState(valueAdult ? valueAdult : "");
-  const [getFacility, setFacility] = React.useState(valueFacilty ? valueFacilty : "");
+  const [childPassenger, setChildPassanger] = React.useState(
+    valueChild ? valueChild : ""
+  );
+  const [adultPassenger, setadultPassanger] = React.useState(
+    valueAdult ? valueAdult : ""
+  );
+  const [getFacility, setFacility] = React.useState(
+    valueFacilty ? valueFacilty : ""
+  );
   const [minPrice, setMinPrice] = React.useState("");
   const [maxPrice, setMaxPrice] = React.useState("");
   const [airlines, setAirlines] = React.useState("");
@@ -94,9 +98,6 @@ function searchresult() {
   const [luggage, setLuggage] = React.useState(false);
   const [trip, setTrip] = React.useState(ValueTrip ? ValueTrip : "");
   const [current, setCurrentDate] = React.useState();
-
-
- 
 
   const fetcher = async () => {
     const response = await Axios.get(
@@ -146,9 +147,7 @@ function searchresult() {
                   </a>
                 </Link>
                 <div className="p-2 mx-3 justify-content-end mt-5">
-                  <p className={style.text}>
-                    monday
-                  </p>
+                  <p className={style.text}>monday</p>
                 </div>
               </div>
               <div className="d-flex mx-4 justify-content-between text-white">
@@ -182,7 +181,9 @@ function searchresult() {
               </div>
               <div className="col-4 text-start">
                 <p className="mt-4">Class</p>
-                <h5 className="p-0 ">{getFacility ? getFacility : "Nothing"}</h5>
+                <h5 className="p-0 ">
+                  {getFacility ? getFacility : "Nothing"}
+                </h5>
               </div>
             </div>
           </div>
@@ -292,24 +293,14 @@ function searchresult() {
             {/* asasdas */}
           </div>
           <div className={style.result}>
-            {flight?.map((item) => (
-              <div
-                className="card col-11 mx-auto"
-                style={{
-                  borderRadius: "15px",
-                  padding: "10px",
-                  marginBottom: "10px",
-                  cursor: "pointer",
-                }}
-                key={item.flightId}
-              >
-                <div className="row ">
-                  <Link href={`/detail/${item.flightId}`}>
-                    <a>
-
-
-              
-                    <div className="col-3 d-flex justify-content-center align-items-center">
+          {flight?.map((item) => (
+            <div className="container border rounded p-2 mb-2"  key={item.flightId}>
+              <div class="container  text-center rounded">
+              <Link href={`/detail/${item.flightId}`} className="text-decoration-none">
+                    <a className="text-decoration-none">
+                <div class="row row-cols-3 ">
+                  <div class="col col-image">
+                    <div>
                       <img
                         src={
                           item.airlineLogo
@@ -321,68 +312,36 @@ function searchresult() {
                         alt="image"
                       />
                     </div>
-                    <div className="col-9">
-                      <div>
-                        <section>
-                          <div className="d-flex mx-4 justify-content-between ">
-                            <div className="">
-                              <h4 className="p-0">
-                                {item.flightOriginal
+                  </div>
+                  <div class="col col-origin">
+                    <div>
+                      <smaall className="text-small">{item.flightTime ? item.flightTime : "2 hours"}</smaall>
+                      <h3 className="text-inti"> {item.flightOriginal
                                   ? item.flightOriginal
-                                  : "IDN"}
-                              </h4>
-                              <p className="p-0">
-                                {item.flightDeparture
+                                  : "IDN"}</h3> <MdFlight className="icones"/>
+                      <p className="text-footer"> {item.flightDeparture
                                   ? item.flightDeparture
-                                  : "07:20"}
-                              </p>
-                            </div>
-                            <div className=" ">
-                              <p className="p-2">
-                                <Image
-                                  src="/assets/img/flightlogo.svg"
-                                  alt="Logo"
-                                  width="25"
-                                  height="25"
-                                  style={{ marginLeft: "-15px" }}
-                                />
-                              </p>
-                            </div>
-                            <div className=" text-end">
-                              <h4 className="p-0 ">
-                                {item.flightDestination
-                                  ? item.flightDestination
-                                  : "IDN"}
-                              </h4>
-                              <p className="p-0  text-end">
-                                {item.flightArrival
-                                  ? item.flightArrival
-                                  : "07:20"}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="d-flex mx-4 justify-content-between ">
-                            <div className="">
-                              <p className={style.fontsixe}>
-                                {item.flightTime ? item.flightTime : "2 hours"}
-                              </p>
-                            </div>
-                            <div className=" text-end">
-                              <h6 className="p-0  text-end text-primary">
-                                {item.flightPrice
-                                  ? "Rp." + item.flightPrice
-                                  : "Rp. 20000"}
-                              </h6>
-                            </div>
-                          </div>
-                        </section>
-                      </div>
+                                  : "07:20"}</p>
                     </div>
-                    </a>
+                  </div>
+                 
+                  <div class="col">
+                  <div>
+                      <smaall className="text-small">{item.flightTime ? item.flightTime : "2 hours"}</smaall>
+                      <h3 className="text-inti">{item.flightDestination}</h3>
+                      <MdFlight className="icones"/>
+                      <p className="text-footer">{item.flightPrice
+                                  ? "Rp." + item.flightPrice
+                                  : "Rp. 20000"}</p>
+                    </div>
+                  </div>
+                </div></a>
                   </Link>
-                </div>
               </div>
+              
+            </div>
             ))}
+   
           </div>
         </div>
       </Container>
