@@ -163,7 +163,7 @@ function searchresult() {
   return (
     <>
         <Container className="mobile">
-          <div className="col-lg-4 mx-auto col-sm">
+          <div className=" mx-auto col-sm">
             <div className={style.container}>
               <div
                 className={style.card}
@@ -355,7 +355,7 @@ function searchresult() {
                       <p className="mt-3 .fs6 title-box">
                         Which class do you want?
                       </p>
-                      <div className="d-flex mx-4 mb-3 col-10 justify-content-between ">
+                      <div className="d-flex bg-warning mb-3 col-12 justify-content-between">
                         <div className="form-check">
                           <input
                             className="form-check-input"
