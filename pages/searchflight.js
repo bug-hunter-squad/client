@@ -355,7 +355,7 @@ function searchresult() {
                       <p className="mt-3 .fs6 title-box">
                         Which class do you want?
                       </p>
-                      <div className="d-flex bg-warning mb-3 col-12 justify-content-between">
+                      <div className="d-flex mb-3 col-12 justify-content-between">
                         <div className="form-check">
                           <input
                             className="form-check-input"
