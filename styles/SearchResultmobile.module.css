@@ -86,3 +86,10 @@
   color: #595959;
   padding-right: 15px;
 }
+
+.searchimage{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

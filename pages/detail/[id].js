@@ -9,7 +9,7 @@ import { FaHamburger, FaRestroom } from "react-icons/fa";
 import { Container } from "react-bootstrap";
 import Axios from "axios";
 import { useSelector } from "react-redux";
-import {decode} from "jsonwebtoken"
+import { decode } from "jsonwebtoken";
 import Swal from "sweetalert2";
 
 const Detail = (req, res) => {
@@ -19,12 +19,12 @@ const Detail = (req, res) => {
   } = router;
 
   const { auth, query } = useSelector((state) => state);
- 
-  React.useEffect(() =>{
+
+  React.useEffect(() => {
     const decodeUser = decode(auth?.token);
     setUser(decodeUser?.id);
-  },[auth])
- 
+  }, [auth]);
+
   let value;
   if (query === null) {
     return (value = "");
@@ -53,11 +53,8 @@ const Detail = (req, res) => {
     valueAdult = query.adult.adult;
   }
 
-
-  const  valueFacilty = query.facilty.facility;
+  const valueFacilty = query.facilty.facility;
   const valueClass = valueFacilty.toString();
-
-  
 
   const [date, setDate] = React.useState();
   const [original, setOriginal] = React.useState(value ? value : "");
@@ -77,10 +74,11 @@ const Detail = (req, res) => {
   const [luggage, setLuggage] = React.useState(false);
   const [userId, setUser] = React.useState();
   const [Prices, setPrices] = React.useState();
- 
 
   const fetcher = async () => {
-    const response = await Axios.get(`https://bug-hunter-squad.herokuapp.com/flight/${id}`);
+    const response = await Axios.get(
+      `https://bug-hunter-squad.herokuapp.com/flight/${id}`
+    );
     return response?.data?.DetailFlightInformation;
   };
   const { data } = useSWR("getIdflight", fetcher);
@@ -95,31 +93,33 @@ const Detail = (req, res) => {
     );
 
   const result = data;
+  console.log(result);
 
-  const handleBooking = async (req, res) =>{
-   await Axios.post(`https://bug-hunter-squad.herokuapp.com/flight/${id}/booking/profile/${userId}`,{
-    totalChildPassenger : childPassenger,
-    totalAdultPassenger: adultPassenger,
-    flightClass: getFacility,
-    totalPrice: 2000000
-   })
-   .then((res) => {
-    Swal.fire({
-      title: "Booking Successful",
-      width: 389,
-      text: `Cek Your booking in mybooking`,
-      icon: "success",})
-      
-    router.push("/mybookingmobile")
-   })
-   .catch((err) => {
-    console.log(err)
-   })
-   .finally(() => {})
+  const handleBooking = async (req, res) => {
+    await Axios.post(
+      `https://bug-hunter-squad.herokuapp.com/flight/${id}/booking/profile/${userId}`,
+      {
+        totalChildPassenger: childPassenger,
+        totalAdultPassenger: adultPassenger,
+        flightClass: getFacility,
+        totalPrice: 2000000,
+      }
+    )
+      .then((res) => {
+        Swal.fire({
+          title: "Booking Successful",
+          width: 389,
+          text: `Cek Your booking in mybooking`,
+          icon: "success",
+        });
 
-  }
-
-
+        router.push("/mybookingmobile");
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {});
+  };
 
   //       let days = [
   //           "Sunday",
@@ -147,12 +147,12 @@ const Detail = (req, res) => {
                     href="/searchresultmobile"
                     className="col-sm-8 fw-semibold text-white"
                   >
-                    <IoChevronBack />
+                    <IoChevronBack className="fs-3" />
                   </a>
                 </div>
-                <div className="p-2 mx-3 justify-content-end mt-5">
+                {/* <div className="p-2 mx-3 justify-content-end mt-5">
                   <p className={style.text}>monday happy</p>
-                </div>
+                </div> */}
               </div>
             </section>
           </div>
@@ -176,15 +176,24 @@ const Detail = (req, res) => {
                           <div className="d-flex mx-4 mt-4 justify-content-between ">
                             <div className="">
                               <h3 className="p-0">{item.original}</h3>
-                              <p className="p-0">{item.departure_time}</p>
+                              <p className="p-0">
+                                {
+                                  item.departure_time
+                                    .split("T")[1]
+                                    .split(".")[0]
+                                }
+                              </p>
+                              <p className="p-0">
+                                {item.departure_time.split("T")[0]}
+                              </p>
                             </div>
                             <div className=" ">
-                              <p className="p-2">
+                              <p className="p-2 mt-2">
                                 <Image
                                   src="/assets/img/flightlogo.svg"
                                   alt="Logo"
-                                  width="25"
-                                  height="25"
+                                  width="40"
+                                  height="40"
                                   style={{ marginLeft: "-15px" }}
                                 />
                               </p>
@@ -192,7 +201,10 @@ const Detail = (req, res) => {
                             <div className=" text-end">
                               <h4 className="p-0 ">{item.destination}</h4>
                               <p className="p-0  text-end">
-                                {item.arrival_time}
+                                {item.arrival_time.split("T")[1].split(".")[0]}
+                              </p>
+                              <p className="p-0  text-end">
+                                {item.arrival_time.split("T")[0]}
                               </p>
                             </div>
                           </div>
@@ -282,8 +294,8 @@ const Detail = (req, res) => {
                   <div
                     className={
                       meal
-                        ? "d-flex card text-bg-primary ms-4 col-4 "
-                        : "d-flex card text-bg-primary ms-4 col-4 d-none"
+                        ? "d-flex card text-bg-success ms-4 col-4 "
+                        : "d-flex card text-bg-success ms-4 col-4 d-none"
                     }
                     style={{ borderRadius: "10px" }}
                   >
@@ -314,13 +326,13 @@ const Detail = (req, res) => {
                   <div
                     className={
                       luggage
-                        ? "d-flex card text-bg-primary  col-4 "
-                        : "d-flex card text-bg-primary  col-4 d-none"
+                        ? "d-flex card text-bg-warning  col-4 "
+                        : "d-flex card text-bg-warning  col-4 d-none"
                     }
                     style={{ borderRadius: "10px" }}
                   >
                     <div className="card-body">
-                      <div className="card-text d-flex mt-2 justify-content-around ">
+                      <div className="card-text d-flex text-bg-danger mt-2 justify-content-around ">
                         <div className="d-flex">
                           <FaRestroom />
                         </div>
@@ -331,7 +343,9 @@ const Detail = (req, res) => {
                 </div>
                 <div className="card-text mx-4 mt-3 d-flex justify-content-between ">
                   <p>Total you'll pay</p>
-                  <h5 className="text-primary">Rp{(item.price * 1.25 ) * (childPassenger + adultPassenger)}</h5>
+                  <h5 className="text-primary">
+                    Rp{item.price * 1.25 * (childPassenger + adultPassenger)}
+                  </h5>
                 </div>
                 <div className="mx-4 mb-3">
                   <button

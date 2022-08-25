@@ -1,8 +1,9 @@
 import style from "../styles/SearchResultmobile.module.css";
-import Image from "next/image";
+import { ChevronLeft } from "react-bootstrap-icons";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
 import Link from "next/link";
+import Image from "next/image";
 import { useSelector } from "react-redux";
 import React from "react";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -11,7 +12,7 @@ import useSWR from "swr";
 import { Container } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Form, Button } from "react-bootstrap";
-import { MdFlight} from "react-icons/md"
+import { MdFlight } from "react-icons/md";
 
 function searchresult() {
   const { auth, query } = useSelector((state) => state);
@@ -117,6 +118,7 @@ function searchresult() {
       </div>
     );
   const flight = data.flightInformation;
+  console.log(flight)
   const total = data.flightTotal;
 
   const handleSubmit = (e) => {
@@ -135,18 +137,9 @@ function searchresult() {
             <section>
               <div className="d-flex  justify-content-between">
                 <Link href="/searchflight">
-                  <a>
-                    <div className="p-2 mx-3 mt-5">
-                      <Image
-                        src="/assets/img/btnback.svg"
-                        alt="Logo"
-                        height={18}
-                        width={18}
-                      />
-                    </div>{" "}
-                  </a>
+                  <ChevronLeft className="mx-4 mt-5 text-white" />
                 </Link>
-                <div className="p-2 mx-3 justify-content-end mt-5">
+                <div className=" mx-3 justify-content-end mt-5">
                   <p className={style.text}>monday</p>
                 </div>
               </div>
@@ -175,19 +168,28 @@ function searchresult() {
             <div className="COL-12 mx-4 d-flex ">
               <div className="col-8">
                 <p className="mt-4">Passanger</p>
-                <h5 className="p-0">
-                  {childPassenger ? childPassenger : "0"} Child
-                </h5>
               </div>
               <div className="col-4 text-start">
                 <p className="mt-4">Class</p>
-                <h5 className="p-0 ">
+              </div>
+            </div>
+            <div className="COL-12 mx-4 d-flex " style={{ marginTop: "-10px" }}>
+              <div className="col-8  d-flex">
+                <h6 className="p-0 d-flex">
+                  {childPassenger ? childPassenger : "0"} Child
+                </h6>
+                <h6 className="p-0  mx-2">
+                  {adultPassenger ? adultPassenger : "0"} Adult
+                </h6>
+              </div>
+              <div className="col-4 text-start">
+                <h6 className="p-0 ">
                   {getFacility ? getFacility : "Nothing"}
-                </h5>
+                </h6>
               </div>
             </div>
           </div>
-          <div className="d-flex mx-4 mt-3 justify-content-between ">
+          <div className="d-flex mx-4 mt-2 justify-content-between ">
             <div className="">
               <p className="p-0">{total} Total search</p>
             </div>
@@ -293,55 +295,131 @@ function searchresult() {
             {/* asasdas */}
           </div>
           <div className={style.result}>
-          {flight?.map((item) => (
-            <div className="container border rounded p-2 mb-2"  key={item.flightId}>
-              <div class="container  text-center rounded">
-              <Link href={`/detail/${item.flightId}`} className="text-decoration-none">
-                    <a className="text-decoration-none">
-                <div class="row row-cols-3 ">
-                  <div class="col col-image">
-                    <div>
-                      <img
-                        src={
-                          item.airlineLogo
-                            ? item.airlineLogo
-                            : "/assets/img/logomaskapai.png"
-                        }
-                        width="70px"
-                        height="70px"
-                        alt="image"
-                      />
-                    </div>
-                  </div>
-                  <div class="col col-origin">
-                    <div>
-                      <smaall className="text-small">{item.flightTime ? item.flightTime : "2 hours"}</smaall>
-                      <h3 className="text-inti"> {item.flightOriginal
-                                  ? item.flightOriginal
-                                  : "IDN"}</h3> <MdFlight className="icones"/>
-                      <p className="text-footer"> {item.flightDeparture
-                                  ? item.flightDeparture
-                                  : "07:20"}</p>
-                    </div>
-                  </div>
-                 
-                  <div class="col">
-                  <div>
-                      <smaall className="text-small">{item.flightTime ? item.flightTime : "2 hours"}</smaall>
-                      <h3 className="text-inti">{item.flightDestination}</h3>
-                      <MdFlight className="icones"/>
-                      <p className="text-footer">{item.flightPrice
-                                  ? "Rp." + item.flightPrice
-                                  : "Rp. 20000"}</p>
-                    </div>
-                  </div>
-                </div></a>
-                  </Link>
-              </div>
+            {flight?.map((item) => (
               
-            </div>
+              <div
+                className="container border rounded p-2 mb-2"
+                key={item.flightId}
+              >
+                <div className="container  text-center rounded">
+                  <Link
+                    href={`/detail/${item.flightId}`}
+                    className="text-decoration-none"
+                  >
+                    <a className="text-decoration-none">
+                      <div className="row ">
+                        <div className={`${style.searchimage} col-3 col-image`}>
+                          <div className={style.searchimage}>
+                            <img
+                              src={
+                                item.airlineLogo
+                                  ? item.airlineLogo
+                                  : "/assets/img/logomaskapai.png"
+                              }
+                              width="70px"
+                              height="50px"
+                              alt="image"
+                              style={{
+                                // objectFit: "cover",
+                                backgroundSize: "cover",
+                              }}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-9 ">
+                          <div className="row ">
+                            <div className="col-5">
+                              <div className="text-start">
+                                <h5 className="p-0">
+                                  {item.flightOriginal
+                                    ? item.flightOriginal
+                                    : "IDN"}
+                                </h5>
+                                <p className="p-0">{item.flightDeparture.split(" ")[1]}</p>
+                              </div>
+                            </div>
+                            <div className="col-2">
+                              <div className="row d-flex justify-content-center">
+                                <Image
+                                  className="mt-2"
+                                  src="/assets/img/flightlogo.svg"
+                                  alt="Logo"
+                                  width="25"
+                                  height="40px"
+                                  style={{}}
+                                />
+                              </div>
+                            </div>
+                            <div className="col-5 ">
+                              <div className="row ">
+                                <div className=" text-end ">
+                                  <h5 className="p-0 ">
+                                    {" "}
+                                    {item.flightDestination}
+                                  </h5>
+                                  <p className="p-0  text-end">{item.flightArrival.split(" ")[1]}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                            <div className="row " style={{ marginTop: "-10px" }}>
+                              <div
+                                className="col-12 d-flex justify-content-between "
+                                
+                              >
+                                <p className={style.fontsize}>
+                                  {item.flightTime
+                                    ? item.flightTime
+                                    : "2 hours"}
+                                </p>
+
+                                <p className=" text-end text-primary">
+                                  {item.flightPrice
+                                    ? "Rp." + item.flightPrice
+                                    : "Rp. 0"}
+                                </p>
+                              </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="col col-origin">
+                          <div>
+                            <smaall className="text-small">
+                              {item.flightTime ? item.flightTime : "2 hours"}
+                            </smaall>
+                            <h3 className="text-inti">
+                              {" "}
+                              {item.flightOriginal
+                                ? item.flightOriginal
+                                : "IDN"}
+                            </h3>{" "}
+                            <MdFlight className="icones" />
+                            <p className="text-footer">
+                              {" "}
+                              {item.flightDeparture
+                                ? item.flightDeparture
+                                : "07:20"}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="col">
+                          <div>
+                            <smaall className="text-small">
+                              {item.flightTime ? item.flightTime : "hours"}
+                            </smaall>
+                            <h3 className="text-inti">
+                              {item.flightDestination}
+                            </h3>
+                            <MdFlight className="icones" />
+                          </div>
+                        </div> */}
+                      </div>
+                    </a>
+                  </Link>
+                </div>
+              </div>
             ))}
-   
           </div>
         </div>
       </Container>
