@@ -327,7 +327,7 @@ function searchresult() {
                         <div className="col p-2">
                           <Dropdown>
                             <Dropdown.Toggle id="dropdown-basics">
-                              <MdOutlineEmojiPeople /> {count} Adult
+                              <MdOutlineEmojiPeople className="fs-3" /> {count} Adult
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
