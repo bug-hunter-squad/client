@@ -94,20 +94,12 @@
   justify-content: center;
 }
 
-.result{
-  background: #FFFFFF;
-  border: 1px solid #C4C4C4;
-  border-radius: 7.5px;
-  margin-bottom: 10px;
-}
-
 .font{
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 22px;
   color: #6B6B6B;
-  margin-top: -5px;
 }
 
 .fontprice{
@@ -117,4 +109,8 @@
   line-height: 22px;
   text-align: right;
   color: #2395FF;
+}
+
+.margin{
+  margin-top: -15px;
 }

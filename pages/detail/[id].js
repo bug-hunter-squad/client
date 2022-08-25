@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import style from "../../styles/SearchResult.module.css";
+import style from "../../styles/SearchFlightmobile.module.css";
 import Image from "next/image";
 import { IoChevronBack } from "react-icons/io5";
 import { AiFillStar, AiOutlineWifi } from "react-icons/ai";
@@ -160,13 +160,14 @@ const Detail = (req, res) => {
             <>
               <div className={style.result} key={item.flight_id}>
                 <div
-                  className="card col-11 mx-auto"
+                  className=" card col-11 mx-auto"
                   style={{
                     borderRadius: "15px",
                     padding: "10px",
                     marginBottom: "10px",
                     cursor: "pointer",
                     marginTop: "-120px",
+                    boxShadow:"0px 8px 27px rgba(14, 63, 108, 0.19"
                   }}
                 >
                   <div className="row ">
@@ -176,14 +177,14 @@ const Detail = (req, res) => {
                           <div className="d-flex mx-4 mt-4 justify-content-between ">
                             <div className="">
                               <h3 className="p-0">{item.original}</h3>
-                              <p className="p-0">
+                              <p className={`${style.font}`} >
                                 {
                                   item.departure_time
                                     .split("T")[1]
                                     .split(".")[0]
                                 }
                               </p>
-                              <p className="p-0">
+                              <p className={`${style.font} ${style.margin}`} >
                                 {item.departure_time.split("T")[0]}
                               </p>
                             </div>
@@ -192,18 +193,18 @@ const Detail = (req, res) => {
                                 <Image
                                   src="/assets/img/flightlogo.svg"
                                   alt="Logo"
-                                  width="40"
-                                  height="40"
+                                  width="30"
+                                  height="30"
                                   style={{ marginLeft: "-15px" }}
                                 />
                               </p>
                             </div>
                             <div className=" text-end">
                               <h4 className="p-0 ">{item.destination}</h4>
-                              <p className="p-0  text-end">
+                              <p className={`${style.font}`} >
                                 {item.arrival_time.split("T")[1].split(".")[0]}
                               </p>
-                              <p className="p-0  text-end">
+                              <p className={`${style.font} ${style.margin}`} >
                                 {item.arrival_time.split("T")[0]}
                               </p>
                             </div>
@@ -229,19 +230,19 @@ const Detail = (req, res) => {
                             </div>
                           </div>
                           <div className="d-flex mx-4  mt-3 justify-content-between ">
-                            <div className="">
+                            <div className={`${style.font}`}>
                               <p>Code</p>
                               <h6>{item.flight_id}</h6>
                             </div>
-                            <div className="">
+                            <div className={`${style.font}`}>
                               <p>Class</p>
                               <h6>{getFacility}</h6>
                             </div>
-                            <div className="">
+                            <div className={`${style.font}`}>
                               <p>Terminal</p>
                               <h6>{item.terminal}</h6>
                             </div>
-                            <div className="">
+                            <div className={`${style.font}`}>
                               <p>Gate</p>
                               <h6>{item.gate}</h6>
                             </div>
@@ -343,7 +344,7 @@ const Detail = (req, res) => {
                 </div>
                 <div className="card-text mx-4 mt-3 d-flex justify-content-between ">
                   <p>Total you'll pay</p>
-                  <h5 className="text-primary">
+                  <h5 className={style.fontprice}>
                     Rp{item.price * 1.25 * (childPassenger + adultPassenger)}
                   </h5>
                 </div>

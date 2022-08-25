@@ -22,7 +22,7 @@
 
 .card{
     background-image: url(../public/assets/img/mybookingBackground.png);
-    height: 275px;
+    height: 245px;
     background-repeat: no-repeat;
     width: 100%;
     object-fit: cover;

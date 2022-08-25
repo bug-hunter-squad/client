@@ -118,7 +118,7 @@ function searchresult() {
       </div>
     );
   const flight = data.flightInformation;
-  console.log(flight)
+  console.log(flight);
   const total = data.flightTotal;
 
   const handleSubmit = (e) => {
@@ -294,14 +294,14 @@ function searchresult() {
 
             {/* asasdas */}
           </div>
-          <div className={style.result}>
+          <div>
             {flight?.map((item) => (
-              
               <div
-                className="container border rounded p-2 mb-2"
+                className={style.result}
+                // className="container border rounded p-2 mb-2"
                 key={item.flightId}
               >
-                <div className="container  text-center rounded">
+                <div className="container text-center rounded">
                   <Link
                     href={`/detail/${item.flightId}`}
                     className="text-decoration-none"
@@ -327,7 +327,7 @@ function searchresult() {
                           </div>
                         </div>
                         <div className="col-9 ">
-                          <div className="row ">
+                          <div className="row mt-3">
                             <div className="col-5">
                               <div className="text-start">
                                 <h5 className="p-0">
@@ -335,13 +335,15 @@ function searchresult() {
                                     ? item.flightOriginal
                                     : "IDN"}
                                 </h5>
-                                <p className="p-0">{item.flightDeparture.split(" ")[1]}</p>
+                                <p className={style.font}>
+                                  {item.flightDeparture.split(" ")[1]}
+                                </p>
                               </div>
                             </div>
                             <div className="col-2">
                               <div className="row d-flex justify-content-center">
                                 <Image
-                                  className="mt-2"
+                                  className=""
                                   src="/assets/img/flightlogo.svg"
                                   alt="Logo"
                                   width="25"
@@ -351,35 +353,35 @@ function searchresult() {
                               </div>
                             </div>
                             <div className="col-5 ">
-                              <div className="row ">
-                                <div className=" text-end ">
-                                  <h5 className="p-0 ">
-                                    {" "}
-                                    {item.flightDestination}
-                                  </h5>
-                                  <p className="p-0  text-end">{item.flightArrival.split(" ")[1]}</p>
-                                </div>
+                              <div
+                                className=" text-end"
+                                style={{
+                                  overflowX: "auto",
+                                }}
+                              >
+                                <h5 className="p-0 ">
+                                  {" "}
+                                  {item.flightDestination}
+                                </h5>
+                                <p className={style.font}>
+                                  {item.flightArrival.split(" ")[1]}
+                                </p>
                               </div>
                             </div>
                           </div>
-                            <div className="row " style={{ marginTop: "-10px" }}>
-                              <div
-                                className="col-12 d-flex justify-content-between "
-                                
-                              >
-                                <p className={style.fontsize}>
-                                  {item.flightTime
-                                    ? item.flightTime
-                                    : "2 hours"}
-                                </p>
+                          <div className="row " style={{ marginTop: "-10px" }}>
+                            <div className="col-12 d-flex justify-content-between ">
+                              <p className={style.fontsize}>
+                                {item.flightTime ? item.flightTime : "2 hours"}
+                              </p>
 
-                                <p className=" text-end text-primary">
-                                  {item.flightPrice
-                                    ? "Rp." + item.flightPrice
-                                    : "Rp. 0"}
-                                </p>
-                              </div>
+                              <p className={style.fontprice}>
+                                {item.flightPrice
+                                  ? "Rp." + item.flightPrice
+                                  : "Rp. 0"}
+                              </p>
                             </div>
+                          </div>
                         </div>
 
                         {/* <div className="col col-origin">
