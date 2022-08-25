@@ -66,7 +66,7 @@ function MyBooking() {
                     <h6 className="p-0 "> {item?.flightDestination}</h6>
                   </div>
                 </div>
-                <p style={{ marginTop: "-10px", fontSize:"12px" }}>{item?.airlineName}, AB-221</p>
+                <p style={{ marginTop: "-10px", fontSize:"12px" }}>{item?.airlineName}, {item?.gate}-{item?.terminal}</p>
                 <hr className=" " />
                 <div className="d-flex justify-content-between">
                   <p>status</p>
@@ -76,7 +76,7 @@ function MyBooking() {
                   >
                     {item?.bookingStatus}
                   </p>
-                  <Link href={item.paymentUrl} className="text-decoration-none">
+                  {/* <Link href={item.paymentUrl} className="text-decoration-none">
                     <a className="text-decoration-none">
                       <p
                         className="bg-success p-2"
@@ -85,7 +85,7 @@ function MyBooking() {
                         Ready to payment
                       </p>
                     </a>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
