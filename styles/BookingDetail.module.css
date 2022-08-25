@@ -19,3 +19,13 @@
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
+
+.card{
+    background-image: url(../public/assets/img/mybookingBackground.png);
+    height: 235px;
+    background-color: #2395FF;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
