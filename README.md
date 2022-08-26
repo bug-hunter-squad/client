@@ -42,27 +42,35 @@
 <blockquote>
   Here is a working live demo:https://client-bug-hunter.vercel.app
 </blockquote>
-
 <br/>
 <h3 name="getting">Getting Started</h3>
 <p>Npm : 
-  <blockquote>
+   <blockquote>
     <code>
   npm install npm@latest -g
   </code>
-</blockquote>
+ </blockquote>
+ </p>
+<p> Settup <code>.env</code>:
+  example <blockquote>NEXT_PUBLIC_ENDPOINT=example</blockquote>
+  </p>
+  
 <h4 name="Prerequisites">Prerequisites</h4>
 <p>Run project server https://github.com/bug-hunter-squad/backend.git</p>
 <h4 name="Installation">Installation</h4>
-<p> git clone https://github.com/bug-hunter-squad/client.git</p>
+   1. git clone https://github.com/bug-hunter-squad/client.git <br/>
+   2. settup <code>.env</code> example <br/>
+   3. If you want to run the server on your favorite local port, you can follow the backend service installation guide <br/>
+ <blocquote><code><a href="https://github.com/bug-hunter-squad/backend.git">👉 https://github.com/bug-hunter-squad/backend</a></code></blockquote></p>
 <h3 name="Screenshot">Screenshot</h3>
 <li>Login</li>
+<br/>
 <img src="https://user-images.githubusercontent.com/45787278/186809956-8671422a-7e5a-408c-a0be-126ef9e42200.png" alt="lasagna" align="center">
 <li>Register</li>
+<br/>
 <img src="https://user-images.githubusercontent.com/45787278/186810171-3bbdcb8c-10b1-43f5-9e0a-8608a32b4f39.png" alt="lasagna" align="center">
 <h3 name="Contributing">Contributing</h3>
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
 
   1. Fork the Project
@@ -71,10 +79,11 @@ If you have a suggestion that would make this better, please fork the repo and c
   4. Push to the Branch git push origin feature/Angkasa-feature
   5. Open a Pull Request
 <h3 name="Related">Related Project</h3>
- <a href="https://github.com/bug-hunter-squad/backend.git">🚀 Backend ankasa ticketing </a>
- <a href="https://github.com/bug-hunter-squad/backend.git">🚀 Client ankasa ticketing </a>
- <a href="https://bug-hunter-squad.herokuapp.com">🚀 Domain server ankasa ticketing </a>
- <a href="https://client-bug-hunter.vercel.app">🚀 Demo ankasa ticketing</a>
+ <a href="https://github.com/bug-hunter-squad/backend.git">🚀 Backend ankasa ticketing </a><br/>
+ <a href="https://github.com/bug-hunter-squad/backend.git">🚀 Client ankasa ticketing </a><br/>
+  <a href="https://client-bug-hunter.vercel.app/dashboard">🚀 Dashboard admin </a><br/>
+ <a href="https://bug-hunter-squad.herokuapp.com">🚀 Domain server ankasa ticketing </a><br/>
+ <a href="https://client-bug-hunter.vercel.app">🚀 Demo ankasa ticketing</a><br/>
 <h3 name="Team">Our Team</h3>
 <br/>
 <table>
@@ -86,12 +95,15 @@ If you have a suggestion that would make this better, please fork the repo and c
     <th>Backend</th>
   </tr>
   <tr>
-    <td>https://github.com/nanangNSL</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
+    <td><a href="https://github.com/nanangNSL"><img src="https://avatars.githubusercontent.com/u/45787278?v=4" alt="lasagna" align="center">nanangNSL</a></td>
+    <td><a href="https://github.com/Ikhsanazis"><img src="https://avatars.githubusercontent.com/u/106055423?v=4" alt="lasagna" align="center">Ikhsanazis</a></td>
+    <td><a href="https://github.com/taufik17"><img src="https://avatars.githubusercontent.com/u/26295152?v=4" alt="lasagna" align="center">taufik17</a></td>
+    <td><a href="https://github.com/mikhaelkevin"><img src="https://avatars.githubusercontent.com/u/102899084?v=4" alt="lasagna" align="center">mikhaelkevin</a></td>
+    <td><a href="https://github.com/apriyantodwiherlambang"><img src="https://avatars.githubusercontent.com/u/99805986?v=4" alt="lasagna" align="center" width="180px" height="180px">apriyantodwiherlambang</a></td>
   </tr>
 </table>
 <h3 name="License">License</h3>
+<code>📃 https://github.com/bug-hunter-squad/client/blob/main/LICENSE</code>
 
 
   
