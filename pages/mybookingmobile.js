@@ -45,8 +45,8 @@ function MyBooking() {
           <Nav />
         </div>
         <section className="col-lg-4 mx-auto">
-          {data?.map((item, index) => (
-            <div className={style.card} key={index}>
+          {data?.map((item) => (
+            <div className={style.card} key={item.bookingId}>
               <div className="mx-3 mt-3">
                 <div className="row"></div>
                 <p className="mt-3">
@@ -66,7 +66,9 @@ function MyBooking() {
                     <h6 className="p-0 "> {item?.flightDestination}</h6>
                   </div>
                 </div>
-                <p style={{ marginTop: "-10px", fontSize:"12px" }}>{item?.airlineName}, {item?.gate}-{item?.terminal}</p>
+                <p style={{ marginTop: "-10px", fontSize: "12px" }}>
+                  {item?.airlineName}, {item?.gate}-{item?.terminal}
+                </p>
                 <hr className=" " />
                 <div className="d-flex justify-content-between">
                   <p>status</p>
@@ -76,16 +78,48 @@ function MyBooking() {
                   >
                     {item?.bookingStatus}
                   </p>
-                  {/* <Link href={item.paymentUrl} className="text-decoration-none">
-                    <a className="text-decoration-none">
-                      <p
-                        className="bg-success p-2"
-                        style={{ borderRadius: "10px", color: "white" }}
-                      >
-                        Ready to payment
-                      </p>
-                    </a>
-                  </Link> */}
+                  <Link
+                      href={`/ticket/${item.bookingId}`}
+                      className="text-decoration-none"
+                    >
+                      <a className="text-decoration-none">
+                        <p
+                          className="bg-success p-2"
+                          style={{ borderRadius: "10px", color: "white" }}
+                        >
+                          E-Ticket, {item?.bookingId}
+                        </p>
+                      </a>
+                    </Link>
+                  {item?.bookingStatus === "waiting" ? (
+                    <Link
+                      href={`${item.paymentUrl} `}
+                      className="text-decoration-none"
+                    >
+                      <a className="text-decoration-none">
+                        <p
+                          className="bg-success p-2"
+                          style={{ borderRadius: "10px", color: "white" }}
+                        >
+                          Ready to payment
+                        </p>
+                      </a>
+                    </Link>
+                  ) : (
+                    <Link
+                      href={`/ticket/${item.bookingId}`}
+                      className="text-decoration-none"
+                    >
+                      <a className="text-decoration-none">
+                        <p
+                          className="bg-success p-2"
+                          style={{ borderRadius: "10px", color: "white" }}
+                        >
+                          E-Ticket
+                        </p>
+                      </a>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

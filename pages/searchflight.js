@@ -20,7 +20,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Container } from "react-bootstrap";
 
-function searchresult() {
+function SearchFlight() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { auth, search } = useSelector((state) => state);
@@ -185,11 +185,11 @@ function searchresult() {
                 <div className="d-flex mx-3 mb-5 justify-content-between text-white">
                   <div className="p-2 mt-2">
                     <Link href="/" className="cursor">
-                      <ChevronLeft />
+                      <ChevronLeft className="fs-3"/>
                     </Link>
                   </div>
                   <div className="p-2 justify-content-end mt-2">
-                    <ArrowsFullscreen />
+                    <ArrowsFullscreen className="fs-3"/>
                   </div>
                 </div>
               </div>
@@ -422,4 +422,4 @@ function searchresult() {
   );
 }
 
-export default searchresult;
+export default SearchFlight;

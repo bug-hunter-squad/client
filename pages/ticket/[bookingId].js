@@ -1,10 +1,19 @@
-import style from "../styles/BookingDetailmobile.module.css";
+import style from "../../styles/BookingDetailmobile.module.css";
 import Image from "next/image";
 import { ArrowsFullscreen } from "react-bootstrap-icons";
 import { ChevronLeft } from "react-bootstrap-icons";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { Container } from "react-bootstrap";
+import { useRouter } from "next/router";
+
+
 function bookingdetail() {
+  const router = useRouter();
+  const {
+    query: { bookingId },
+  } = router;
+
+  console.log(bookingId)
   return (
     <>
     <Container className={style.bookingdetail}>
@@ -27,7 +36,7 @@ function bookingdetail() {
                     className="d-flex justify-content-center"
                     src="/assets/img/logomaskapai.png"
                     width="70px"
-                    height="70px"
+                    height="60px"
                     alt="image"
                   />
                 </div>

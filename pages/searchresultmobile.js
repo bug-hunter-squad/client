@@ -137,7 +137,7 @@ function searchresult() {
             <section>
               <div className="d-flex  justify-content-between">
                 <Link href="/searchflight">
-                  <ChevronLeft className="mx-4 mt-5 text-white" />
+                  <ChevronLeft className="mx-4 mt-5 text-white fs-5" />
                 </Link>
                 <div className=" mx-3 justify-content-end mt-5">
                   <p className={style.text}>monday</p>
@@ -152,7 +152,7 @@ function searchresult() {
 
                 <div className="d-flex ">
                   <p className="p-0 d-flex align-items-center">
-                    <ArrowLeftRight />
+                    <ArrowLeftRight className=""/>
                   </p>{" "}
                 </div>
 
