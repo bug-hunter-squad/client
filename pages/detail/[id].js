@@ -71,7 +71,7 @@ const Detail = (req, res) => {
 
   const [wifi, setWifi] = React.useState(true);
   const [meal, setMeal] = React.useState(true);
-  const [luggage, setLuggage] = React.useState(false);
+  const [luggage, setLuggage] = React.useState(true);
   const [userId, setUser] = React.useState();
   const [Prices, setPrices] = React.useState();
 
@@ -94,6 +94,7 @@ const Detail = (req, res) => {
 
   const result = data;
   console.log(result);
+  console.log(luggage)
 
   const handleBooking = async (req, res) => {
     await Axios.post(
@@ -144,10 +145,10 @@ const Detail = (req, res) => {
               <div className="d-flex  justify-content-between">
                 <div className="p-2 mx-3 mt-5">
                   <a
-                    href="/searchresultmobile"
-                    className="col-sm-8 fw-semibold text-white"
+                    href={`/searchresultmobile`}
+                    className="text-decoration-none"
                   >
-                    <IoChevronBack className="fs-3" />
+                    <IoChevronBack className="fs-3 text-white" />
                   </a>
                 </div>
                 {/* <div className="p-2 mx-3 justify-content-end mt-5">
@@ -167,29 +168,29 @@ const Detail = (req, res) => {
                     marginBottom: "10px",
                     cursor: "pointer",
                     marginTop: "-120px",
-                    boxShadow:"0px 8px 27px rgba(14, 63, 108, 0.19"
+                    boxShadow: "0px 8px 27px rgba(14, 63, 108, 0.19",
                   }}
                 >
                   <div className="row ">
                     <div className="">
                       <div>
                         <section>
-                          <div className="d-flex mx-4 mt-4 justify-content-between ">
-                            <div className="">
-                              <h3 className="p-0">{item.original}</h3>
-                              <p className={`${style.font}`} >
+                          <div className="d-flex mx-4 mt-4  ">
+                            <div className="col-5 ">
+                              <h4 className="p-0">{item.original}</h4>
+                              <p className={`${style.font}`}>
                                 {
                                   item.departure_time
                                     .split("T")[1]
                                     .split(".")[0]
                                 }
                               </p>
-                              <p className={`${style.font} ${style.margin}`} >
+                              <p className={`${style.font} ${style.margin}`}>
                                 {item.departure_time.split("T")[0]}
                               </p>
                             </div>
-                            <div className=" ">
-                              <p className="p-2 mt-2">
+                            <div className="col-2 ">
+                              <p className="p-2 ">
                                 <Image
                                   src="/assets/img/flightlogo.svg"
                                   alt="Logo"
@@ -199,12 +200,12 @@ const Detail = (req, res) => {
                                 />
                               </p>
                             </div>
-                            <div className=" text-end">
+                            <div className="col-5 text-end">
                               <h4 className="p-0 ">{item.destination}</h4>
-                              <p className={`${style.font}`} >
+                              <p className={`${style.font}`}>
                                 {item.arrival_time.split("T")[1].split(".")[0]}
                               </p>
-                              <p className={`${style.font} ${style.margin}`} >
+                              <p className={`${style.font} ${style.margin}`}>
                                 {item.arrival_time.split("T")[0]}
                               </p>
                             </div>
@@ -333,11 +334,11 @@ const Detail = (req, res) => {
                     style={{ borderRadius: "10px" }}
                   >
                     <div className="card-body">
-                      <div className="card-text d-flex text-bg-danger mt-2 justify-content-around ">
+                      <div className="card-text d-flex mt-2 justify-content-around ">
                         <div className="d-flex">
                           <FaRestroom />
                         </div>
-                        <h6>Restroom</h6>
+                        <h6>Luggage</h6>
                       </div>
                     </div>
                   </div>

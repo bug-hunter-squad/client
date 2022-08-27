@@ -49,82 +49,89 @@ function MyBooking() {
             <div className={style.card} key={item.bookingId}>
               <div className="mx-3 mt-3">
                 <div className="row"></div>
-                <p className="mt-3">
-                  {item?.departureTime} - {item?.arrivalTime}
-                </p>
+                <div className="d-flex justify-content-between">
+                  <p className="mt-3">
+                    {item?.departureTime} - {item?.arrivalTime}
+                  </p>
+                  <Link
+                    href={`/ticket/${item.bookingId}`}
+                    className="text-decoration-none"
+                  >
+                    <a className="text-decoration-none">
+                      <p
+                        className="bg-primary p-1"
+                        style={{ borderRadius: "5px", color: "white" }}
+                      >
+                        See Detail
+                      </p>
+                    </a>
+                  </Link>
+                </div>
                 <div className="col-6">
-                  <div className="d-flex ">
-                    <h6 className="p-0 ">{item?.flightOriginal}</h6>
-                    <p className="p-2 mx-3">
+                  <div className="d-flex">
+                    <h6 className=" col-5">{item?.flightOriginal}</h6>
+                    <div className="col-2  d-flex justify-content-center">
                       <Image
+                        className=""
                         src="/assets/img/flightlogo.svg"
                         alt="Logo"
                         width="20"
                         height="20"
                       />
-                    </p>
-                    <h6 className="p-0 "> {item?.flightDestination}</h6>
+                    </div>
+                    <h6 className="col-5 text-end"> {item?.flightDestination}</h6>
                   </div>
                 </div>
-                <p style={{ marginTop: "-10px", fontSize: "12px" }}>
+                <p style={{ marginTop: "-5px", fontSize: "12px" }}>
                   {item?.airlineName}, {item?.gate}-{item?.terminal}
                 </p>
                 <hr className=" " />
                 <div className="d-flex justify-content-between">
                   <p>status</p>
-                  <p
-                    className="bg-warning p-2"
-                    style={{ borderRadius: "10px" }}
-                  >
-                    {item?.bookingStatus}
-                  </p>
-                  <Link
-                      href={`/ticket/${item.bookingId}`}
-                      className="text-decoration-none"
+                  <div className="d-flex">
+                    <p
+                      className="bg-warning p-1 mx-2"
+                      style={{ borderRadius: "5px" }}
                     >
-                      <a className="text-decoration-none">
-                        <p
-                          className="bg-success p-2"
-                          style={{ borderRadius: "10px", color: "white" }}
-                        >
-                          E-Ticket, {item?.bookingId}
-                        </p>
-                      </a>
-                    </Link>
-                  {item?.bookingStatus === "waiting" ? (
-                    <Link
-                      href={`${item.paymentUrl} `}
-                      className="text-decoration-none"
-                    >
-                      <a className="text-decoration-none">
-                        <p
-                          className="bg-success p-2"
-                          style={{ borderRadius: "10px", color: "white" }}
-                        >
-                          Ready to payment
-                        </p>
-                      </a>
-                    </Link>
-                  ) : (
-                    <Link
-                      href={`/ticket/${item.bookingId}`}
-                      className="text-decoration-none"
-                    >
-                      <a className="text-decoration-none">
-                        <p
-                          className="bg-success p-2"
-                          style={{ borderRadius: "10px", color: "white" }}
-                        >
-                          E-Ticket
-                        </p>
-                      </a>
-                    </Link>
-                  )}
+                      {item?.bookingStatus}
+                    </p>
+
+                    {item?.bookingStatus === "waiting" ? (
+                      <Link
+                        href={`${item.paymentUrl} `}
+                        className="text-decoration-none"
+                      >
+                        <a className="text-decoration-none">
+                          <p
+                            className="bg-success p-1"
+                            style={{ borderRadius: "5px", color: "white" }}
+                          >
+                            Ready to payment
+                          </p>
+                        </a>
+                      </Link>
+                    ) : (
+                      <Link
+                        href={`/ticket/${item.bookingId}`}
+                        className="text-decoration-none"
+                      >
+                        <a className="text-decoration-none">
+                          <p
+                            className="bg-success p-2"
+                            style={{ borderRadius: "10px", color: "white" }}
+                          >
+                            E-Ticket
+                          </p>
+                        </a>
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </section>
+        <div className="mb-5"></div>
         <FixedMenu />
       </div>
     </>
