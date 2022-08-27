@@ -56,7 +56,7 @@ function Welcomes() {
               <button
                 type="button"
                 className="btn btn-light  p-3 col mt-2"
-                onclick={handleSignIn}
+                onClick={handleSignIn}
               >
                 Sign In
               </button>

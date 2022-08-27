@@ -49,15 +49,15 @@ const MainApp = ({ Component, pageProps }) => {
 
   React.useEffect(() => {
    
-    if (router.pathname === "/login" && auth.token) {
-      router.push("/");
-    }
-    if (router.pathname === "/register" && auth.token) {
-      router.push("/");
-    }
-    if (router.pathname === "/profile" && !auth.token) {
-      router.push("/login");
-    }
+    // if (router.pathname === "/login" && auth.token) {
+    //   router.push("/");
+    // }
+    // if (router.pathname === "/register" && auth.token) {
+    //   router.push("/");
+    // }
+    // if (router.pathname === "/profile" && !auth.token) {
+    //   router.push("/login");
+    // }
     
   });
 

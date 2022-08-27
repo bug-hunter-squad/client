@@ -1,30 +1,26 @@
-import React from "react";
-import { useRouter } from "next/router";
-import Form from "react-bootstrap/Form";
 import Axios from "axios";
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import { useSelector } from "react-redux";
+import { ADD_FLIGHT } from "../../../redux/admin";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 
-const Flight = (req, res) => {
-  React.useEffect(() => {
-    getddata(),
-    getCountry()
-  },[])
-  const getddata  = async (req, res) =>{
-    const response = await Axios.get("http://localhost:8500/airlines");
-    setReseult(response.data.data);
+const FormFLight = () => {
+  const dispatch = useDispatch();
+  const router= useRouter();
+  const { admin } = useSelector((state) => state);
+  let valueAdmin;
+  if (admin?.addFlight === null) {
+    return (valueAdmin = "");
+  } else {
+    valueAdmin = admin.addFlight;
   }
-  const getCountry = async (req, res) => {
-    await Axios.get("http://localhost:8500/country").then((res) => {
-      setDataCountry(res.data);
-    });
-  };
-  const router = useRouter();
-  const {
-    query: { flightId },
-  } = router;
-  const [countryData, setDataCountry] = React.useState([]);
-  const [airlinesData, setReseult] = React.useState([])
-  const [idAirLine, setIdAirLine] = React.useState("");
+
+  const [show, setShow] = React.useState(valueAdmin ? valueAdmin : false);
   const [original, setOriginal] = React.useState("");
   const [destination, setDestination] = React.useState("");
   const [gate, setGate] = React.useState("");
@@ -37,11 +33,12 @@ const Flight = (req, res) => {
   const [wifi, setWiFi] = React.useState("");
   const [meal, setmeal] = React.useState("");
   const [lugage, setLugage] = React.useState("");
-  const [isloading, setisloading] = React.useState(false);
+  const [idAirLine, setIdAirLine] = React.useState([]);
+  const [airlineData, setDataAirline] = React.useState([]);
+  const [countryData, setDataCountry] = React.useState([]);
 
-  const handleUpdate = async (req, res) => {
-    setisloading(true);
-    await Axios.patch(`https://bug-hunter-squad.herokuapp.com/flight/${flightId}`, {
+  const handleSave = async () => {
+    await Axios.post('http://localhost:8500/flight', {
       airline_id: idAirLine,
       originalId: original,
       destinationId: destination,
@@ -55,55 +52,78 @@ const Flight = (req, res) => {
       wifi: wifi,
       meal: meal,
       luggage: lugage,
-    })
-      .then((response) => {
-        const notif = response.data;
-        Swal.fire({
-          title: notif,
-          width: 389,
-          icon: "success",
-        });
-        router.push("/dashboard");
-      })
-      .catch((error) => {
-        const notif = error.response.data;
-        Swal.fire({
-          title: notif,
-          width: 389,
-          icon: "error",
-        });
-      })
-      .finally(() => {
-        setisloading(false);
+    }).then((response) => {
+      const notif = response.data;
+      Swal.fire({
+        title: notif,
+        width: 389,
+        icon: "success",
       });
+      router.push("/dashboard")
+    })
+    .catch((error) =>{
+      const notif = error.response.data;
+      Swal.fire({
+        title: notif,
+        width: 389,
+        icon: "error",
+      });
+    });
+  }
+  
+  const getAirLine = async (req, res) => {
+    await Axios.get("http://localhost:8500/airlines").then((res) => {
+      setDataAirline(res.data.data);
+    });
+  };
+  const getCountry = async (req, res) => {
+    await Axios.get("http://localhost:8500/country").then((res) => {
+      setDataCountry(res.data);
+    });
   };
 
-  const handleBack =  () =>{
-    router.push("/dashboard")
-  }
+  React.useEffect(() => {
+    getAirLine();
+    getCountry();
+  }, []);
 
+  const handleClose = () => {
+    dispatch({
+      type: ADD_FLIGHT,
+      payload: {
+        addFlight: false,
+      },
+    });
+  };
+  const handleCloses = () => {
+    setShow(false)
+  };
   return (
     <>
-      <div className="container">
-        <h3 className="text-center mt-2">Edit Flight</h3>
-        <div className="row mt-5 p-3 rounded shadow-lg">
-          <div className="col-sm-6 d-flex flex-columns justify-content-center align-items-center">
-            {" "}
-            <Form className="row row-cols-4  p-2">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="text-center">Input Flight</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>ID Airline</Form.Label>
               <Form.Select
                 aria-label="Default select example"
                 value={idAirLine}
                 onChange={(e) => setIdAirLine(e.target.value)}
-              >{airlinesData.map((item) =>(
-                <option key={item.id} value={item.id}>{item.airline_name}</option>
-              ))}
-               
+              >
+                {airlineData.map((item) => (
+                  
+                    <option key={item.id} value={item.id}>
+                      {item.airline_name}
+                    </option>
+                  
+                ))}
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Original</Form.Label>
+              <Form.Label>Original</Form.Label>
               <Form.Select
                 aria-label="Default select example"
                 value={original}
@@ -120,7 +140,7 @@ const Flight = (req, res) => {
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Destination</Form.Label>
+              <Form.Label>Destination</Form.Label>
               <Form.Select
                 aria-label="Default select example"
                 value={destination}
@@ -142,6 +162,7 @@ const Flight = (req, res) => {
                 aria-label="Default select example"
                 value={gate}
                 onChange={(e) => setGate(e.target.value)}
+         
               >
                 <option></option>
                 <option value="A">A</option>
@@ -157,6 +178,7 @@ const Flight = (req, res) => {
                 autoFocus
                 value={terminal}
                 onChange={(e) => setTerminal(e.target.value)}
+         
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -167,46 +189,53 @@ const Flight = (req, res) => {
                 autoFocus
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
+          
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Ticket Child</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="1++"
+                min={1}
                 autoFocus
                 value={childTicket}
                 onChange={(e) => setChildTicket(e.target.value)}
+              
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Ticket Adult</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="1++"
                 autoFocus
+                min={1}
                 value={adultTicket}
                 onChange={(e) => setAdultTicket(e.target.value)}
+            
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Depature Time</Form.Label>
+              <Form.Label>Depature</Form.Label>
               <Form.Control
                 type="datetime-local"
                 placeholder="2022-08-24T10:00+7"
                 autoFocus
                 value={depature}
                 onChange={(e) => setDepature(e.target.value)}
+          
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Arrival Time</Form.Label>
+              <Form.Label>Arival</Form.Label>
               <Form.Control
                 type="datetime-local"
                 placeholder="2022-08-24T10:00+7"
                 autoFocus
                 value={arival}
                 onChange={(e) => setArival(e.target.value)}
+             
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -215,6 +244,7 @@ const Flight = (req, res) => {
                 aria-label="Default select example"
                 value={wifi}
                 onChange={(e) => setWiFi(e.target.value)}
+              
               >
                 <option></option>
                 <option value="true">true</option>
@@ -227,6 +257,7 @@ const Flight = (req, res) => {
                 aria-label="Default select example"
                 value={meal}
                 onChange={(e) => setmeal(e.target.value)}
+              
               >
                 <option></option>
                 <option value="true">true</option>
@@ -239,42 +270,24 @@ const Flight = (req, res) => {
                 aria-label="Default select example"
                 value={lugage}
                 onChange={(e) => setLugage(e.target.value)}
+           
               >
                 <option></option>
                 <option value="true">true</option>
                 <option value="false">false</option>
               </Form.Select>
-         
             </Form.Group>
-              <div className=" d-flex m-2">
-                <button
-                  type="button"
-                  className="btn btn-success m-2"
-                  onClick={handleUpdate}
-                >
-                  {isloading ? "Loading..." : "Save"}
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-danger m-2"
-                  onClick={handleBack}
-                >
-                  Back
-                </button>
-              </div>
-            </Form>
-          </div>
-          <div className="col-sm-6 overflow-hidden p-2 clr-primer rounded-lg d-flex flex-columns justify-content-center align-items-center">
-            <img
-              className="d-block w-50 h-50 mt-5 rounded-lg "
-              src="/assets/img/bg-logo.svg"
-              alt="First slide"
-            />
-          </div>
-        </div>
-      </div>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloses}>Close</Button>
+          <Button type="submit" variant="primary" onClick={handleSave}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
 
-export default Flight;
+export default FormFLight;

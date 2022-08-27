@@ -330,8 +330,9 @@ font-size: 14px;
   display: flex;
   flex-direction: column;
   padding: 2%;
-  background-color: #0078AA;
+  background-color: #2395FF;
   position: relative;
+  max-width: 300px !important;
 }
 .col-right{
   height: 100vh !important;
@@ -359,6 +360,7 @@ font-size: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  object-fit: cover;
 }
 .col-origin{
   display: flex;
@@ -383,4 +385,46 @@ font-size: 14px;
 }
 .icones{
   margin-top: -4vh;
+}
+.status-active{
+  background-color: #FF7F3F;
+  border-radius: 15px;
+  text-align: center;
+  padding-bottom: 5%;
+  color: #FFFFFF;
+}
+.status-deactive{
+  background-color: #002B5B;
+  border-radius: 15px;
+  text-align: center;
+  padding-bottom: 5%;
+  color: #FFFFFF;
+}
+.wifi-true{
+  background-color: #E8AA42;
+  padding: 2%;
+  width: 5vw;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+.wifi-false{
+  background-color: #90C8AC;
+  padding: 2%;
+  width: 5vw;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+.meal-true{
+  background-color: #1F4690;
+  padding: 2%;
+  width: 5vw;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+.luggage-true{
+  background-color: #231955;
+  padding: 2%;
+  width: 5vw;
+  color: #FFFFFF;
+  border-radius: 10px;
 }

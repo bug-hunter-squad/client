@@ -286,7 +286,7 @@ function searchresult() {
                     <div className="col">
                       <p className="mt-3 .fs6 title-box">Departure ?</p>
                       <input
-                        type="datetime-local"
+                        type="date"
                         name="date"
                         value={date}
                         min={disablePastDate()}

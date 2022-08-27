@@ -12,6 +12,7 @@ import { Container } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Form, Button } from "react-bootstrap";
 import { MdFlight} from "react-icons/md"
+import Filter from "../components/molecules/filter";
 
 function searchresult() {
   const { auth, query } = useSelector((state) => state);
@@ -201,6 +202,7 @@ function searchresult() {
                 <ArrowDownUp />
               </div>
             </div>
+            
 
             <Offcanvas show={show} onHide={handleClose} placement="end">
               <Offcanvas.Header closeButton>
