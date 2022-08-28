@@ -28,7 +28,7 @@ const logins = () => {
   const handleLogin = () => {
     setIsloading(true);
     setTimeout(() => {
-      Axios.post("https://bug-hunter-squad.herokuapp.com/auth/login",{
+      Axios.post("http://localhost:8500/auth/login",{
         email: email,
         password: password
       })

@@ -2,7 +2,7 @@ import React from "react";
 import style from "../../styles/BookingDetailmobile.module.css";
 import Image from "next/image";
 import useSWR from "swr";
-import { ArrowsFullscreen } from "react-bootstrap-icons";
+import { ArrowsFullscreen, QrCode } from "react-bootstrap-icons";
 import { ChevronLeft } from "react-bootstrap-icons";
 import { IoChevronBack } from "react-icons/Io";
 import { BiDotsVerticalRounded } from "react-icons/bi";
@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import axios from "axios";
+import QRCoderReact from "qrcode.react"
 
 function bookingdetail() {
   const router = useRouter();
@@ -61,7 +62,7 @@ function bookingdetail() {
             <div className="d-flex mx-3 mb-2 justify-content-between text-white">
               <div className="d-flex   mt-2">
                 <a href="/mybookingmobile">
-                <ChevronLeft className="mt-1 fs-3 text-white" />
+                  <ChevronLeft className="mt-1 fs-3 text-white" />
                 </a>
                 <p className="mx-3 fs-4">Booking Pass</p>
               </div>
@@ -95,9 +96,7 @@ function bookingdetail() {
                         />
                       </div>
                       <div className="col-4 ">
-                        <h3 className="p-0 ">
-                          {item.flightDestination}
-                        </h3>
+                        <h3 className="p-0 ">{item.flightDestination}</h3>
                       </div>
                     </div>
 
@@ -127,20 +126,22 @@ function bookingdetail() {
                         <h6 className="p-0 ">{item.terminal}</h6>
                       </div>
                     </div>
-                    <div className="mx-5 mt-4">
-                      <p>Departure</p>
-                      <h6>{item.departureTime}</h6>
+
+                    <div className="mx-5 d-flex mt-4">
+                      <div className="col-6">
+                        <p>Departure</p>
+                        <h6>{item.departureTime}</h6>
+                      </div>
+                      <div className="col-6">
+                        <p>Total Passanger</p>
+                        <h6>{item.totalAdultPassenger} Adult, {item.totalChildPassenger} Child</h6>
+                      </div>
                     </div>
+                    {item.bookingStatus==="paid"?
                     <div className="mt-5 d-flex justify-content-center">
-                      <Image
-                        className=""
-                        src="/assets/img/barcode.png"
-                        width="280px"
-                        height="70px"
-                        alt="image"
-                      />
-                    </div>
-                    <p className="text-center">1234 5678 90AS 6543 21CV</p>
+                    <QRCoderReact className="d-flex justify-content-center" value={item.paymentId?"SUKSES":null} size={100}></QRCoderReact>
+                    </div>:null
+                    }
                   </section>
                 </div>
               ))}
