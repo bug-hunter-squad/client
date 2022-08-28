@@ -52,7 +52,7 @@ const AirlinesInfo = () => {
   return (
     <>
       <div className={display? "d-block" : "d-none"}>
-        <h2 className="text-center">Airlines Workspaces</h2>
+        <h5 className="text-center">Airlines Workspaces</h5>
         <button type="button" className="btn btn-warning btn-add"
         onClick={handleAddAirline}>
           ADD

@@ -38,7 +38,7 @@ function Chat() {
                       placeholder="Where you want to go?"
                       required
                     />
-                    <FiSearch className={styleHome.icon} />{" "}
+                    <FiSearch className={styleHome.icon} />
                   </form>
                 </div>
               </div>

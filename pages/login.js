@@ -2,6 +2,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import Logins from "../components/organisms/Mobile/login";
 import LoginDekstop from "../components/organisms/Desktop/login"
+import Head from "next/head"
 
 const login = () => {
   const Mobile = ({ children }) => {
@@ -15,6 +16,9 @@ const login = () => {
 
   return (
     <>
+    <Head>
+      <title>Login</title>
+    </Head>
       <div>
         <Mobile>
           <Logins />

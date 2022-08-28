@@ -1,14 +1,18 @@
 import React from "react";
-import { MdOutlineFlight } from "react-icons/md";
+import { MdOutlineFlight, MdSignalWifiStatusbarNull } from "react-icons/md";
 import { SiEthiopianairlines } from "react-icons/si";
 import { TbView360 } from "react-icons/tb";
-import { AiOutlineEdit } from "react-icons/ai";
 import Accordion from "react-bootstrap/Accordion";
 import { useDispatch } from "react-redux";
 import * as Type from "../../redux/admin/type";
+import {SET_AUTH} from "../../redux/auth/type";
+import { useRouter} from "next/router"
+import Swal from "sweetalert2";
 
 
 const dashboardLeft = () => {
+const router = useRouter();
+
   const dispatch = useDispatch();
 
   const handleFlight =(e) =>{
@@ -76,20 +80,34 @@ const dashboardLeft = () => {
 
   }
 
+  const handleLogout =()=>{
+    dispatch({
+      type: SET_AUTH,
+      payload: {
+        token: null,
+      },
+    });
+    Swal.fire({
+      title: 'Logout berhasil',
+      width: 389,
+      icon: "success",
+    });
+    router.push("/")
+  }
 
   return (
     <>
-      <nav className="navbar bg-light rounded">
+      <nav className="navbar  rounded">
         <div className="container-fluid overflow-hidden">
           <a className="navbar-brand d-flex navbar-expand" href="/dashboard">
             <img
-              src="https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/124_Fantasy_Flight_Games-256.png"
+              src="/logos.png"
               alt=""
               width="40"
               height="40"
               className="d-inline-block align-text-top"
             />
-            <p className="d-inline ms-2text-center .fs2 fw-bold p-1">
+            <p className="d-inline ms-4 bar-brand text-center  fw-bold p-1">
               DASBOARD
             </p>
           </a>
@@ -98,7 +116,7 @@ const dashboardLeft = () => {
       <Accordion defaultActiveKey={["0"]} alwaysOpen className="mt-2">
         <Accordion.Item eventKey="0">
           <Accordion.Header>
-            <MdOutlineFlight /> Flight
+            <MdOutlineFlight />Flight 
           </Accordion.Header>
           <Accordion.Body>
             <div className="container text-center">
@@ -124,7 +142,6 @@ const dashboardLeft = () => {
             <div className="container text-center">
               <div className="row row-cols-1">
                 <div className="col">
-                  {" "}
                   <button
                     type="button"
                     className="btn btn-light"
@@ -139,13 +156,12 @@ const dashboardLeft = () => {
         </Accordion.Item>
         <Accordion.Item eventKey="1">
           <Accordion.Header>
-            <TbView360 /> Country
+            <TbView360 />Country
           </Accordion.Header>
           <Accordion.Body>
             <div className="container text-center">
               <div className="row row-cols-1">
                 <div className="col">
-                  {" "}
                   <button
                     type="button"
                     className="btn btn-light"
@@ -159,6 +175,7 @@ const dashboardLeft = () => {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
+      <button type="button" className="btn btn-light mt-5 p-2" onClick={handleLogout}>Log Out</button>
     </>
   );
 };

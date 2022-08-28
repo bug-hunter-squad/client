@@ -35,7 +35,7 @@ function NavDesktop() {
                     required
                     onChange={(e) => setKeyword(e.target.value)}
                   />
-                  <FiSearch className={styleHome.icon} />{" "}
+                  <FiSearch className={styleHome.icon} />
                 </form>
               </div>
             </div>

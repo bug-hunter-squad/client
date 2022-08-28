@@ -1,4 +1,4 @@
-import style from "../styles/SearchResultmobile.module.css";
+import style from "../../../styles/SearchResultmobile.module.css";
 import Image from "next/image";
 import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowDownUp } from "react-bootstrap-icons";
@@ -12,7 +12,7 @@ import { Container } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Form, Button } from "react-bootstrap";
 import { MdFlight} from "react-icons/md"
-import Filter from "../components/molecules/filter";
+import Filter from "../../molecules/filter";
 
 function searchresult() {
   const { auth, query } = useSelector((state) => state);
@@ -144,7 +144,7 @@ function searchresult() {
                         height={18}
                         width={18}
                       />
-                    </div>{" "}
+                    </div>
                   </a>
                 </Link>
                 <div className="p-2 mx-3 justify-content-end mt-5">
@@ -161,7 +161,7 @@ function searchresult() {
                 <div className="d-flex ">
                   <p className="p-0 d-flex align-items-center">
                     <ArrowLeftRight />
-                  </p>{" "}
+                  </p>
                 </div>
 
                 <div className=" text-end">

@@ -330,9 +330,21 @@ font-size: 14px;
   display: flex;
   flex-direction: column;
   padding: 2%;
-  background-color: #2395FF;
+  background-color: #2B4865;
   position: relative;
   max-width: 300px !important;
+}
+.bar-brand{
+  color: #FFFFFF !important;
+}
+.navbar-admin{
+  box-shadow: 0px 1px 6px -2px rgb(0 0 0 / 60%);
+}
+.avatar{
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 25px;
 }
 .col-right{
   height: 100vh !important;
@@ -344,6 +356,10 @@ font-size: 14px;
 }
 .table-flight{
   overflow: scroll;
+  font-size: 12px;
+}
+.image-error{
+  object-fit: cover !important;
 }
 .btn-add{
  float: left;

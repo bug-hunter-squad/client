@@ -119,7 +119,7 @@ function Profile() {
       </Col>
       <Modal show={modalOpen} onHide={closeModal}>
         <AddCard closeModal={closeModal} />
-      </Modal>{" "}
+      </Modal>
     </>
   );
 }

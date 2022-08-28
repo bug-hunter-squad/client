@@ -55,7 +55,8 @@ const FlightInfo = () => {
   return (
     <>
       <div className={display? "d-block" : "d-none"}>
-        <h3 className="text-center position-relative">Flight Information</h3>
+        <div>
+                <h5 className="mt-1">Flight Information</h5>
         <button
           type="button"
           className="btn btn-warning btn-add"
@@ -63,6 +64,8 @@ const FlightInfo = () => {
         >
           ADD
         </button>
+        </div>
+  
         <div className="container table-flight">
           <table className="table table-striped table-inverse  p-2 table-responsive table-bordered ">
             <thead className="thead-inverse">
@@ -128,7 +131,6 @@ const FlightInfo = () => {
                   <td className="d-flex gap-2">
                     <Link href={`/flight/${flight.flightId}`}>
                       <a>
-                        {" "}
                         <button type="button" className="btn btn-danger">
                           update
                         </button>

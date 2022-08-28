@@ -1,6 +1,8 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
 import Registers from "../components/organisms/Mobile/register";
+import RegisterDesktop from "../components/organisms/Desktop/Register";
+import Head from "next/head"
 
 function register() {
   const Mobile = ({ children }) => {
@@ -13,11 +15,14 @@ function register() {
   };
   return (
     <>
+    <Head>
+      <title>Register</title>
+    </Head>
       <div>
         <Mobile>
           <Registers />
         </Mobile>
-        <Default> helo guyss</Default>
+        <Default><RegisterDesktop/></Default>
       </div>
     </>
   );

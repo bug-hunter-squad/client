@@ -2,14 +2,14 @@ import style from "../styles/SearchResultmobile.module.css";
 import styleDetail from "../styles/FlightDetail.module.css";
 import Image from "next/image";
 import { Form } from "react-bootstrap";
-import NavDesktop from "../components/molecules/NavDesktop";
+import NavDesktop from "../../molecules/NavDesktop";
 import { AiFillStar, AiTwotoneSetting } from "react-icons/ai";
 import { FiChevronDown } from "react-icons/fi";
 import { FaPlus, FaSignOutAlt } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 import styleMyBook from "../styles/MyBookingmobile.module.css";
 import React, { useState, useEffect } from "react";
-import Footer from "../components/molecules/footer";
+import Footer from "../../molecules/footer";
 import axios from "axios";
 import Link from "next/link";
 

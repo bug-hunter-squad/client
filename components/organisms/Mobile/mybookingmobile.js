@@ -1,5 +1,5 @@
 import React from "react";
-import FixedMenu from "../components/molecules/fixedmenu";
+import FixedMenu from "../../molecules/fixedmenu";
 import { BsEnvelope, BsBell } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import style from "../styles/BookingDetailmobile.module.css";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import axios from "axios";
-import Nav from "../components/molecules/NavBooking";
+import Nav from "../../molecules/NavBooking";
 
 function MyBooking() {
   const { auth } = useSelector((state) => state);
@@ -19,14 +19,10 @@ function MyBooking() {
     handleData();
   }, []);
 
-  React.useEffect(() => {
-
-  });
-
   const handleData = (req, res) => {
     setLoading(true);
     const decodeUser = decode(auth?.token);
-    const id = decodeUser.id
+    const id = decodeUser?.id
     setTimeout(() => {
       axios
         .get(`https://bug-hunter-squad.herokuapp.com/profile/${id}/booking`)
@@ -53,7 +49,7 @@ function MyBooking() {
               
               <div className="mx-3 mt-3">
                 <div className="row"></div>
-                <p className="mt-3">{item?.departureTime} {" "} - {item?.arrivalTime}</p>
+                <p className="mt-3">{item?.departureTime}  - {item?.arrivalTime}</p>
                 <div className="">
                   <div className="d-flex ">
                     <h3 className="p-0 ">{item?.flightOriginal}</h3>

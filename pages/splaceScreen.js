@@ -11,9 +11,6 @@ function Splash() {
           </div>
         </row>
       </div>
-      {/* <div className={`${styleSplash.container} container-fluid`}>
-        <Logo />
-      </div> */}
     </>
   );
 }

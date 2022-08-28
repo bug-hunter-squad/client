@@ -198,7 +198,6 @@ function searchresult() {
             <form onSubmit={flightSearch}>
               <div className="container w-100 h-100 d-flex flex-row justify-content-center">
                 <div className="continer-flight container ">
-                  {" "}
                   <h3 className="card-title">Destination</h3>
                   <div className="row row-cols-1">
                     <div className="card mx-auto col col-destination shadow">
@@ -216,8 +215,7 @@ function searchresult() {
                           <datalist id="from">
                             {loadDestination ? (
                               <>
-                                {" "}
-                                <Skeleton height={80} />{" "}
+                                <Skeleton height={80} />
                               </>
                             ) : (
                               <>
@@ -250,8 +248,7 @@ function searchresult() {
                           <datalist id="destination">
                             {loadDestination ? (
                               <>
-                                {" "}
-                                <Skeleton height={80} />{" "}
+                                <Skeleton height={80} />
                               </>
                             ) : (
                               <>
@@ -296,7 +293,6 @@ function searchresult() {
                       />
                     </div>
                     <div className="col">
-                      {" "}
                       <p className="mt-3 .fs6 title-box">How many person?</p>
                       <div className="row row-cols-2">
                         <div className="col p-2">

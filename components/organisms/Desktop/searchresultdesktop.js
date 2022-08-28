@@ -1,14 +1,14 @@
-import style from "../styles/SearchResultmobile.module.css";
+import style from "../../../styles/SearchResultmobile.module.css"
 import Image from "next/image";
 import { ArrowDownUp } from "react-bootstrap-icons";
-import NavDesktop from "../components/molecules/NavDesktop";
+import NavDesktop from "../../molecules/NavDesktop";
 import { FiChevronUp, FiChevronDown } from "react-icons/fi";
 import { FaHamburger, FaWifi } from "react-icons/fa";
 import { RiSuitcase3Fill } from "react-icons/ri";
-import Flight from "../components/molecules/Flight";
+import Flight from "../../molecules/Flight";
 import React, { useState } from "react";
 import Collapse from "react-bootstrap/Collapse";
-import Footer from "../components/molecules/footer";
+import Footer from "../../molecules/footer";
 
 function SearchResult() {
   const [openTransit, setOpenTransit] = useState(true);

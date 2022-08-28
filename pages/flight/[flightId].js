@@ -88,7 +88,6 @@ const Flight = (req, res) => {
         <h3 className="text-center mt-2">Edit Flight</h3>
         <div className="row mt-5 p-3 rounded shadow-lg">
           <div className="col-sm-6 d-flex flex-columns justify-content-center align-items-center">
-            {" "}
             <Form className="row row-cols-4  p-2">
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>ID Airline</Form.Label>

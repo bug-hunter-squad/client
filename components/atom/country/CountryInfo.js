@@ -50,7 +50,7 @@ const CountryInfo = () => {
   return (
     <>
       <div className={display? "d-block" : "d-none"}>
-        <h2 className="text-center">Country Information</h2>
+        <h5 className="text-center">Country Information</h5>
         <button type="button" className="btn btn-warning btn-add"
         onClick={handleAdd}>
           ADD
