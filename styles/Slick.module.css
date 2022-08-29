@@ -17,6 +17,8 @@
 .cardNew {
   padding: 8px;
   border: unset;
+  background-color: #ededed00;
+  border-radius: 45px !important;
 }
 
 .cardTopTen {
