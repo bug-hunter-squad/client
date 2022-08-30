@@ -23,7 +23,7 @@ function MyBooking() {
   const handleData = (req, res) => {
     setLoading(true);
     const decodeUser = decode(auth?.token);
-    const id = decodeUser.id;
+    const id = decodeUser?.id;
     setTimeout(() => {
       axios
         .get(`https://bug-hunter-squad.herokuapp.com/profile/${id}/booking`)
