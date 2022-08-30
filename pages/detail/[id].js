@@ -217,7 +217,7 @@ const Detail = (req, res) => {
                                 width="80px"
                                 height="50px"
                                 alt="image"
-                              />{" "}
+                              />
                             </div>
                             <div className=" text-end">
                               <div>
@@ -358,7 +358,7 @@ const Detail = (req, res) => {
                     Book Flight
                   </button>
                 </div>
-              </div>{" "}
+              </div>
             </>
           ))}
         </div>

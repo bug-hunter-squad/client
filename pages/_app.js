@@ -9,6 +9,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux"
 import Axios from "axios";
+import {decode} from "jsonwebtoken"
 
 
 export default class MyApp extends App {
@@ -55,9 +56,26 @@ const MainApp = ({ Component, pageProps }) => {
     if (router.pathname === "/register" && auth.token) {
       router.push("/");
     }
+    if (router.pathname === "/superregister" && auth.token) {
+      router.push("/dashboard");
+    }
     if (router.pathname === "/profile" && !auth.token) {
       router.push("/login");
     }
+    if (router.pathname === "/mybooking" && !auth.token) {
+      router.push("/login");
+    }
+    if (router.pathname === "/profile" && !auth.token) {
+      router.push("/login");
+    }
+    if (router.pathname === "/dashboard" && !auth.token) {
+      router.push("/login");
+    }
+    const convert = decode(auth?.token)
+    if(router.pathname === "/dashboard" && convert?.role !== "admin"){
+      router.push("/")
+    }
+    
     
   });
 

@@ -203,6 +203,7 @@ function searchresult() {
                 <ArrowDownUp />
               </div>
             </div>
+            
 
             <Offcanvas show={show} onHide={handleClose} placement="end">
               <Offcanvas.Header closeButton>

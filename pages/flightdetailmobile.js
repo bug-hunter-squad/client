@@ -186,7 +186,7 @@ function SearchResult() {
 
                       <div>
                         <span className="d-flex">
-                          <h6 className={`${styleDetail.textBlue}`}>$ 2,00</h6>{" "}
+                          <h6 className={`${styleDetail.textBlue}`}>$ 2,00</h6>
                           <small>/Pax</small>
                         </span>
                       </div>

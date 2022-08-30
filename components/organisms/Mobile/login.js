@@ -21,6 +21,10 @@ const logins = () => {
   const seePassword = () => {
     setPasswordType("text");
   };
+
+  const handleHide = () => {
+    setPasswordType("password");
+  }
   const handleBack = () => {
     router.push("/");
   };
@@ -109,7 +113,7 @@ const logins = () => {
                     {passwordType === "password" ? (
                       <AiOutlineEyeInvisible onClick={seePassword} />
                     ) : (
-                      <AiOutlineEye />
+                      <AiOutlineEye  onClick={handleHide}/>
                     )}
                   </span>
                 </div>

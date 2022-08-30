@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage'
 import auth from "./auth/index.js";
 import search from "./search/index";
 import query from "./searchFlight/index";
+import admin from "./admin/index"
 
 const persistConfig = {
   key: "root",
@@ -13,7 +14,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth,
   search,
-  query
+  query,
+  admin
 }); 
 
 const persistedReducer =persistReducer(persistConfig, rootReducer);

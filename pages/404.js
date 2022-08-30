@@ -1,36 +1,17 @@
-import { useMediaQuery } from "react-responsive";
-import { useEffect, useState } from "react";
-import styleWelcome from "../styles/Welcome.module.css";
+import Image from "next/image";
+import Head from "next/head";
 
 function Error() {
-  const [styleMobile, setStyleMobile] = useState(null);
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-
-  useEffect(() => {
-    setStyleMobile(isTabletOrMobile);
-  });
 
   return (
-    <>
-      {styleMobile ? (
-        <>
-          <div className="container text-center">
-            <div className={styleWelcome.content}>
-               <h1>Error Page Not Found</h1>
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="container text-center">
-            <div className={styleWelcome.content}>
-              <h1>Error Page Not Found</h1>
-             
-            </div>
-          </div>
-        </>
-      )}
-    </>
+    <><Head>
+      <title>Error</title>
+      </Head>
+      <div className="d-flex justify-content-center align-content-center">
+        
+    <Image src="/404.png" alt="404" width={500} height={500} className="image-error"/>
+    
+      </div></>
   );
 }
 

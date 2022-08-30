@@ -6,7 +6,7 @@ import style from "../styles/BookingDetailmobile.module.css";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import axios from "axios";
-import Nav from "../components/molecules/NavBooking";
+import Nav from "../../molecules/NavBooking";
 
 function MyBooking() {
   const { auth } = useSelector((state) => state);

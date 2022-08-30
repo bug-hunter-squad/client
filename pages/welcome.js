@@ -16,7 +16,7 @@ function welcome() {
         <Mobile>
           <Welcomes />
         </Mobile>
-        <Default> helo guyss</Default>
+        <Default><Welcomes /></Default>
       </div>
     </>
   );
