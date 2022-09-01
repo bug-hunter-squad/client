@@ -22,13 +22,14 @@ function TopTen() {
     axios
       .get("/api/trendingDestination")
       .then((res) => {
-        setTopDestination(res?.data?.flightInformation);
+        setTopDestination(res?.data?.topTenTrending);
         setLoadDestination(false);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
 
   const settings = {
     infinity: true,
@@ -55,12 +56,12 @@ function TopTen() {
             {topDestination.map((item, key) => (
               <>
                 <Link href="/searchflight" className="cursor">
-                  <div className="px-2 mb-5 pb-5" key={key}>
+                  <div className="px-2 mb-5" key={key}>
                     <div className={styleSlick.outlineBlue}>
                       <div className={`${styleSlick.cardTopTen} card`}>
                         <Image
                           className={styleSlick.imgTopTen}
-                          src="/assets/img/3.webp"
+                          src={item?.country_img_url? item?.country_img_url : "/assets/img/3.webp"}
                           alt="image"
                           width="100%"
                           height="100%"
@@ -69,7 +70,7 @@ function TopTen() {
                         />
                       </div>
                     </div>
-                    <h6 className="text-center">{item.flightDestination}</h6>
+                    <h6 className="text-center">{item?.city}</h6>
                   </div>
                 </Link>
               </>

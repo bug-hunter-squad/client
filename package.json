@@ -32,8 +32,6 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1",
-    "socket.io": "^4.5.1",
-    "socket.io-client": "^4.5.1",
     "styled-components": "^5.3.5",
     "sweetalert2": "^11.4.28",
     "swr": "^1.3.0"

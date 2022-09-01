@@ -31,7 +31,7 @@ function Fixedmenu() {
               style={{ height: "100px" }}
             >
               <ul className="navbar-nav nav-justified w-100">
-              <Link href="/mybookingmobile">
+              <Link href="/mybooking">
                   <li className={`${navStyle.navItem}`}>
                     <TbBrandBooking className={`${navStyle.icon}`} /> <br/>
                     <small>My Booking</small>

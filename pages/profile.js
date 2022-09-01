@@ -9,32 +9,64 @@ import Fixedmenu from "../components/molecules/fixedmenu";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import React, { useState } from "react";
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 import AddCard from "../components/molecules/AddCard";
+import Axios from "axios"
+import Swal from "sweetalert2";
+import { useDispatch} from "react-redux"
+import * as Type from "../redux/auth/type"
+import { useRouter} from "next/router"
 
 function Profile() {
+  const router = useRouter()
+  const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
-  const [name, setName] = React.useState("");
-  const [country, setCountry] = React.useState("");
-  const [profile, setProfile] = React.useState("");
-  const [city, setCity] = React.useState("");
-
-  React.useEffect(() => {
-    const decodeUser = decode(auth?.token);
-    console.log(decodeUser.id)
-    setName(decodeUser?.name);
-    setCountry(decodeUser?.country);
-    setProfile(decodeUser?.profilePicture);
-    setCity(decodeUser?.city);
-
-  },[]);
-
-
+  const decodeUser  = decode(auth?.token);
+  const userId = decodeUser?.id
 
   const [modalOpen, setModalOpen] = useState(false);
   function closeModal() {
     setModalOpen(false);
   }
+  const fetchUser = async () => {
+    const response = await Axios.get(
+      `http://localhost:8500/profile/${userId}`
+    );
+    return response.data;
+  };
+  const { data } = useSWR("User", fetchUser);
+  const name  = data?.name;
+  const city = data?.city;
+  const country = data?.country;
+  const images = data?.profilePicture;
+
+const handleLogout = async (req, res) => {
+  dispatch({
+    type: Type.SET_AUTH,
+    payload: {
+      token: null,
+    }
+  })
+  Swal.fire({
+    title: "Do you really want to go out?",
+    width: 389,
+    icon: "success",
+    });
+}
+const hanldeDisable =(e) =>{
+  e.preventDefault();
+  Swal.fire({
+      title: 'Sorry features will be coming soon',
+      width: 389,
+      icon: "info",
+    });
+}
+
+const handleMyReview = (e) =>{
+  e.preventDefault();
+  router.push("/review")
+}
+
   return (
     <>
       <Col className="col-lg-4 mx-auto">
@@ -48,7 +80,7 @@ function Profile() {
           <div className={style.card}>
             <img
               className={`${style.imgTopTen} d-flex align-items-center`}
-              src={profile ? profile : "/assets/img/image.png"}
+              src={images? images : "/assets/img/image.png"}
               alt=""
               width={120}
               height={120}
@@ -58,8 +90,8 @@ function Profile() {
         <div className="text-center mt-3">
           <h3>{name ? name : "guest"}</h3>
           <p>
-            {city ? city : "city"}
-            {country ? country : "country"}
+            {city ? city : "City"}{" - "}
+            {country ? country : "Country"}
           </p>
         </div>
         <div className="d-flex mt-3 mb-2 mx-4 justify-content-between">
@@ -87,7 +119,7 @@ function Profile() {
           ))}
         </div>
         <section className={style.mobilemenu}>
-          <div className="d-flex mx-4  justify-content-between ">
+          <div className="d-flex mx-4  justify-content-between " onClick={handleMyReview}>
             <div className="d-flex">
               <AiFillStar className={style.icon} />
               <h6 className="p-0 mx-3">My Review</h6>
@@ -96,7 +128,7 @@ function Profile() {
               <ChevronRight />
             </div>
           </div>
-          <div className="d-flex mx-4 mt-3 justify-content-between ">
+          <div className="d-flex mx-4 mt-3 justify-content-between " onClick={hanldeDisable}>
             <div className="d-flex">
               <IoSettingsSharp className={style.icon} />
               <h6 className="p-0 mx-3">Settings</h6>
@@ -105,7 +137,7 @@ function Profile() {
               <ChevronRight />
             </div>
           </div>
-          <div className="d-flex  mx-4 mt-3 justify-content-between text-danger">
+          <div className="d-flex  mx-4 mt-3 justify-content-between text-danger" onClick={handleLogout}>
             <div className="d-flex ">
               <FaSignOutAlt className={`${style.icon} ${style.red}`} />
               <h6 className="p-0 mt-1 mx-3">Logout</h6>

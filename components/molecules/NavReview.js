@@ -5,13 +5,13 @@ import React from "react";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
-function Nav() {
+function NavReview() {
  
   return (
     <>
       <div className="row px-1">
         <div className="col text-start">
-          <h2 className={styleHome.exp}>{"MyBooking" || <Skeleton />}</h2>
+          <h2 className={styleHome.exp}>{"MyReview ⭐" || <Skeleton />}</h2>
         </div>
         <div className="col text-end">
           <Link href="/chat">
@@ -27,4 +27,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default NavReview;

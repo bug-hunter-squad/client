@@ -5,3 +5,4 @@ export const SET_DATE = "SET_DATE";
 export const SET_CHILD = "SET_CHILD";
 export const SET_ADULT = "SET_ADULT";
 export const SET_FACILITY = "SET_FACILITY";
+

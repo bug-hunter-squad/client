@@ -1,8 +1,8 @@
 import React from "react";
-import FixedMenu from "../components/molecules/fixedmenu";
+import FixedMenu from "../../../components/molecules/fixedmenu";
 import Link from "next/link";
 import Image from "next/image";
-import style from "../styles/BookingDetailmobile.module.css";
+import style from "../../../styles/BookingDetailmobile.module.css";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import axios from "axios";
@@ -11,14 +11,11 @@ import Nav from "../../molecules/NavBooking";
 function MyBooking() {
   const { auth } = useSelector((state) => state);
   const [data, setData] = React.useState([]);
-  // const [id, setId] = React.useState("");
   const [isloading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     handleData();
   }, []);
-
-  React.useEffect(() => {});
 
   const handleData = (req, res) => {
     setLoading(true);
@@ -26,9 +23,8 @@ function MyBooking() {
     const id = decodeUser?.id;
     setTimeout(() => {
       axios
-        .get(`https://bug-hunter-squad.herokuapp.com/profile/${id}/booking`)
+        .get(`http://localhost:8500/profile/${id}/booking`)
         .then((response) => {
-          console.log(response);
           setData(response.data);
         })
         .catch((err) => console.log(err))
@@ -37,7 +33,6 @@ function MyBooking() {
         });
     }, 1000);
   };
-  console.log(data);
   return (
     <>
       <div className="container">
@@ -51,7 +46,7 @@ function MyBooking() {
                 <div className="row"></div>
                 <div className="d-flex justify-content-between">
                   <p className="mt-3">
-                    {item?.departureTime} - {item?.arrivalTime}
+                    {new Date(item?.departureTime).toDateString()}
                   </p>
                   <Link
                     href={`/ticket/${item.bookingId}`}
@@ -59,8 +54,7 @@ function MyBooking() {
                   >
                     <a className="text-decoration-none">
                       <p
-                        className="bg-primary p-1"
-                        style={{ borderRadius: "5px", color: "white" }}
+                        className=" see-detail p-1"
                       >
                         See Detail
                       </p>
@@ -69,7 +63,7 @@ function MyBooking() {
                 </div>
                 <div className="col-6">
                   <div className="d-flex">
-                    <h6 className=" col-5">{item?.flightOriginal}</h6>
+                    <h2 className=" col-5 fw-bold">{item?.originalCountry}</h2>
                     <div className="col-2  d-flex justify-content-center">
                       <Image
                         className=""
@@ -79,18 +73,18 @@ function MyBooking() {
                         height="20"
                       />
                     </div>
-                    <h6 className="col-5 text-end"> {item?.flightDestination}</h6>
+                    <h2 className="col-5 text-end fw-bold"> {item?.destinationCountry}</h2>
                   </div>
                 </div>
-                <p style={{ marginTop: "-5px", fontSize: "12px" }}>
+                <p className="text-down">
                   {item?.airlineName}, {item?.gate}-{item?.terminal}
                 </p>
                 <hr className=" " />
                 <div className="d-flex justify-content-between">
-                  <p>status</p>
+                  <p className="status-name">Status</p>
                   <div className="d-flex">
                     <p
-                      className="bg-warning p-1 mx-2"
+                      className=" p-1 mx-2 status-text"
                       style={{ borderRadius: "5px" }}
                     >
                       {item?.bookingStatus}
@@ -103,8 +97,7 @@ function MyBooking() {
                       >
                         <a className="text-decoration-none">
                           <p
-                            className="bg-success p-1"
-                            style={{ borderRadius: "5px", color: "white" }}
+                            className="p-1 ready-pay"
                           >
                             Ready to payment
                           </p>
@@ -117,8 +110,7 @@ function MyBooking() {
                       >
                         <a className="text-decoration-none">
                           <p
-                            className="bg-success p-2"
-                            style={{ borderRadius: "10px", color: "white" }}
+                            className="bg-success p-1 e-ticket"
                           >
                             E-Ticket
                           </p>

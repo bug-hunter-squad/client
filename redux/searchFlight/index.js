@@ -8,31 +8,35 @@ const initialState = {
   child: null,
   adult: null,
   facilty: null,
+ 
 };
 
 const reducer = (state = initialState, action) => {
   let { type, payload } = action;
   switch (type) {
+    
     case Type.SET_FROM:
-      return { ...state,  from: payload };
+      return { ...state, from: payload };
 
     case Type.SET_TO:
-      return { ...state,  to: payload };
-      
+      return { ...state, to: payload };
+
     case Type.SET_WAY:
-      return { ...state,  way: payload };
+      return { ...state, way: payload };
 
     case Type.SET_DATE:
-      return { ...state,  date: payload };
+      return { ...state, date: payload };
 
     case Type.SET_CHILD:
-      return { ...state,  child: payload };
+      return { ...state, child: payload };
 
     case Type.SET_ADULT:
-      return { ...state,  adult: payload };
+      return { ...state, adult: payload };
 
     case Type.SET_FACILITY:
-      return { ...state,  facilty: payload };
+      return { ...state, facilty: payload };
+
+
 
     default:
       return state;

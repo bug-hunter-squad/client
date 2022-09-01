@@ -19,65 +19,37 @@ const Detail = (req, res) => {
   } = router;
 
   const { auth, query } = useSelector((state) => state);
+  const [userId, setUsers] = React.useState('')
 
   React.useEffect(() => {
     const decodeUser = decode(auth?.token);
-    setUser(decodeUser?.id);
+    setUsers(decodeUser?.id);
   }, [auth]);
-
-  let value;
-  if (query === null) {
-    return (value = "");
-  } else {
-    value = query.from.from;
-  }
-
-  let valueTo;
-  if (query === null) {
-    return (valueTo = "");
-  } else {
-    valueTo = query.to.to;
-  }
 
   let valueChild;
   if (query === null) {
     return (valueChild = "");
   } else {
-    valueChild = query.child.child;
+    valueChild = query?.child?.child;
   }
 
   let valueAdult;
   if (query === null) {
     return (valueAdult = "");
   } else {
-    valueAdult = query.adult.adult;
+    valueAdult = query?.adult?.adult;
   }
 
-  const valueFacilty = query.facilty.facility;
-  const valueClass = valueFacilty.toString();
-
-  const [date, setDate] = React.useState();
-  const [original, setOriginal] = React.useState(value ? value : "");
-  const [destination, setDestination] = React.useState(valueTo ? valueTo : "");
-  const [childPassenger, setChildPassanger] = React.useState(
-    valueChild ? valueChild : ""
-  );
-  const [adultPassenger, setadultPassanger] = React.useState(
-    valueAdult ? valueAdult : ""
-  );
-  const [getFacility, setFacility] = React.useState(
-    valueFacilty ? valueFacilty : ""
-  );
-
-  const [wifi, setWifi] = React.useState(true);
-  const [meal, setMeal] = React.useState(true);
-  const [luggage, setLuggage] = React.useState(true);
-  const [userId, setUser] = React.useState();
-  const [Prices, setPrices] = React.useState();
+  let valueFacilty;
+  if (query === null) {
+    return (valueFacilty = "");
+  } else {
+    valueFacilty = query?.facilty?.facility;
+  }
 
   const fetcher = async () => {
     const response = await Axios.get(
-      `https://bug-hunter-squad.herokuapp.com/flight/${id}`
+      `http://localhost:8500/flight/${id}`
     );
     return response?.data?.DetailFlightInformation;
   };
@@ -93,17 +65,16 @@ const Detail = (req, res) => {
     );
 
   const result = data;
-  console.log(result);
-  console.log(luggage)
 
-  const handleBooking = async (req, res) => {
+  const handleBooking = async (price) => {
+   
     await Axios.post(
-      `https://bug-hunter-squad.herokuapp.com/flight/${id}/booking/profile/${userId}`,
+      `http://localhost:8500/flight/${id}/booking/profile/${userId}`,
       {
-        totalChildPassenger: childPassenger,
-        totalAdultPassenger: adultPassenger,
-        flightClass: getFacility,
-        totalPrice: 2000000,
+        totalChildPassenger: valueChild,
+        totalAdultPassenger: valueAdult,
+        flightClass: valueFacilty,
+        totalPrice: `${price}` * (valueChild + valueAdult),
       }
     )
       .then((res) => {
@@ -114,7 +85,7 @@ const Detail = (req, res) => {
           icon: "success",
         });
 
-        router.push("/mybookingmobile");
+        router.push("/mybooking");
       })
       .catch((err) => {
         console.log(err);
@@ -122,19 +93,9 @@ const Detail = (req, res) => {
       .finally(() => {});
   };
 
-  //       let days = [
-  //           "Sunday",
-  //           "Monday",
-  //           "Tuesday",
-  //           "Wednesday",
-  //           "Thursday",
-  //           "Friday",
-  //           "Saturday",
-  //         ];
-  //     let d = new Date();
-  //     let dayName = days[d.getDay()];
-  //     const DateNow = dayName + " " + d.getDate() + "/" + d.getMonth() + " " + d.getFullYear;
-  //     setDate(DateNow);
+  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const dateNow = new Date();
+  const date = `${weekday[dateNow.getDay()]}, ${dateNow.getMonth()+1}, ${dateNow.getFullYear()}`;
 
   return (
     <>
@@ -151,9 +112,9 @@ const Detail = (req, res) => {
                     <IoChevronBack className="fs-3 text-white" />
                   </a>
                 </div>
-                {/* <div className="p-2 mx-3 justify-content-end mt-5">
-                  <p className={style.text}>monday happy</p>
-                </div> */}
+                <div className="p-2 mx-3 justify-content-end mt-5">
+                  <p className={style.text}>{date}</p>
+                </div>
               </div>
             </section>
           </div>
@@ -177,12 +138,10 @@ const Detail = (req, res) => {
                         <section>
                           <div className="d-flex mx-4 mt-4  ">
                             <div className="col-5 ">
-                              <h4 className="p-0">{item.original}</h4>
+                              <h4 className="p-0">{item?.original_city}</h4>
                               <p className={`${style.font}`}>
                                 {
-                                  item.departure_time
-                                    .split("T")[1]
-                                    .split(".")[0]
+                                  item?.departure_time?.split("T")[1]?.split(".")[0]
                                 }
                               </p>
                               <p className={`${style.font} ${style.margin}`}>
@@ -192,7 +151,7 @@ const Detail = (req, res) => {
                             <div className="col-2 ">
                               <p className="p-2 ">
                                 <Image
-                                  src="/assets/img/flightlogo.svg"
+                                  src={"/assets/img/flightlogo.svg"}
                                   alt="Logo"
                                   width="30"
                                   height="30"
@@ -201,19 +160,19 @@ const Detail = (req, res) => {
                               </p>
                             </div>
                             <div className="col-5 text-end">
-                              <h4 className="p-0 ">{item.destination}</h4>
+                              <h4 className="p-0 ">{item.destination_city}</h4>
                               <p className={`${style.font}`}>
-                                {item.arrival_time.split("T")[1].split(".")[0]}
+                                {item?.arrival_time?.split("T")[1]?.split(".")[0]}
                               </p>
                               <p className={`${style.font} ${style.margin}`}>
-                                {item.arrival_time.split("T")[0]}
+                                {item?.arrival_time?.split("T")[0]}
                               </p>
                             </div>
                           </div>
                           <div className="d-flex mx-4 justify-content-between ">
                             <div className="">
                               <Image
-                                src="/assets/img/logomaskapai.png"
+                                src={item?.airline_logo? item?.airline_logo : "/assets/img/logomaskapai.png"}
                                 width="80px"
                                 height="50px"
                                 alt="image"
@@ -227,7 +186,7 @@ const Detail = (req, res) => {
                                 <AiFillStar className="text-warning" />
                                 <AiFillStar className="text-warning" />
                               </div>
-                              <p>120k review</p>
+                              <p>{item?.rating? '0 ' : item?.rating }review</p>
                             </div>
                           </div>
                           <div className="d-flex mx-4  mt-3 justify-content-between ">
@@ -237,7 +196,7 @@ const Detail = (req, res) => {
                             </div>
                             <div className={`${style.font}`}>
                               <p>Class</p>
-                              <h6>{getFacility}</h6>
+                              <h6>{valueFacilty}</h6>
                             </div>
                             <div className={`${style.font}`}>
                               <p>Terminal</p>
@@ -262,7 +221,7 @@ const Detail = (req, res) => {
                                 opacity: "0.8",
                               }}
                             >
-                              <p className={"text-center"}>{childPassenger}</p>
+                              <p className={"text-center"}>{valueChild? valueChild : '0'}</p>
                             </div>
                             <p>Child</p>
                             <div
@@ -277,7 +236,7 @@ const Detail = (req, res) => {
                                 opacity: "0.8",
                               }}
                             >
-                              <p className={"text-center"}>{adultPassenger} </p>
+                              <p className={"text-center"}>{valueAdult? valueAdult : '0'} </p>
                             </div>
                             <p> Adults</p>
                           </div>
@@ -295,7 +254,7 @@ const Detail = (req, res) => {
                 >
                   <div
                     className={
-                      meal
+                      item?.meal
                         ? "d-flex card text-bg-success ms-4 col-4 "
                         : "d-flex card text-bg-success ms-4 col-4 d-none"
                     }
@@ -310,7 +269,7 @@ const Detail = (req, res) => {
                   </div>
                   <div
                     className={
-                      wifi
+                      item?.wifi
                         ? "d-flex card text-bg-primary mx-2 col-4 "
                         : "d-flex card text-bg-primary mx-2 col-4 d-none"
                     }
@@ -327,7 +286,7 @@ const Detail = (req, res) => {
                   </div>
                   <div
                     className={
-                      luggage
+                      item?.luggage
                         ? "d-flex card text-bg-warning  col-4 "
                         : "d-flex card text-bg-warning  col-4 d-none"
                     }
@@ -346,14 +305,14 @@ const Detail = (req, res) => {
                 <div className="card-text mx-4 mt-3 d-flex justify-content-between ">
                   <p>Total you'll pay</p>
                   <h5 className={style.fontprice}>
-                    Rp{item.price * 1.25 * (childPassenger + adultPassenger)}
+                    IDR {item?.price * (valueChild + valueAdult)}
                   </h5>
                 </div>
                 <div className="mx-4 mb-3">
                   <button
                     type="button"
                     className="btn btn-primary btn-lg w-100"
-                    onClick={handleBooking}
+                    onClick={() => handleBooking(item?.price)}
                   >
                     Book Flight
                   </button>

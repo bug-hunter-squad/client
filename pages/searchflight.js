@@ -3,22 +3,24 @@ import { ArrowLeftRight } from "react-bootstrap-icons";
 import { ArrowsFullscreen } from "react-bootstrap-icons";
 import { MdFlightTakeoff } from "react-icons/md";
 import { ChevronLeft } from "react-bootstrap-icons";
-import { BsArrowClockwise } from "react-icons/bs";
+import { BsArrowClockwise, BsTruckFlatbed } from "react-icons/bs";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { MdOutlineEmojiPeople } from "react-icons/md";
 import { FaChild } from "react-icons/fa";
 import React from "react";
 import { useSelector } from "react-redux";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useDispatch } from "react-redux";
 import * as Type from "../redux/searchFlight/type";
+import * as Tipe from "../redux/filter/type";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Container } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 function SearchFlight() {
   const dispatch = useDispatch();
@@ -30,30 +32,53 @@ function SearchFlight() {
   let [countChild, setCountChild] = React.useState(0);
   const [date, setDate] = React.useState("");
   const [from, setFrom] = React.useState("");
-  const [to, setTo] = React.useState("");
+  const [targetDestination, setTargetDestination] = React.useState("");
   const [facility, setFacility] = React.useState("");
   const [navigation, setNavigation] = React.useState(false);
   const [trip, setTrip] = React.useState("");
   const [oneWay, setOneWay] = React.useState(false);
   const [roundWay, setRoundWay] = React.useState(false);
-  const [destination, setDestination] = React.useState([]);
+  const [dataCountry, setDataCountry] = React.useState([]);
   const [loadDestination, setLoadDestination] = React.useState(true);
+  const [countryOriginal, setCountryOriginal] = React.useState("");
+  const [countryDestination, setCountryDestination] = React.useState("");
 
   React.useEffect(() => {
     setGo(search?.keyword?.keyword);
     getDestination();
   }, []);
 
-  const getDestination = () => {
-    axios
-      .get("/api/trendingDestination")
+  const getDestination = async () => {
+   await  axios
+      .get("/api/country")
       .then((res) => {
-        setDestination(res?.data?.flightInformation);
+        setDataCountry(res?.data);
         setLoadDestination(false);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleFrom = async (e) => {
+    let data = e.target.value;
+    if (data) {
+      const response = await axios.get(`http://localhost:8500/country/${data}`);
+        setCountryOriginal(response?.data?.country);
+        setFrom(response?.data?.id);
+    } else {
+      data = null;
+    }
+  };
+  const handleDestination = async (e) => {
+    let data = e.target.value;
+    if (data) {
+      const response = await axios.get(`http://localhost:8500/country/${data}`);
+        setCountryDestination(response?.data?.country);
+        setTargetDestination(response?.data?.id);
+    } else {
+      data = null;
+    }
   };
 
   const disablePastDate = () => {
@@ -71,7 +96,11 @@ function SearchFlight() {
   }
   function decrementCount(e) {
     e.preventDefault();
-    count = count - 1;
+    if(count <= 0){
+      count = count
+    }else{
+       count = count - 1;
+    }
     setCount(count);
   }
   function incrementCounts(e) {
@@ -81,18 +110,14 @@ function SearchFlight() {
   }
   function decrementCounts(e) {
     e.preventDefault();
-    countChild = countChild - 1;
+    if(countChild <= 0){
+      countChild = countChild
+    }else{
+      countChild = countChild - 1;
+    }
     setCountChild(countChild);
   }
 
-  const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ maxWidth: 400 });
-    return isMobile ? children : null;
-  };
-  const Default = ({ children }) => {
-    const isNotMobile = useMediaQuery({ minWidth: 401 });
-    return isNotMobile ? children : null;
-  };
   const handleMove = (e) => {
     e.preventDefault();
     setNavigation(true);
@@ -113,53 +138,181 @@ function SearchFlight() {
     setTrip("roud-trip");
     setOneWay(false);
     setRoundWay(true);
+    Swal.fire({
+      title: 'Sorry features will be coming soon',
+      width: 389,
+      icon: "info",
+    });
   };
+
+  const handleClassType =(e) =>{
+    e.preventDefault();
+    const values = e.target.value;
+    setFacility(values)
+    if(values === 'economy'){
+       dispatch({
+      type: Tipe.SET_WIFI,
+      payload:{
+        wifi: false
+      }
+    })
+       dispatch({
+      type: Tipe.SET_MEAL,
+      payload:{
+        meal: true
+      }
+    })
+       dispatch({
+      type: Tipe.SET_LUGGAGE,
+      payload:{
+        luggage: false
+      }
+    })
+    }
+    if(values === 'business'){
+      dispatch({
+        type: Tipe.SET_WIFI,
+        payload:{
+          wifi: true
+        }
+      })
+         dispatch({
+        type: Tipe.SET_MEAL,
+        payload:{
+          meal: true
+        }
+      })
+         dispatch({
+        type: Tipe.SET_LUGGAGE,
+        payload:{
+          luggage: false
+        }
+      })
+    }
+    if(values === 'first class'){
+      dispatch({
+        type: Tipe.SET_WIFI,
+        payload:{
+          wifi: true
+        }
+      })
+         dispatch({
+        type: Tipe.SET_MEAL,
+        payload:{
+          meal: true
+        }
+      })
+         dispatch({
+        type: Tipe.SET_LUGGAGE,
+        payload:{
+          luggage: true
+        }
+      })
+    }
+   
+  }
+
+
   const flightSearch = (e) => {
     e.preventDefault();
-    dispatch({
-      type: Type.SET_FROM,
-      payload: {
-        from: from,
-      },
-    }),
+    if(from === '' || from === null ){
+      Swal.fire({
+        title: 'Please fill in the Original from',
+        width: 389,
+        icon: "info",
+      });
+    }else{
+      dispatch({
+        type: Type.SET_FROM,
+        payload: {
+          from: from,
+        },
+      })
+    }
+    if(targetDestination === '' || targetDestination === null){
+      Swal.fire({
+        title: 'Please fill in the Destination',
+        width: 389,
+        icon: "info",
+      });
+    }else{
       dispatch({
         type: Type.SET_TO,
         payload: {
-          to: to,
+          to: targetDestination,
         },
       });
-    dispatch({
-      type: Type.SET_WAY,
-      payload: {
-        way: trip,
-      },
-    });
-    dispatch({
-      type: Type.SET_DATE,
-      payload: {
-        date: date,
-      },
-    });
-    dispatch({
-      type: Type.SET_CHILD,
-      payload: {
-        child: countChild,
-      },
-    });
-    dispatch({
-      type: Type.SET_ADULT,
-      payload: {
-        adult: count,
-      },
-    });
-    dispatch({
+    }
+    if(trip === '' || trip === null){
+      Swal.fire({
+        title: 'Please fill in the Trip',
+        width: 389,
+        icon: "info",
+      });
+    }else{
+      dispatch({
+        type: Type.SET_WAY,
+        payload: {
+          way: trip,
+        },
+      });
+    }
+    if(date === null || date === ''){
+      Swal.fire({
+        title: 'Please fill in the Date',
+        width: 389,
+        icon: "info",
+      });
+    }else{
+      dispatch({
+        type: Type.SET_DATE,
+        payload: {
+          date: date,
+        },
+      });
+    }
+    if(countChild === null && count === null || countChild === 0 &&count === 0){
+      Swal.fire({
+        title: 'Please fill in the number of  passengers',
+        width: 389,
+        icon: "info",
+      });
+    }else{
+      dispatch({
+        type: Type.SET_CHILD,
+        payload: {
+          child: countChild,
+        },
+      });
+      dispatch({
+        type: Type.SET_ADULT,
+        payload: {
+          adult: count,
+        },
+      });
+    }
+    if(facility === null || facility === ''){
+      Swal.fire({
+        title: 'Please fill in the flight type',
+        width: 389,
+        icon: "info",
+      });
+    }else{
+      dispatch({
       type: Type.SET_FACILITY,
       payload: {
         facility: facility,
       },
     });
-    router.push("/searchresultmobile");
-  };
+    }
+    if(from && targetDestination && trip && date  && facility){
+      router.push("/result")
+    }
+    
+
+    
+    
+  }
   return (
     <>
       <Container className="mobile">
@@ -185,11 +338,11 @@ function SearchFlight() {
                 <div className="d-flex mx-3 mb-5 justify-content-between text-white">
                   <div className="p-2 mt-2">
                     <Link href="/" className="cursor">
-                      <ChevronLeft className="fs-3"/>
+                      <ChevronLeft className="fs-3" />
                     </Link>
                   </div>
                   <div className="p-2 justify-content-end mt-2">
-                    <ArrowsFullscreen className="fs-3"/>
+                    <ArrowsFullscreen className="fs-3" />
                   </div>
                 </div>
               </div>
@@ -198,36 +351,28 @@ function SearchFlight() {
           <form onSubmit={flightSearch}>
             <div className="container w-100 h-100 d-flex flex-row justify-content-center">
               <div className="continer-flight container ">
-                {" "}
                 <h3 className="card-title">Destination</h3>
                 <div className="row row-cols-1">
                   <div className="card mx-auto col col-destination shadow">
                     <div className="row row-col-3 p-2 d-flex flex-row col-five">
                       <div className="col-5 overflow-hidden">
-                        <small className=".fs6">From</small>
-                        <input
-                          type="text"
-                          className="col-datalist"
-                          list="from"
-                          placeholder="Jakarta"
-                          value={navigation ? to : from}
-                          onChange={(e) => setFrom(e.target.value)}
-                        />
-                        <datalist id="from">
+                        <small className=".fs6 text-from">From</small>
+                        <select className="col-datalist" onChange={handleFrom}>
                           {loadDestination ? (
                             <>
-                              {" "}
-                              <Skeleton height={80} />{" "}
+                              <Skeleton height={80} />
                             </>
                           ) : (
                             <>
-                              {destination.map((item, key) => (
-                                <option value={item.flightOriginal}></option>
+                              {dataCountry.map((item, index) => (
+                                <option key={index} value={item.id}>
+                                  {item.city}
+                                </option>
                               ))}
                             </>
                           )}
-                        </datalist>
-                        <small className=".fs6">Indonesia</small>
+                        </select>
+                        <small className=".fs6">{countryOriginal? countryOriginal : "Original"}</small>
                       </div>
                       <div className="col-2 col-arrow ">
                         {navigation ? (
@@ -237,30 +382,26 @@ function SearchFlight() {
                         )}
                       </div>
                       <div className="col-5">
-                        <small className=".fs6 to-small">To</small>
-                        <input
-                          type="text"
-                          className="col-datalist-end"
-                          list="destination"
-                          placeholder={go ? go : "Bali"}
-                          value={navigation ? from : to}
-                          onChange={(e) => setTo(e.target.value)}
-                        />
-                        <datalist id="destination">
+                        <small className=".fs6 to-small text-from">To</small>
+                        <select
+                          className="col-datalist"
+                          onChange={handleDestination}
+                        >
                           {loadDestination ? (
                             <>
-                              {" "}
-                              <Skeleton height={80} />{" "}
+                              <Skeleton height={80} />
                             </>
                           ) : (
                             <>
-                              {destination.map((item, key) => (
-                                <option value={item.flightOriginal}></option>
+                              {dataCountry?.map((item, index) => (
+                                <option key={index} value={item.id}>
+                                  {item.city}
+                                </option>
                               ))}
                             </>
                           )}
-                        </datalist>
-                        <small className=".fs6 state-col">Indonesia</small>
+                        </select>
+                        <small className=".fs6 state-col">{countryDestination? countryDestination : "Destination"}</small>
                       </div>
                     </div>
                   </div>
@@ -294,7 +435,6 @@ function SearchFlight() {
                     />
                   </div>
                   <div className="col">
-                    {" "}
                     <p className="mt-3 .fs6 title-box">How many person?</p>
                     <div className="row row-cols-2">
                       <div className="col p-2">
@@ -304,7 +444,7 @@ function SearchFlight() {
                           </Dropdown.Toggle>
 
                           <Dropdown.Menu>
-                            <div active className="border ">
+                            <div active="true" className="listCount">
                               <button
                                 className="btn-Count"
                                 onClick={incrementCounts}
@@ -330,7 +470,7 @@ function SearchFlight() {
                           </Dropdown.Toggle>
 
                           <Dropdown.Menu>
-                            <div eventKey="1" active>
+                            <div active="true" className="listCount">
                               <button
                                 className="btn-Count"
                                 onClick={incrementCount}
@@ -362,11 +502,11 @@ function SearchFlight() {
                           name="exampleRadios"
                           id="exampleRadios1"
                           value="economy"
-                          onChange={(e) => setFacility(e.target.value)}
+                          onChange={handleClassType}
                         />
                         <label
                           className="form-check-label"
-                          for="exampleRadios1"
+                          htmlFor="exampleRadios1"
                         >
                           Economy
                         </label>
@@ -378,11 +518,11 @@ function SearchFlight() {
                           name="exampleRadios"
                           id="exampleRadios1"
                           value="business"
-                          onChange={(e) => setFacility(e.target.value)}
+                          onChange={handleClassType}
                         />
                         <label
                           className="form-check-label"
-                          for="exampleRadios1"
+                          htmlFor="exampleRadios1"
                         >
                           Business
                         </label>
@@ -394,11 +534,11 @@ function SearchFlight() {
                           name="exampleRadios"
                           id="exampleRadios1"
                           value="first class"
-                          onChange={(e) => setFacility(e.target.value)}
+                          onChange={handleClassType}
                         />
                         <label
                           className="form-check-label"
-                          for="exampleRadios1"
+                          htmlFor="exampleRadios1"
                         >
                           First Class
                         </label>
@@ -407,7 +547,7 @@ function SearchFlight() {
                   </div>
                   <div className="col">
                     <button type="submit" className="btn btn-flight">
-                      SEARCH FLIGHT{" "}
+                      SEARCH FLIGHT
                       <HiArrowNarrowRight className="btn-icons d-flex " />
                     </button>
                   </div>

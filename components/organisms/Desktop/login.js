@@ -39,7 +39,7 @@ const login = () => {
               token: res.data.token,
             },
           });
-          const falseResponse = res.data.message;
+          const falseResponse = res?.data?.message;
           Swal.fire({
             title: falseResponse,
             width: 389,
@@ -49,7 +49,7 @@ const login = () => {
           router.replace("/");
         })
         .catch((err) => {
-          const message = err.response.data.message;
+          const message = err?.response?.data?.message;
           Swal.fire({
             title: message,
             width: 389,

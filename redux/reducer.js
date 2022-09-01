@@ -5,6 +5,7 @@ import auth from "./auth/index.js";
 import search from "./search/index";
 import query from "./searchFlight/index";
 import admin from "./admin/index"
+import filter from "./filter/index"
 
 const persistConfig = {
   key: "root",
@@ -15,7 +16,9 @@ const rootReducer = combineReducers({
   auth,
   search,
   query,
-  admin
+  admin,
+  filter
+
 }); 
 
 const persistedReducer =persistReducer(persistConfig, rootReducer);

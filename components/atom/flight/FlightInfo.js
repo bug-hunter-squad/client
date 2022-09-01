@@ -4,7 +4,6 @@ import Axios from "axios";
 import Link from "next/link"
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import * as Type from "../../../redux/admin/type"
 
 
 const FlightInfo = () => {
@@ -30,14 +29,14 @@ const FlightInfo = () => {
 
   const fetcher = async () => {
     const response = await Axios.get(
-      "https://bug-hunter-squad.herokuapp.com/flight"
+      "http://localhost:8500/flight/all"
     );
-    return response.data.flightInformation;
+    return response?.data?.data;
   };
 
   const DeleteFlight = async (flightId) => {
     await Axios.delete(
-      `https://bug-hunter-squad.herokuapp.com/flight/${flightId}`
+      `http://localhost:8500/flight/${flightId}`
     );
     mutate("flight");
   };
@@ -70,7 +69,7 @@ const FlightInfo = () => {
           <table className="table table-striped table-inverse  p-2 table-responsive table-bordered ">
             <thead className="thead-inverse">
               <tr>
-                <th>ID Flight </th>
+                <th>ID Airline </th>
                 <th>Original</th>
                 <th>Destination</th>
                 <th>Gate</th>
@@ -90,9 +89,9 @@ const FlightInfo = () => {
             <tbody>
               {data?.map((flight, index) => (
                 <tr key={index}>
-                  <td>{flight.flightId}</td>
-                  <td>{flight.flightOriginal}</td>
-                  <td>{flight.flightDestination}</td>
+                  <td>{flight.airlineId}</td>
+                  <td>{flight.flightOriginalCity}</td>
+                  <td>{flight.flightDestinationCity}</td>
                   <td>{flight.flightGate}</td>
                   <td>{flight.flightTerminal}</td>
                   <td>{flight.flightPrice}</td>
@@ -131,14 +130,14 @@ const FlightInfo = () => {
                   <td className="d-flex gap-2">
                     <Link href={`/flight/${flight.flightId}`}>
                       <a>
-                        <button type="button" className="btn btn-danger">
-                          update
+                        <button type="button" className="btn btn-danger btn-mini">
+                          Update
                         </button>
                       </a>
                     </Link>
                     <button
                       type="button"
-                      className="btn btn-success"
+                      className="btn btn-success btn-mini"
                       onClick={() => DeleteFlight(flight.flightId)}
                     >
                       Delete

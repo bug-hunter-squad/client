@@ -94,6 +94,7 @@ const FormFLight = () => {
         addFlight: false,
       },
     });
+    setShow(false)
   };
   const handleCloses = () => {
     setShow(false)

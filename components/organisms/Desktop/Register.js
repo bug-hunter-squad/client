@@ -21,7 +21,7 @@ const Register = () => {
     setIsLoading(true);
     setTimeout(() => {
       axios
-        .post("https://bug-hunter-squad.herokuapp.com/auth/register", {
+        .post("http://localhost:8500/auth/register", {
           name: name,
           email: email,
           password: password,

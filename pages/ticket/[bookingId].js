@@ -11,49 +11,52 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { decode } from "jsonwebtoken";
 import axios from "axios";
-import QRCoderReact from "qrcode.react"
+import QRCoderReact from "qrcode.react";
 
 function bookingdetail() {
   const router = useRouter();
   const {
     query: { bookingId },
   } = router;
-
-  const { auth } = useSelector((state) => state);
-  const [data, setData] = React.useState([]);
-  // const [id, setId] = React.useState("");
-  const [isloading, setLoading] = React.useState(false);
-
   React.useEffect(() => {
     handleData();
   }, []);
+  const { auth } = useSelector((state) => state);
+  const [data, setData] = React.useState([]);
+  const [idFlight, setDataFlight] = React.useState();
+  const [detail , setDetail] = React.useState([]);
+  const [isloading, setLoading] = React.useState(false);
+ 
 
-  React.useEffect(() => {});
 
-  const handleData = (req, res) => {
+  const handleData = async (req, res) => {
     setLoading(true);
     const decodeUser = decode(auth?.token);
     const id = decodeUser.id;
-    setTimeout(() => {
-      axios
-        .get(
-          `https://bug-hunter-squad.herokuapp.com/profile/${id}/booking/${bookingId}`
-        )
-        .then((response) => {
-          console.log(response);
-          setData(response.data);
-        })
-        .catch((err) => console.log(err))
-        .finally(() => {
-          setLoading(false);
-        });
-    }, 1000);
+    await axios
+      .get(`http://localhost:8500/profile/${id}/booking/${bookingId}`)
+      .then((response) => {
+        setData(response.data);
+        setDataFlight(response?.data?.flightId);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
-  const result = [data];
-  console.log(result);
+  if (idFlight) {
+    const response = async (req, res) => {
+      await axios.get(`http://localhost:8500/flight/${idFlight}`)
+      .then((response) => {
+        setDetail(response?.data?.DetailFlightInformation);
+      });
+    };
+    response();
+   
+  }
 
-  console.log(bookingId);
+  const result = [data];
   return (
     <>
       <Container className={style.bookingdetail}>
@@ -61,7 +64,7 @@ function bookingdetail() {
           <div className={`col-lg-4 mx-auto`}>
             <div className="d-flex mx-3 mb-2 justify-content-between text-white">
               <div className="d-flex   mt-2">
-                <a href="/mybookingmobile">
+                <a href="/mybooking">
                   <ChevronLeft className="mt-1 fs-3 text-white" />
                 </a>
                 <p className="mx-3 fs-4">Booking Pass</p>
@@ -134,14 +137,21 @@ function bookingdetail() {
                       </div>
                       <div className="col-6">
                         <p>Total Passanger</p>
-                        <h6>{item.totalAdultPassenger} Adult, {item.totalChildPassenger} Child</h6>
+                        <h6>
+                          {item.totalAdultPassenger} Adult,{" "}
+                          {item.totalChildPassenger} Child
+                        </h6>
                       </div>
                     </div>
-                    {item.bookingStatus==="paid"?
-                    <div className="mt-5 d-flex justify-content-center">
-                    <QRCoderReact className="d-flex justify-content-center" value={item.paymentId?"SUKSES":null} size={100}></QRCoderReact>
-                    </div>:null
-                    }
+                    {item.bookingStatus === "paid" ? (
+                      <div className="mt-5 d-flex justify-content-center">
+                        <QRCoderReact
+                          className="d-flex justify-content-center"
+                          value={item.paymentId ? "SUKSES" : null}
+                          size={100}
+                        ></QRCoderReact>
+                      </div>
+                    ) : null}
                   </section>
                 </div>
               ))}

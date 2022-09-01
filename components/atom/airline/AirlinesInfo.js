@@ -74,7 +74,7 @@ const AirlinesInfo = () => {
                 <tr key={item.id}>
                   <td>{item.airline_name}</td>
                   <td>
-                    <img src={item.airline_logo} width={50} height={50} />
+                    <img src={item.airline_logo} width={50} height={50} className="img-air"/>
                   </td>
                   <td>{item.airline_pic}</td>
                   <td>{item.airline_pic_phone_number}</td>
@@ -92,12 +92,12 @@ const AirlinesInfo = () => {
                   <td className="d-flex gap-2">
                     <Link href={`/airlines/${item.id}`}>
                       <a>
-                        <button type="button" className="btn btn-danger">
+                        <button type="button" className="btn btn-danger btn-mini">
                           Update
                         </button>
                       </a>
                     </Link>
-                    <button type="button" className="btn btn-success"
+                    <button type="button" className="btn btn-success btn-mini"
                      onClick={() => DeleteAirline(item.id)}
                      >
                       Delete

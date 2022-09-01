@@ -12,7 +12,6 @@ function Home() {
           <Nav />
           <Slick />
           <StoryDestination />
-        
           <FixedMenu />
       </div>
     </>

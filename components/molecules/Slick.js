@@ -14,6 +14,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 function Slick() {
   const [topDestination, setTopDestination] = useState([]);
   const [loadDestination, setLoadDestination] = useState(true);
+  const [trending, setTrending] = useState([])
 
   useEffect(() => {
     getTopDestination();
@@ -23,13 +24,15 @@ function Slick() {
     axios
       .get("/api/trendingDestination")
       .then((res) => {
-        setTopDestination(res?.data?.flightInformation);
+        setTrending(res?.data?.trendingDestination)
+        setTopDestination(res?.data?.topTenTrending);
         setLoadDestination(false);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
 
   const settings = {
     infinity: true,
@@ -46,7 +49,7 @@ function Slick() {
           <h5 className={styleHome.exp}>Trending destinations</h5>
         </div>
         <div className="col-4 text-end">
-          <Link href="/searchresult" passHref>
+          <Link href="/result" passHref>
             <a className={`${styleHome.vall} rm-decoration`}>View all</a>
           </Link>
         </div>
@@ -59,12 +62,12 @@ function Slick() {
       ) : (
         <>
           <Slider {...settings}>
-            {topDestination.map((item, key) => (
+            {trending?.map((item, key) => (
               <div key={key}>
                 <div className={`${styleSlick.cardNew} card`}>
                   <Image
                     className={styleSlick.imgNew}
-                    src="/assets/img/3.webp"
+                    src={item?.country_img_url? item.country_img_url :"/assets/img/3.webp" }
                     alt="image"
                     width="130"
                     height="300"
@@ -74,14 +77,14 @@ function Slick() {
                     <div className={styleSlick.overlay}>
                       <div className="col-8">
                         <div className={`${styleSlick.airlines} `}>
-                          <p>15 airlines</p>
+                          <p>{trending.length} airlines</p>
                         </div>
                       </div>
                       <div className={`${styleSlick.textBottom} row`}>
                         <div className="col-8">
                           <div className={`${styleSlick.cardTitle} px-2`}>
-                            <h4>{item.flightOriginal},</h4>
-                            <h2>{item.flightDestination}</h2>
+                            <h4>{item.city},</h4>
+                            <h2>{item.country}</h2>
                           </div>
                         </div>
                         <div className="col-4 text-center">

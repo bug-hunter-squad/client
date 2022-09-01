@@ -173,6 +173,15 @@ a {
   font-size: 22px;
   font-weight: 500;
   border: none;
+  background-color: #FFFFFF;
+  color:#000000 ;
+  font-weight: bolder;
+}
+.listCount{
+  padding-left: 17%;
+}
+.text-from{
+  color: #979797;
 }
 .col-datalist:focus{
   outline: none;
@@ -272,13 +281,13 @@ font-size: 14px;
 }
 .btn-Count{
   border: none;
-  gap: 2;
   font-size: 27px;
   margin: 7%;
   padding: none;
   color: #2395FF;
   height: max-content;
-  background-color: none;
+  background: none;
+ 
 }
 #dropdown-basic{
   width: 154px;
@@ -304,11 +313,12 @@ font-size: 14px;
 }
 .btn-flight{
   width: 88vw !important;
-  padding: 5% !important;
+  padding: 2% !important;
   font-weight: bold !important;
   background-color: #2395FF !important;
   color: #FFFFFF !important;
   border: none;
+
 }
 .btn-flight:hover{
   width: 88vw;
@@ -317,14 +327,60 @@ font-size: 14px;
   background-color: #6B6B6B !important;
   color: #FFFFFF !important;
   border: none !important;
+  overflow: hidden;
 
+}
+.img-air{
+  object-fit: cover;
+    width: 30px;
+    height: 30px;
+}
+.btn-mini{
+  font-size: 10px !important;
+    height: 26px;
 }
 .btn-icons{
   float: right;
   font-size: 27px;
 
 }
-
+.see-detail{
+  border-radius: 5px;
+  color: white;
+  margin-top: 33%;
+  font-size: 12px;
+  background-color: #23a3ff;
+}
+.text-down{
+  margin-top: -5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #979797;
+}
+.status-name{
+  color: #7A7A7A;
+  font-weight: 600;
+}
+.ready-pay{
+background-color: #FF7F23 !important;
+border-radius: 5px;
+color: white;
+    font-size: 12px;
+}
+.status-text{
+background-color: #4FCF4D;
+color: white;
+border-radius: 5px;
+font-size: 12px;
+height: 26px;
+}
+.e-ticket{
+  background-color: #4FCF4D;
+color: white;
+border-radius: 5px;
+font-size: 12px;
+height: 26px;
+}
 .col-left{
   height: 100vh;
   display: flex;
@@ -333,6 +389,9 @@ font-size: 14px;
   background-color: #2B4865;
   position: relative;
   max-width: 300px !important;
+}
+.d-content{
+  display: contents;
 }
 .bar-brand{
   color: #FFFFFF !important;
