@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default function handler(req, res) {
   axios
-    .get("http://localhost:8500/flight/trending")
+    .get("https://bug-hunter-squad.herokuapp.com/flight/trending")
     .then((response) => {
         res.status(200).json(response?.data)
     })

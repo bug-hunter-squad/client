@@ -34,7 +34,7 @@ const airlines = () => {
       data.append("airline_pic", picAirline),
       data.append("airline_pic_phone_number", picNumber);
       data.append("airline_status", status),
-      await Axios.patch(`http://localhost:8500/airlines/${id}`, data, {
+      await Axios.patch(`https://bug-hunter-squad.herokuapp.com/airlines/${id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

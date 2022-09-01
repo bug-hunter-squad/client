@@ -19,13 +19,13 @@ const CountryInfo = () => {
   }
   const [display, setDisplay] = React.useState(valueAdmin ? valueAdmin : false);
   const fetcherCountry = async () => {
-    const response = await Axios.get("http://localhost:8500/country");
+    const response = await Axios.get("https://bug-hunter-squad.herokuapp.com/country");
     
     return response.data;
   };
 
   const DeleteCountry = async (id) => {
-    await Axios.delete(`http://localhost:8500/country/${id}`);
+    await Axios.delete(`https://bug-hunter-squad.herokuapp.com/country/${id}`);
     mutate("country");
   };
 

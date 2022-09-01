@@ -63,7 +63,7 @@ function SearchFlight() {
   const handleFrom = async (e) => {
     let data = e.target.value;
     if (data) {
-      const response = await axios.get(`http://localhost:8500/country/${data}`);
+      const response = await axios.get(`https://bug-hunter-squad.herokuapp.com/country/${data}`);
         setCountryOriginal(response?.data?.country);
         setFrom(response?.data?.id);
     } else {
@@ -73,7 +73,7 @@ function SearchFlight() {
   const handleDestination = async (e) => {
     let data = e.target.value;
     if (data) {
-      const response = await axios.get(`http://localhost:8500/country/${data}`);
+      const response = await axios.get(`https://bug-hunter-squad.herokuapp.com/country/${data}`);
         setCountryDestination(response?.data?.country);
         setTargetDestination(response?.data?.id);
     } else {

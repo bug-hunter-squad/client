@@ -29,14 +29,14 @@ const FlightInfo = () => {
 
   const fetcher = async () => {
     const response = await Axios.get(
-      "http://localhost:8500/flight/all"
+      "https://bug-hunter-squad.herokuapp.com/flight/all"
     );
     return response?.data?.data;
   };
 
   const DeleteFlight = async (flightId) => {
     await Axios.delete(
-      `http://localhost:8500/flight/${flightId}`
+      `https://bug-hunter-squad.herokuapp.com/flight/${flightId}`
     );
     mutate("flight");
   };

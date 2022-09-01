@@ -94,7 +94,7 @@ function searchresult() {
   const handleFrom = async () => {
     if (value) {
       const response = await Axios.get(
-        `http://localhost:8500/country/${value}`
+        `https://bug-hunter-squad.herokuapp.com/country/${value}`
       );
       setOriginal(response?.data?.city);
       setCountryOriginal(response?.data?.country);
@@ -105,7 +105,7 @@ function searchresult() {
   const handleDestination = async () => {
     if (valueTo) {
       const response = await Axios.get(
-        `http://localhost:8500/country/${valueTo}`
+        `https://bug-hunter-squad.herokuapp.com/country/${valueTo}`
       );
       setDestination(response?.data?.city);
       setCountryDestination(response?.data?.country);
@@ -121,7 +121,7 @@ function searchresult() {
 
   const fetcher = async () => {
     const response = await Axios.get(
-      `http://localhost:8500/flight?originalId=${value}&destinationId=${valueTo}&departureDate=${valueDepature}&departureTime=&arrivalTime=&childPassenger=${valueChild}&adultPassenger=${valueAdult}&wifi=${valueWifi}&meal=${valueMeal}&luggage=${valueLuggage}&minPrice=&maxPrice=&airlines=`
+      `https://bug-hunter-squad.herokuapp.com/flight?originalId=${value}&destinationId=${valueTo}&departureDate=${valueDepature}&departureTime=&arrivalTime=&childPassenger=${valueChild}&adultPassenger=${valueAdult}&wifi=${valueWifi}&meal=${valueMeal}&luggage=${valueLuggage}&minPrice=&maxPrice=&airlines=`
     );
     return response.data;
   };

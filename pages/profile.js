@@ -30,7 +30,7 @@ function Profile() {
   }
   const fetchUser = async () => {
     const response = await Axios.get(
-      `http://localhost:8500/profile/${userId}`
+      `https://bug-hunter-squad.herokuapp.com/profile/${userId}`
     );
     return response.data;
   };

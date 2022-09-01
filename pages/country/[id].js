@@ -30,7 +30,7 @@ const CountryId = () => {
         data.append("city", city),
         data.append("country", country),
         data.append("countryImage", images),
-        Axios.patch(`http://localhost:8500/country/${id}`, data, {
+        Axios.patch(`https://bug-hunter-squad.herokuapp.com/country/${id}`, data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

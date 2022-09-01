@@ -43,7 +43,7 @@ const FormAirline = () => {
       data.append("airline_pic", picAirline),
       data.append("airline_pic_phone_number", picNumber);
       data.append("airline_status", status),
-      Axios.post("http://localhost:8500/airlines", data, {
+      Axios.post("https://bug-hunter-squad.herokuapp.com/airlines", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

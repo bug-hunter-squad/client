@@ -35,7 +35,7 @@ const FormCountry = () => {
     data.append("city", city),
     data.append("country", country),
     data.append("countryImage", images),
-    Axios.post("http://localhost:8500/country", data, {
+    Axios.post("https://bug-hunter-squad.herokuapp.com/country", data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

@@ -63,7 +63,7 @@ export default function NewContactModal() {
   }, []);
   const getAirlines = async (req, res) => {
     await axios
-      .get("http://localhost:8500/airlines")
+      .get("https://bug-hunter-squad.herokuapp.com/airlines")
       .then((res) => {
         setAirlinesData(res.data.data);
       })

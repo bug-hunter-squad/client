@@ -32,7 +32,7 @@ function bookingdetail() {
     const decodeUser = decode(auth?.token);
     const id = decodeUser.id;
     await axios
-      .get(`http://localhost:8500/profile/${id}/booking/${bookingId}`)
+      .get(`https://bug-hunter-squad.herokuapp.com/profile/${id}/booking/${bookingId}`)
       .then((response) => {
         setData(response.data);
         setDataFlight(response?.data?.flightId);
@@ -45,7 +45,7 @@ function bookingdetail() {
 
   if (idFlight) {
     const response = async (req, res) => {
-      await axios.get(`http://localhost:8500/flight/${idFlight}`)
+      await axios.get(`https://bug-hunter-squad.herokuapp.com/flight/${idFlight}`)
       .then((response) => {
         setDetail(response?.data?.DetailFlightInformation);
       });

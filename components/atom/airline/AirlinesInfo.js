@@ -19,12 +19,12 @@ const AirlinesInfo = () => {
   }
   const [display, setDisplay] = React.useState(valueAdmin ? valueAdmin : false);
   const fetcherData = async () => {
-    const response = await Axios.get("http://localhost:8500/airlines");
+    const response = await Axios.get("https://bug-hunter-squad.herokuapp.com/airlines");
     return response.data.data;
   };
 
   const DeleteAirline = async (id) => {
-    await Axios.delete(`http://localhost:8500/airlines/${id}`);
+    await Axios.delete(`https://bug-hunter-squad.herokuapp.com/airlines/${id}`);
     mutate("airline");
   };
 

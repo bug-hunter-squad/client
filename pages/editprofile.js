@@ -26,7 +26,7 @@ const decodeUser = decode(auth?.token);
     getPlaceholder();
   },[]);
   const getPlaceholder =async( req, res) =>{
-    await Axios.get(`http://localhost:8500/profile/${id}`)
+    await Axios.get(`https://bug-hunter-squad.herokuapp.com/profile/${id}`)
     .then((res) => {
       setPlaceholder(res?.data)
     });
@@ -35,7 +35,7 @@ const decodeUser = decode(auth?.token);
   const handleUpdate = () => {
     setIsloading(true);
     setTimeout(() => {
-      Axios.patch(`http://localhost:8500/profile/${id}`, {
+      Axios.patch(`https://bug-hunter-squad.herokuapp.com/profile/${id}`, {
         email: email,
         name: name,
         phoneNumber: phoneNumber,

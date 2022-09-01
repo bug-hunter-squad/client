@@ -23,7 +23,7 @@ function MyBooking() {
     const id = decodeUser?.id;
     setTimeout(() => {
       axios
-        .get(`http://localhost:8500/profile/${id}/booking`)
+        .get(`https://bug-hunter-squad.herokuapp.com/profile/${id}/booking`)
         .then((response) => {
           setData(response.data);
         })

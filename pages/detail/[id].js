@@ -49,7 +49,7 @@ const Detail = (req, res) => {
 
   const fetcher = async () => {
     const response = await Axios.get(
-      `http://localhost:8500/flight/${id}`
+      `https://bug-hunter-squad.herokuapp.com/flight/${id}`
     );
     return response?.data?.DetailFlightInformation;
   };
@@ -69,7 +69,7 @@ const Detail = (req, res) => {
   const handleBooking = async (price) => {
    
     await Axios.post(
-      `http://localhost:8500/flight/${id}/booking/profile/${userId}`,
+      `https://bug-hunter-squad.herokuapp.com/flight/${id}/booking/profile/${userId}`,
       {
         totalChildPassenger: valueChild,
         totalAdultPassenger: valueAdult,

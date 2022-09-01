@@ -10,11 +10,11 @@ const Flight = (req, res) => {
     getCountry()
   },[])
   const getddata  = async (req, res) =>{
-    const response = await Axios.get("http://localhost:8500/airlines");
+    const response = await Axios.get("https://bug-hunter-squad.herokuapp.com/airlines");
     setReseult(response.data.data);
   }
   const getCountry = async (req, res) => {
-    await Axios.get("http://localhost:8500/country").then((res) => {
+    await Axios.get("https://bug-hunter-squad.herokuapp.com/country").then((res) => {
       setDataCountry(res.data);
     });
   };
@@ -41,7 +41,7 @@ const Flight = (req, res) => {
 
   const handleUpdate = async (req, res) => {
     setisloading(true);
-    await Axios.patch(`http://localhost:8500/flight/${flightId}`, {
+    await Axios.patch(`https://bug-hunter-squad.herokuapp.com/flight/${flightId}`, {
       airline_id: idAirLine,
       originalId: original,
       destinationId: destination,

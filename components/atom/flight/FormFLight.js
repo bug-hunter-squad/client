@@ -38,7 +38,7 @@ const FormFLight = () => {
   const [countryData, setDataCountry] = React.useState([]);
 
   const handleSave = async () => {
-    await Axios.post('http://localhost:8500/flight', {
+    await Axios.post('https://bug-hunter-squad.herokuapp.com/flight', {
       airline_id: idAirLine,
       originalId: original,
       destinationId: destination,
@@ -72,12 +72,12 @@ const FormFLight = () => {
   }
   
   const getAirLine = async (req, res) => {
-    await Axios.get("http://localhost:8500/airlines").then((res) => {
+    await Axios.get("https://bug-hunter-squad.herokuapp.com/airlines").then((res) => {
       setDataAirline(res.data.data);
     });
   };
   const getCountry = async (req, res) => {
-    await Axios.get("http://localhost:8500/country").then((res) => {
+    await Axios.get("https://bug-hunter-squad.herokuapp.com/country").then((res) => {
       setDataCountry(res.data);
     });
   };
