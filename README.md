@@ -28,7 +28,8 @@
      <p>Booking tickets is one process that many people often use before embarking on a journey or departing. The way that prospective passengers often make a reservation ticket is by ordering directly from the travel company, but the process is less effective both in terms of time and cost. For that, there is a need for the ordering process to be more effective both in terms of time as well as cost itself, as well as making it easier, more practical, and faster. Of course, when booking tickets, it is best to use a smartphone and the internet, because with this facility, all forms of ordering can be done anytime and anywhere, so it makes it easier for the people who will make the ticket reservations. In addition, with ticket reservations based on this website, everyone can access and get information on various products and services. Whether it's information about vehicles, departure schedules, or the price offered, everything can be accessed and obtained easily.</p>![Splashscreen (1)](https://user-images.githubusercontent.com/45787278/189545367-45ad454f-5dc1-45f1-9854-60d47bbae117.png)
 
   </li>
-  <li>
+  <li>![Chat (2)](https://user-images.githubusercontent.com/45787278/189546084-bb34e353-32ac-437e-83f6-4dfafdb058d0.png)
+
   <h4>About</h4>
 <p>Ankasa ticketing is a ticket search and booking website, where people can order tickets online quickly and easily, besides that there are customer services that help to help your journey if there are problems when ordering tickets.</p>
   </li>
@@ -106,7 +107,7 @@
   <tr>
     <td><img src="https://user-images.githubusercontent.com/45787278/189545380-7fcb5660-6ccc-4d25-b1ea-5eebb4eee94a.png" alt="lasagna" align="center"></td>
     <td><img src="https://user-images.githubusercontent.com/45787278/189544822-2181c332-6a5a-4cfe-9396-051d04119f1e.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544817-2f4b9312-2a37-4bd4-bed8-d77aaa7970ec.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/189544831-6b5b6a3b-bfff-4a93-bc5c-fd078bd05f42.png" alt="lasagna" align="center"></td>
   </tr>
 </table>
 <table>
@@ -123,14 +124,14 @@
 </table>
 <table>
   <tr>
-    <th>Searh Result</th>
+    <th>Search Result</th>
     <th>Detail FLight</th>
     <th>My booking</th>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544817-2f4b9312-2a37-4bd4-bed8-d77aaa7970ec.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544817-2f4b9312-2a37-4bd4-bed8-d77aaa7970ec.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544817-2f4b9312-2a37-4bd4-bed8-d77aaa7970ec.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/189544828-e3f8c7cd-e485-4bb5-a141-17258ca9ffc2.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/189544825-e7da174b-cd0f-421f-b97d-20360ae8046f.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/189545824-b365e0ac-d8ee-45c0-b7a1-ee7b0c4944fe.png" alt="lasagna" align="center"></td>
   </tr>
 </table>
 <table>
@@ -140,23 +141,20 @@
     <th>Chat</th>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544817-2f4b9312-2a37-4bd4-bed8-d77aaa7970ec.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544817-2f4b9312-2a37-4bd4-bed8-d77aaa7970ec.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544817-2f4b9312-2a37-4bd4-bed8-d77aaa7970ec.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/189544826-9966f30b-25f3-4098-9377-3d7df5ee19c5.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/189544834-20efc3b8-4d61-48d7-86d4-7efd63265908.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/189546128-54a0b734-8457-4572-9980-75e8b42559d1.png" alt="lasagna" align="center"></td>
   </tr>
 </table>
-
-<img src="" alt="lasagna" align="center"><img src="" alt="lasagna" align="center">
-<img src="" alt="lasagna" align="center">
-<img src="" alt="lasagna" align="center">
-<img src="https://user-images.githubusercontent.com/45787278/189544823-2ee60632-0fba-43fd-9c69-273e42147ccd.png" alt="lasagna" align="center">
-<img src="" alt="lasagna" align="center">
-<img src="https://user-images.githubusercontent.com/45787278/189544825-e7da174b-cd0f-421f-b97d-20360ae8046f.png" alt="lasagna" align="center">
-<img src="https://user-images.githubusercontent.com/45787278/189544826-9966f30b-25f3-4098-9377-3d7df5ee19c5.png" alt="lasagna" align="center">
-<img src="https://user-images.githubusercontent.com/45787278/189544828-e3f8c7cd-e485-4bb5-a141-17258ca9ffc2.png" alt="lasagna" align="center">
-<img src="https://user-images.githubusercontent.com/45787278/189544831-6b5b6a3b-bfff-4a93-bc5c-fd078bd05f42.png" alt="lasagna" align="center">
-<img src="https://user-images.githubusercontent.com/45787278/189544831-6b5b6a3b-bfff-4a93-bc5c-fd078bd05f42.png" alt="lasagna" align="center">
-<img src="https://user-images.githubusercontent.com/45787278/189544834-20efc3b8-4d61-48d7-86d4-7efd63265908.png" alt="lasagna" align="center">
+<table>
+  <tr>
+    <th>E-ticket</th>
+ 
+  </tr>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/45787278/189546158-a17cb507-12d5-40f1-a8b5-a936f9e12896.png" alt="lasagna" align="center"></td>
+  </tr>
+ </table>
 
 
 
