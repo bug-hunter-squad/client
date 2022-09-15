@@ -150,20 +150,15 @@
   <tr>
     <th>E-ticket</th>
     <th>Payment</th>
+    <th>Admin</th>
  
   </tr>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/45787278/190418854-b7302b05-fd3a-40c9-b22c-72d4007e9bc4.png" alt="lasagna" align="center"></td>
     <td><img src="https://user-images.githubusercontent.com/45787278/190418860-8ad5716b-04e4-4055-a0e2-95f03e6e83f6.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190424580-94ecb5bf-0d01-4a5e-b77c-f49fcdad559d.png" alt="lasagna" align="center"></td>
   </tr>
  </table>
- 
-
-
-
- 
-
-
 
 
 <h3 name="Contributing">Contributing</h3>
