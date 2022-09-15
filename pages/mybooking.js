@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import MyBooking from "../components/organisms/Desktop/mybooking";
+// import MyBooking from "../components/organisms/Desktop/mybooking";
 import MyBookingMobile from "../components/organisms/Mobile/mybookingmobile";
 import { useMediaQuery } from "react-responsive";
 
@@ -23,7 +23,7 @@ const mybooking = () => {
         <MyBookingMobile />
       </Mobile>
       <Default>
-        <MyBooking />
+      <MyBookingMobile />
       </Default>
     </>
   );

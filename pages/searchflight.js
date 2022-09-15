@@ -19,7 +19,7 @@ import Link from "next/link";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 function SearchFlight() {
@@ -62,23 +62,20 @@ function SearchFlight() {
 
   const handleFrom = async (e) => {
     let data = e.target.value;
-    if (data) {
-      const response = await axios.get(`https://bug-hunter-squad.herokuapp.com/country/${data}`);
-        setCountryOriginal(response?.data?.country);
-        setFrom(response?.data?.id);
-    } else {
-      data = null;
-    }
+    let find = data.search(':');
+    let cut = data.slice(find+1)
+    setCountryOriginal(cut)
+    let result  = data.slice(0,find)
+    setFrom(result);
   };
   const handleDestination = async (e) => {
     let data = e.target.value;
-    if (data) {
-      const response = await axios.get(`https://bug-hunter-squad.herokuapp.com/country/${data}`);
-        setCountryDestination(response?.data?.country);
-        setTargetDestination(response?.data?.id);
-    } else {
-      data = null;
-    }
+    let find = data.search(':');
+    let cut = data.slice(find+1)
+    setCountryDestination(cut);
+    let result  = data.slice(0,find)
+    setTargetDestination(result);
+
   };
 
   const disablePastDate = () => {
@@ -365,7 +362,7 @@ function SearchFlight() {
                           ) : (
                             <>
                               {dataCountry.map((item, index) => (
-                                <option key={index} value={item.id}>
+                                <option key={index} value={`${item.id}:${item.country}`}>
                                   {item.city}
                                 </option>
                               ))}
@@ -394,7 +391,7 @@ function SearchFlight() {
                           ) : (
                             <>
                               {dataCountry?.map((item, index) => (
-                                <option key={index} value={item.id}>
+                                <option key={index} value={`${item.id}:${item.country}`}>
                                   {item.city}
                                 </option>
                               ))}
@@ -545,13 +542,13 @@ function SearchFlight() {
                       </div>
                     </div>
                   </div>
-                  <div className="col">
-                    <button type="submit" className="btn btn-flight">
+                  <div className="col text-center">
+                    <Button type="submit" className="p-1 btn-flight">
                       SEARCH FLIGHT
                       <HiArrowNarrowRight className="btn-icons d-flex " />
-                    </button>
+                    </Button>
                   </div>
-                  <div className="col"> </div>
+                  <div className="col mt-3"> </div>
                 </div>
               </div>
             </div>

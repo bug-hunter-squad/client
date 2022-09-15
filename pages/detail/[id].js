@@ -106,7 +106,7 @@ const Detail = (req, res) => {
               <div className="d-flex  justify-content-between">
                 <div className="p-2 mx-3 mt-5">
                   <a
-                    href={`/searchresultmobile`}
+                    href={`/result`}
                     className="text-decoration-none"
                   >
                     <IoChevronBack className="fs-3 text-white" />

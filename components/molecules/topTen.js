@@ -30,15 +30,6 @@ function TopTen() {
       });
   };
 
-
-  const settings = {
-    infinity: true,
-    lazyLoad: true,
-    speed: 300,
-    slidesToShow: 4,
-    centerMode: true,
-    centerPadding: 0,
-  };
   return (
     <>
       <div className="row px-1 mt-4">
@@ -52,7 +43,7 @@ function TopTen() {
         </>
       ) : (
         <>
-          <Slider {...settings}>
+          <div className="d-flex flex-row flex-nowrap d-block overflow-auto recipe-scroll mt-2 p-2border">
             {topDestination.map((item, key) => (
               <>
                 <Link href="/searchflight" className="cursor">
@@ -75,7 +66,7 @@ function TopTen() {
                 </Link>
               </>
             ))}
-          </Slider>
+          </div>
         </>
       )}
     </>

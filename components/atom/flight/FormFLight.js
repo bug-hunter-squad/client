@@ -62,6 +62,7 @@ const FormFLight = () => {
       router.push("/dashboard")
     })
     .catch((error) =>{
+      console.log(error)
       const notif = error.response.data;
       Swal.fire({
         title: notif,

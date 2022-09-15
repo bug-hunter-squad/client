@@ -25,6 +25,7 @@ function MyBooking() {
       axios
         .get(`https://bug-hunter-squad.herokuapp.com/profile/${id}/booking`)
         .then((response) => {
+          console.log(response)
           setData(response.data);
         })
         .catch((err) => console.log(err))
@@ -46,7 +47,7 @@ function MyBooking() {
                 <div className="row"></div>
                 <div className="d-flex justify-content-between">
                   <p className="mt-3">
-                    {new Date(item?.departureTime).toDateString()}
+                    {item.bookingDate}
                   </p>
                   <Link
                     href={`/ticket/${item.bookingId}`}

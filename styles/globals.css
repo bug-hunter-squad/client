@@ -312,8 +312,9 @@ font-size: 14px;
   margin-bottom: 0.125rem;
 }
 .btn-flight{
-  width: 88vw !important;
-  padding: 2% !important;
+      width: 332px;
+    height: 52px;
+    font-weight: bold;
   font-weight: bold !important;
   background-color: #2395FF !important;
   color: #FFFFFF !important;
@@ -321,9 +322,9 @@ font-size: 14px;
 
 }
 .btn-flight:hover{
-  width: 88vw;
-  padding: 5% !important;
-  font-weight: bold !important;
+  width: 332px !important;
+  height: 52px !important;
+  font-weight: bold;
   background-color: #6B6B6B !important;
   color: #FFFFFF !important;
   border: none !important;
@@ -339,6 +340,7 @@ font-size: 14px;
   font-size: 10px !important;
     height: 26px;
 }
+
 .btn-icons{
   float: right;
   font-size: 27px;

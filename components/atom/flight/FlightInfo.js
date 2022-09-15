@@ -1,15 +1,14 @@
 import React from "react";
 import useSWR, { useSWRConfig } from "swr";
 import Axios from "axios";
-import Link from "next/link"
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-
 
 const FlightInfo = () => {
   const { mutate } = useSWRConfig();
   const dispatch = useDispatch();
-  const { admin } = useSelector((state) => state)
+  const { admin } = useSelector((state) => state);
   let valueAdmin;
   if (admin?.buttonFlight?.buttonFlight === null) {
     return (valueAdmin = "");
@@ -17,15 +16,15 @@ const FlightInfo = () => {
     valueAdmin = admin?.buttonFlight?.buttonFlight;
   }
 
-  const [display, setDisplay] = React.useState(valueAdmin ? valueAdmin : false)
-  const handleAddFlight =()=>{
+  const [display, setDisplay] = React.useState(valueAdmin ? valueAdmin : false);
+  const handleAddFlight = () => {
     dispatch({
       type: "ADD_FLIGHT",
       payload: {
         addFlight: true,
-      }
-    })
-  }
+      },
+    });
+  };
 
   const fetcher = async () => {
     const response = await Axios.get(
@@ -51,20 +50,21 @@ const FlightInfo = () => {
         <span className="visually-hidden">Loading...</span>
       </div>
     );
+    console.log(data)
   return (
     <>
-      <div className={display? "d-block" : "d-none"}>
+      <div className={display ? "d-block" : "d-none"}>
         <div>
-                <h5 className="mt-1">Flight Information</h5>
-        <button
-          type="button"
-          className="btn btn-warning btn-add"
-          onClick={handleAddFlight}
-        >
-          ADD
-        </button>
+          <h5 className="mt-1">Flight Information</h5>
+          <button
+            type="button"
+            className="btn btn-warning btn-add"
+            onClick={handleAddFlight}
+          >
+            ADD
+          </button>
         </div>
-  
+
         <div className="container table-flight">
           <table className="table table-striped table-inverse  p-2 table-responsive table-bordered ">
             <thead className="thead-inverse">
@@ -130,7 +130,10 @@ const FlightInfo = () => {
                   <td className="d-flex gap-2">
                     <Link href={`/flight/${flight.flightId}`}>
                       <a>
-                        <button type="button" className="btn btn-danger btn-mini">
+                        <button
+                          type="button"
+                          className="btn btn-danger btn-mini"
+                        >
                           Update
                         </button>
                       </a>

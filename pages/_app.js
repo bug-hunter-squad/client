@@ -68,13 +68,13 @@ const MainApp = ({ Component, pageProps }) => {
     if (router.pathname === "/profile" && !auth.token) {
       router.push("/login");
     }
-    if (router.pathname === "/dashboard" && !auth.token) {
-      router.push("/login");
-    }
-    const convert = decode(auth?.token)
-    if(router.pathname === "/dashboard" && convert?.role !== "admin"){
-      router.push("/")
-    }
+    // if (router.pathname === "/dashboard" && !auth.token) {
+    //   router.push("/login");
+    // }
+    // const convert = decode(auth?.token)
+    // if(router.pathname === "/dashboard" && convert?.role !== "admin"){
+    //   router.push("/")
+    // }
     
     
   });

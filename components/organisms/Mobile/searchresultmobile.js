@@ -79,12 +79,6 @@ function searchresult() {
     valueLuggage = filter?.luggage?.luggage;
   }
 
-  let ValueTrip;
-  if (query === null) {
-    return (ValueTrip = "");
-  } else {
-    ValueTrip = query?.way?.way;
-  }
 
   React.useEffect(() => {
     handleFrom();
@@ -236,8 +230,41 @@ function searchresult() {
             <FilterModal />
           </div>
           <div>
-            {flight ? (
-              flight.map((item) => (
+            {flight === 0|| flight === undefined? (
+ <>
+ <div className=" p-5">
+   <div className="row row-cols-1 d-flex flex-rows justify-content-center align-content-center">
+     <div className="col d-content">
+       <Image
+         src="/avaible.jpg"
+         alt="available"
+         width={200}
+         height={150}
+       />
+     </div>
+     <div className="col d-content">
+       <h4>No flights available</h4>
+     </div>
+     <p className="text-center">
+       Please recheck the link or choose other great flights on
+       Ankasa
+     </p>
+     <div className="col d-content">
+       <button type="button" className="btn btn-primary" onClick={handleGoSearch}>
+         Change Search
+       </button>
+     </div>
+   </div>
+ </div>
+</>
+
+
+
+
+             
+            ) : (
+              
+               flight.map((item) => (
                 <div
                   className={style.result}
                   // className="container border rounded p-2 mb-2"
@@ -337,33 +364,8 @@ function searchresult() {
                   </div>
                 </div>
               ))
-            ) : (
-              <>
-                <div className=" p-5">
-                  <div className="row row-cols-1 d-flex flex-rows justify-content-center align-content-center">
-                    <div className="col d-content">
-                      <Image
-                        src="/avaible.jpg"
-                        alt="available"
-                        width={200}
-                        height={150}
-                      />
-                    </div>
-                    <div className="col d-content">
-                      <h4>No flights available</h4>
-                    </div>
-                    <p className="text-center">
-                      Please recheck the link or choose other great flights on
-                      Ankasa
-                    </p>
-                    <div className="col d-content">
-                      <button type="button" className="btn btn-primary" onClick={handleGoSearch}>
-                        Change Search
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </>
+            
+             
             )}
           </div>
         </div>

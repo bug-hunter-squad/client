@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchResultDesktop from '../components/organisms/Desktop/searchresultdesktop'
+// import SearchResultDesktop from '../components/organisms/Desktop/searchresultdesktop'
 import SearchResultMobile from '../components/organisms/Mobile/searchresultmobile'
 import Head from "next/head"
 import { useMediaQuery } from "react-responsive";
@@ -21,9 +21,9 @@ const result = () => {
     </Head>
     <div>
       <Mobile>
-        <SearchResultMobile />
+      <SearchResultMobile />
       </Mobile>
-      <Default><SearchResultDesktop/></Default>
+      <Default><SearchResultMobile /></Default>
     </div>
   </>
   )
