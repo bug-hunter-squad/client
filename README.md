@@ -106,8 +106,8 @@
   </tr>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/45787278/189545380-7fcb5660-6ccc-4d25-b1ea-5eebb4eee94a.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544822-2181c332-6a5a-4cfe-9396-051d04119f1e.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544831-6b5b6a3b-bfff-4a93-bc5c-fd078bd05f42.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418877-4f4c5057-31e1-4870-8c67-71264b44e6f7.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418832-f2f42b8e-b4f8-4ea1-8404-f116d5a4da58.png" alt="lasagna" align="center"></td>
   </tr>
 </table>
 <table>
@@ -117,9 +117,9 @@
     <th>SearchFlight</th>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544819-eb4e85db-021d-4984-8666-21bb05a17be8.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544824-17cb94d5-0eea-4cac-a8d6-e51e607f8e90.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544817-2f4b9312-2a37-4bd4-bed8-d77aaa7970ec.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418817-c2527906-33cf-44e2-95db-ef615b1b10f9.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418882-28030003-fd7a-4104-8edd-010a3cfd608e.png"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418844-796277cb-2b7c-488e-8f90-33a95ea963d5.png" alt="lasagna" align="center"></td>
   </tr>
 </table>
 <table>
@@ -129,32 +129,39 @@
     <th>My booking</th>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544828-e3f8c7cd-e485-4bb5-a141-17258ca9ffc2.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544825-e7da174b-cd0f-421f-b97d-20360ae8046f.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189545824-b365e0ac-d8ee-45c0-b7a1-ee7b0c4944fe.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418846-da7086fa-f0f9-4504-9a87-0b73571029f9.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418849-4d6f5c77-e6e7-4694-a339-4ff995c8e062.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418872-3681db68-94db-4827-b227-c15d47f34802.png" alt="lasagna" align="center"></td>
   </tr>
 </table>
 <table>
   <tr>
     <th>Profile</th>
-    <th>Notification</th>
-    <th>Chat</th>
+    <th>Edit Profile</th>
+    <th>Alert</th>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544826-9966f30b-25f3-4098-9377-3d7df5ee19c5.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189544834-20efc3b8-4d61-48d7-86d4-7efd63265908.png" alt="lasagna" align="center"></td>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189546128-54a0b734-8457-4572-9980-75e8b42559d1.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418837-c5e09923-8ab7-4b7f-be84-df549ef8afa3.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418840-ccaf6e63-3d7d-4fbe-b764-d9c8288d7eae.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418835-e4df4ee2-6de1-4068-a46b-65b478cacdcb.png" alt="lasagna" align="center"></td>
   </tr>
 </table>
 <table>
   <tr>
     <th>E-ticket</th>
+    <th>Payment</th>
  
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/45787278/189546158-a17cb507-12d5-40f1-a8b5-a936f9e12896.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418854-b7302b05-fd3a-40c9-b22c-72d4007e9bc4.png" alt="lasagna" align="center"></td>
+    <td><img src="https://user-images.githubusercontent.com/45787278/190418860-8ad5716b-04e4-4055-a0e2-95f03e6e83f6.png" alt="lasagna" align="center"></td>
   </tr>
  </table>
+ 
+
+
+
+ 
 
 
 
@@ -167,10 +174,10 @@ If you have a suggestion that would make this better, please fork the repo and c
   
 <h3 name="Related">Related Project</h3>
  <a href="https://github.com/bug-hunter-squad/backend.git">🚀 Backend ankasa ticketing </a><br/>
- <a href="https://github.com/bug-hunter-squad/backend.git">🚀 Client ankasa ticketing </a><br/>
-  <a href="https://client-bug-hunter.vercel.app/dashboard">🚀 Dashboard admin </a><br/>
- <a href="https://bug-hunter-squad.herokuapp.com">🚀 Domain server ankasa ticketing </a><br/>
- <a href="https://client-bug-hunter.vercel.app">🚀 Demo ankasa ticketing</a><br/>
+ <a href="https://github.com/bug-hunter-squad/client.git">🚀 Client ankasa ticketing </a><br/>
+  <a href="https://client-theta-amber.vercel.app/dashboard">🚀 Dashboard admin </a><br/>
+ <a href="https://client-theta-amber.vercel.ap">🚀 Domain server ankasa ticketing </a><br/>
+ <a href="https://client-theta-amber.vercel.ap">🚀 Demo ankasa ticketing</a><br/>
 <h3 name="Team">Our Team</h3>
 <br/>
 <table>
