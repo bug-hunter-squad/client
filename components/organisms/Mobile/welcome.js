@@ -2,7 +2,6 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { useRouter } from "next/router";
 
-
 function Welcomes() {
   const router = useRouter();
 
@@ -19,30 +18,59 @@ function Welcomes() {
       <div className="container text-center p-2">
         <div>
           <Carousel>
-            {[...new Array(4)].map((item, key) => (
-              <Carousel.Item
-                key={key}
-                interval={1000}
-                className="carousel-welcome"
-              >
-                <div className="h-100 row row-cols-1">
-                  <img
-                    className="d-block w-100 h-50 mt-5"
-                    src="/assets/img/logoLight.svg"
-                    alt="First slide"
-                  />
-                  <div>
-                    <Carousel.Caption className="caption">
-                      <h3>Get Started</h3>
-                      <p>
-                        Nulla vitae elit libero, a pharetra augue mollis
-                        interdum.
-                      </p>
-                    </Carousel.Caption>
-                  </div>
+            <Carousel.Item interval={1000} className="carousel-welcome">
+              <div className="h-100 row row-cols-1">
+                <img
+                  className="d-block w-100 h-50 mt-5"
+                  src="/assets/img/logoLight.svg"
+                  alt="First slide"
+                />
+                <div>
+                  <Carousel.Caption className="caption">
+                    <h3>Search Your Flight</h3>
+                    <p>Start your search by filling in the flight details.</p>
+                  </Carousel.Caption>
                 </div>
-              </Carousel.Item>
-            ))}
+              </div>
+            </Carousel.Item>
+
+            <Carousel.Item interval={1000} className="carousel-welcome">
+              <div className="h-100 row row-cols-1">
+                <img
+                  className="d-block w-100 h-50 mt-5"
+                  src="/assets/img/logoLight.svg"
+                  alt="First slide"
+                />
+                <div>
+                  <Carousel.Caption className="caption">
+                    <h3>Choose and Book Flight</h3>
+                    <p>
+                      Airline name, flight schedule, and ticket price will be
+                      shown on the search results page. Choose and book the best
+                      flight for you.
+                    </p>
+                  </Carousel.Caption>
+                </div>
+              </div>
+            </Carousel.Item>
+            <Carousel.Item interval={1000} className="carousel-welcome">
+              <div className="h-100 row row-cols-1">
+                <img
+                  className="d-block w-100 h-50 mt-5"
+                  src="/assets/img/logoLight.svg"
+                  alt="First slide"
+                />
+                <div>
+                  <Carousel.Caption className="caption">
+                    <h3>Fill In Contact Information and Passenger Details</h3>
+                    <p>
+                      After choosing your flight, fill in the contact
+                      information and passenger details.
+                    </p>
+                  </Carousel.Caption>
+                </div>
+              </div>
+            </Carousel.Item>
           </Carousel>
           <div className="container">
             <div className="row row-cols-1 p-2">
