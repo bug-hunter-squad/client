@@ -49,7 +49,7 @@
 </ul>
 
 <h3 name="demo">Demo</h3>
-  Here is a working live demo:https://client-bug-hunter.vercel.app
+  Here is a working live demo: https://client-theta-amber.vercel.app
 <br/>
 <h3 id=getting>Getting started</h3>
 <ul>
