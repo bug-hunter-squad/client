@@ -176,8 +176,8 @@ If you have a suggestion that would make this better, please fork the repo and c
  <a href="https://github.com/bug-hunter-squad/backend.git">🚀 Backend ankasa ticketing </a><br/>
  <a href="https://github.com/bug-hunter-squad/client.git">🚀 Client ankasa ticketing </a><br/>
   <a href="https://client-theta-amber.vercel.app/dashboard">🚀 Dashboard admin </a><br/>
- <a href="https://client-theta-amber.vercel.ap">🚀 Domain server ankasa ticketing </a><br/>
- <a href="https://client-theta-amber.vercel.ap">🚀 Demo ankasa ticketing</a><br/>
+ <a href="https://client-theta-amber.vercel.app">🚀 Domain server ankasa ticketing </a><br/>
+ <a href="https://client-theta-amber.vercel.app">🚀 Demo ankasa ticketing</a><br/>
 <h3 name="Team">Our Team</h3>
 <br/>
 <table>
